@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CG Advocacy — Case Study · Christine Galligan</title>
+<meta name="description" content="An NSF-backed generative AI platform that translates dense healthcare regulatory documents into persona-specific explanations — closing the gap between who healthcare policy affects and who shapes it." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+  /* --- Kutuhala locked system ------------------------------- */
+  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
+  --ink-base:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
+  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
+  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
+  --gold:#A8854E; --gold-soft:#C2A878; --gold-wash:#F1E8D8;
+  --stone:#9B948A; --stone-light:#C5BEB1;
+  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
+  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
+  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  /* --- legacy aliases: existing rules resolve through these -- */
+  --bg:var(--paper);
+  --bg-2:var(--paper-raised);
+  --ink:var(--ink-base);
+  --ink-2:var(--ink-soft);
+  --muted:var(--ink-faint);
+  --rule:var(--paper-edge);
+  --accent:var(--clay);
+  --accent-soft:var(--clay-wash);
+  --amber:var(--gold-soft);
+  --amber-soft:var(--gold-wash);
+  --glow:var(--gold-soft);
+  --max:72rem; --text:40rem; --leading:1.6;
+}
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  .text { max-width: var(--text); }
+  section { padding: 7rem 0; border-top: 1px solid var(--rule); }
+  section:first-of-type { border-top: none; }
+  @media (max-width: 720px) { section { padding: 4.5rem 0; } .wrap { padding: 0 1.5rem; } }
+
+  .display, h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; margin: 0 0 1.25rem; letter-spacing: -0.025em; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.12; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
+  h3 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.5rem; font-weight: 500; }
+  p  { margin: 0 0 1.2rem; color: var(--ink-2); }
+  p.lede { font-size: 1.25rem; line-height: 1.5; color: var(--ink-2); }
+  p.dek  { font-size: 1.0625rem; color: var(--muted); }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    display: inline-block;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 0.75rem;
+    transform: translateY(-2px);
+  }
+
+  /* Nav */
+  .topnav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250, 248, 244, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; padding-bottom: 1rem;
+  }
+  .mark { font-family: var(--font-display); font-style: italic; font-size: 1.0625rem; letter-spacing: -0.01em; }
+  .mark em { font-style: normal; }
+  .topnav nav { display: flex; gap: 1.75rem; font-size: 0.8125rem; color: var(--muted); }
+  .topnav nav a { text-decoration: none; }
+  .topnav nav a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .topnav nav { display: none; } }
+
+  /* Hero */
+  .hero {
+    padding-top: 8rem; padding-bottom: 6rem;
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(154, 75, 46, 0.08), transparent 65%),
+      radial-gradient(ellipse 45% 35% at 15% 80%, rgba(217, 182, 150, 0.14), transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 960px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  /* Video embed */
+  .hero-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 60px rgba(14,14,12,0.15);
+    border: 1px solid var(--rule);
+  }
+  .hero-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .hero-video-caption {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* Meta */
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .meta dt {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem;
+  }
+  .meta dd { margin: 0; font-size: 0.95rem; color: var(--ink); font-weight: 500; }
+  @media (max-width: 720px) { .meta { grid-template-columns: repeat(2, 1fr); } }
+
+  /* HRV signature divider */
+  .hrv-sig {
+    padding: 3.5rem 0;
+    text-align: center;
+    color: var(--accent);
+    border-top: none;
+  }
+  .hrv-sig svg {
+    width: min(70%, 540px);
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.55;
+  }
+  .hrv-sig svg path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 2.8s ease-out 0.3s forwards;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hrv-sig svg path { stroke-dashoffset: 0; animation: none; }
+  }
+
+  /* Thesis */
+  .thesis { background: var(--ink); color: var(--bg); padding: 5rem 0; border-top: none; }
+  .thesis .wrap { max-width: 56rem; }
+  .thesis h2 { color: var(--bg); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.25; margin: 0; }
+  .thesis .eyebrow { color: rgba(250,248,244,0.6); }
+  .thesis .eyebrow::before { background: rgba(250,248,244,0.6); }
+  .thesis p.sub {
+    margin: 1.5rem 0 0;
+    color: rgba(250,248,244,0.7);
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Problem grid */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .grid-3 { grid-template-columns: 1fr; } }
+  .item .tag {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .item h3 { margin-bottom: 0.75rem; font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; line-height: 1.25; }
+  .item p { font-size: 0.975rem; color: var(--ink-2); margin: 0; }
+
+  /* Solution (3 pillars with accent) */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    transition: border-color 200ms;
+  }
+  .pillar:hover { border-color: var(--accent); }
+  .pillar .pnum {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .pillar h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin: 0 0 0.75rem; line-height: 1.25; }
+  .pillar p { font-size: 0.95rem; margin: 0; color: var(--ink-2); }
+
+  /* Process method */
+  .method {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 920px) { .method { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .method { grid-template-columns: 1fr; } }
+  .step {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink);
+  }
+  .step .n {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; line-height: 1.25; margin: 0 0 0.75rem; }
+  .step p { font-size: 0.92rem; color: var(--ink-2); margin: 0; line-height: 1.5; }
+
+  /* Before/After results table */
+  .results {
+    background: var(--accent-soft);
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .results::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 50% at 80% 20%, rgba(154,75,46,0.08), transparent 65%);
+    pointer-events: none;
+  }
+  .results .wrap { max-width: 64rem; position: relative; }
+  .results .eyebrow { color: var(--accent); }
+  .results .eyebrow::before { background: var(--accent); }
+  .before-after {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .ba-row {
+    display: grid;
+    grid-template-columns: 14rem 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(14,14,12,0.15);
+    align-items: center;
+  }
+  .ba-row:last-child { border-bottom: 1px solid rgba(14,14,12,0.15); }
+  .ba-metric {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .ba-before, .ba-after {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .ba-before::before, .ba-after::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+  .ba-before::before {
+    content: "Before";
+    color: var(--muted);
+    background: rgba(14,14,12,0.08);
+    left: 0;
+  }
+  .ba-after::before {
+    content: "After";
+    color: var(--bg);
+    background: var(--accent);
+    left: 0;
+  }
+  .ba-before, .ba-after {
+    padding-left: 0;
+    padding-top: 2rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+  .ba-before { color: var(--muted); }
+  .ba-after  { color: var(--ink); font-weight: 500; }
+  @media (max-width: 820px) {
+    .ba-row { grid-template-columns: 1fr; gap: 1rem; }
+    .ba-row .ba-metric { padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(14,14,12,0.2); }
+  }
+
+  /* Personas */
+  .personas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .personas { grid-template-columns: 1fr; } }
+  .persona {
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.35);
+  }
+  .persona .role {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .persona h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 0.5rem;
+  }
+  .persona p { font-size: 0.95rem; color: var(--ink-2); margin: 0; }
+
+  /* Technical components */
+  .tech {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 720px) { .tech { grid-template-columns: 1fr; } }
+  .tech-item {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    padding-right: 2rem;
+  }
+  .tech-item:nth-child(even) { border-right: none; padding-left: 2rem; padding-right: 0; }
+  .tech-item:nth-child(1), .tech-item:nth-child(2) { border-top: none; padding-top: 0; }
+  @media (max-width: 720px) {
+    .tech-item, .tech-item:nth-child(even) {
+      border-right: none; padding-left: 0; padding-right: 0;
+    }
+    .tech-item:nth-child(1) { padding-top: 0; }
+    .tech-item:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 1.75rem; }
+  }
+  .tech-item .code {
+    font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  .tech-item h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 0.5rem;
+  }
+  .tech-item p { font-size: 0.95rem; color: var(--ink-2); margin: 0; max-width: 28rem; }
+
+  /* Strategic insights */
+  .insights-list {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .insight {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .insight:last-child { border-bottom: 1px solid var(--rule); }
+  .insight h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .insight p { font-size: 1rem; color: var(--ink-2); margin: 0; }
+  @media (max-width: 820px) {
+    .insight { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  /* Testimonial */
+  .testimonial {
+    background: var(--ink);
+    color: var(--bg);
+    border-top: none;
+  }
+  .testimonial .wrap { max-width: 60rem; }
+  .testimonial .eyebrow { color: rgba(250,248,244,0.6); }
+  .testimonial .eyebrow::before { background: rgba(250,248,244,0.6); }
+  .testimonial blockquote {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+    line-height: 1.35;
+    color: var(--bg);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+    font-style: normal;
+  }
+  .testimonial cite {
+    font-style: normal;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250,248,244,0.9);
+    font-weight: 500;
+  }
+  .testimonial cite span {
+    display: block;
+    margin-top: 0.25rem;
+    color: rgba(250,248,244,0.55);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  /* Links (devpost, github) */
+  .links-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.5);
+    transition: border-color 200ms, background 200ms;
+    font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase;
+  }
+  .link-pill:hover { border-color: var(--ink); }
+
+  /* Case nav */
+  .casenav { padding: 4rem 0; border-top: 1px solid var(--rule); }
+  .casenav .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 720px) { .casenav .wrap { grid-template-columns: 1fr; } }
+  .casenav a {
+    text-decoration: none;
+    display: block;
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    transition: border-color 200ms, background 200ms;
+  }
+  .casenav a:hover { border-color: var(--ink); background: rgba(255,255,255,0.5); }
+  .casenav .dir {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .casenav .ctitle {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .casenav a.next { text-align: right; }
+
+  /* Closing */
+  .closing { padding: 7rem 0; }
+  .closing .wrap { max-width: 52rem; }
+  .closing h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 1.25rem; }
+  .closing p { font-size: 1.1rem; color: var(--ink-2); margin-bottom: 2.5rem; max-width: 44rem; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 200ms, color 200ms;
+  }
+  .cta:hover { background: var(--ink); color: var(--bg); }
+  .cta .arrow { transition: transform 200ms; }
+  .cta:hover .arrow { transform: translateX(3px); }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section { animation: rise 700ms ease-out both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+/* --- locked-system corrections ---------------------------------- */
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:400}
+body{font-family:var(--font-sans)}
+a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:title" content="Case 05 · CG Advocacy — AI for civic infrastructure — Christine Galligan" />
+<meta property="og:description" content="NSF-backed generative AI using GPT-4 and RAG to make healthcare policy legible — so participation is possible. 2–3 hours of expert work compressed to under 20 minutes." />
+<meta property="og:image" content="/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Case 05 · CG Advocacy — AI for civic infrastructure — Christine Galligan" />
+<meta name="twitter:description" content="NSF-backed generative AI using GPT-4 and RAG to make healthcare policy legible — so participation is possible. 2–3 hours of expert work compressed to under 20 minutes." />
+<meta name="twitter:image" content="/og-image.png" />
+
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="mark"><a href="index.html" style="border:0;color:inherit"><em>Christine Galligan</em></a> &nbsp;·&nbsp; <span>Case Study 05</span></div>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#process">Process</a>
+      <a href="#results">Results</a>
+      <a href="#insights">Insights</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Case Study · Generative AI · Civic Infrastructure</span>
+      <h1>Making healthcare policy <em>legible</em> — so participation is possible.</h1>
+      <p class="lede">
+        An NSF-backed generative AI platform that translates dense regulatory documents from
+        CMS, FDA, and ONC into persona-specific explanations, gathers structured public
+        comment, and submits it back into federal feedback systems. Built to close the gap
+        between who healthcare policy affects and who actually shapes it.
+      </p>
+
+      <!-- Add your real URLs when ready, then uncomment:
+      <div class="links-row">
+        <a href="https://devpost.com/..." class="link-pill" target="_blank" rel="noopener">Devpost ↗</a>
+        <a href="https://github.com/..." class="link-pill" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      -->
+
+    </div>
+
+    <div>
+      <div class="hero-video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/dCuWAICn_v4?rel=0"
+          title="CG Advocacy Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="hero-video-caption">Demo · CG Advocacy Platform · Beta</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Founder · Product Lead</dd></div>
+      <div><dt>Backing</dt><dd>NSF iCorps West · Microsoft AI Hackathon</dd></div>
+      <div><dt>Period</dt><dd>2023 — 2024</dd></div>
+      <div><dt>Stack</dt><dd>GPT-4 · RAG · NLP · CMS / ONC integration</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- HRV SIGNATURE DIVIDER -->
+<div class="hrv-sig" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 20 L 150 20 L 168 20 L 176 16 L 184 22 L 192 20 L 220 20 L 228 14 L 234 4 L 240 36 L 246 20 L 260 20 L 280 15 L 295 25 L 305 20 L 360 20 L 380 20 L 388 16 L 396 22 L 404 20 L 430 20 L 438 14 L 444 4 L 450 36 L 456 20 L 470 20 L 488 15 L 502 25 L 512 20 L 600 20"
+      fill="none" stroke="currentColor" stroke-width="1.1"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</div>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="wrap">
+    <span class="eyebrow">Thesis</span>
+    <h2>AI is not the product. It's the enabler. The product is a civic participation layer for people who have been shut out of policy conversations that shape their care.</h2>
+    <p class="sub">Trust and transparency over accuracy. Co-creation over deployment. Emotional intelligence and systems design over model outputs.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <span class="eyebrow">The Problem</span>
+    <h2>Three structural failures compounding into a participation gap.</h2>
+    <p class="dek text">
+      Healthcare policy is written in language that excludes the people it governs.
+      Feedback systems reward the actors who already have power. The public-comment
+      infrastructure is a pipeline designed for institutions, not for patients.
+    </p>
+
+    <div class="grid-3">
+      <div class="item">
+        <div class="tag">Complexity</div>
+        <h3>Policy documents from CMS, FDA, and ONC are dense and inaccessible.</h3>
+        <p>Regulatory language is a barrier that deters community engagement before it starts. The people most affected by policy changes are the least equipped to respond to them in the window feedback is open.</p>
+      </div>
+      <div class="item">
+        <div class="tag">Inequity</div>
+        <h3>Current systems favor experts and institutional actors.</h3>
+        <p>Rural voices, patients, and marginalized communities are systemically excluded from public comment periods — not because they have nothing to say, but because the system assumes legal fluency they were never asked to acquire.</p>
+      </div>
+      <div class="item">
+        <div class="tag">Inefficiency</div>
+        <h3>Manual review produces slow feedback loops and limited data utility.</h3>
+        <p>Even when comments are submitted, the way they're analyzed doesn't turn them into actionable policy signal. Regulators receive noise; communities get no response.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="wrap">
+    <span class="eyebrow">The Solution</span>
+    <h2>Three pillars. One stack. Built to translate in both directions.</h2>
+    <p class="dek text">
+      An AI layer between federal policy documents and the public — designed to reduce
+      cognitive load on the citizen side and improve signal quality on the regulator side.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pnum">01</div>
+        <h3>Document Simplification</h3>
+        <p>GPT-4 with a custom RAG architecture summarizes policies, translates jargon, and generates glossaries. Users can ask questions in natural language and receive persona-appropriate answers with source citations.</p>
+      </div>
+      <div class="pillar">
+        <div class="pnum">02</div>
+        <h3>Persona-Based UX</h3>
+        <p>Guided flows tailored to patients, advocates, hospital staff, and economists — each surfacing the parts of a policy document most relevant to their context, in the language that context uses.</p>
+      </div>
+      <div class="pillar">
+        <div class="pnum">03</div>
+        <h3>Feedback Engine</h3>
+        <p>Collects, clusters, and formats user submissions into structured packets for CMS and ONC public comment portals. Turns individual comment into thematic signal regulators can act on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <span class="eyebrow">Process</span>
+    <h2>How it came together.</h2>
+
+    <div class="method">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Discovery</h3>
+        <p>25+ NSF iCorps customer discovery interviews. Stakeholder interviews across hospital admins, rural health advocates, health economists, and policy researchers. Journey mapping and pain point identification.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Prototyping</h3>
+        <p>Persona-based flow design, AI prompt engineering, data schema mapping. Early rapid prototypes built to test whether persona-specific explanation of a single policy actually changed comprehension.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>AI Development</h3>
+        <p>RAG architecture for document parsing, keyword extraction, and semantic clustering. Custom prompts for persona-specific Q&amp;A and comment generation. Pipeline engineered for source-traceability and transparency.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Test &amp; Deploy</h3>
+        <p>Beta testing with hospital staff and policy researchers. CMS/ONC integration for real-time policy comment submission. Dashboard built to visualize feedback patterns and coverage gaps for regulators.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS (Before / After) -->
+<section id="results" class="results">
+  <div class="wrap">
+    <span class="eyebrow">Results</span>
+    <h2>Measurable change on every axis that mattered.</h2>
+    <p class="dek text">
+      Before and after, across the four outcomes we set out to move: comprehension,
+      accessibility, response time, and feedback quality.
+    </p>
+
+    <div class="before-after">
+      <div class="ba-row">
+        <div class="ba-metric">Time to understand a policy document</div>
+        <div class="ba-before">2 — 3 hours of expert effort</div>
+        <div class="ba-after">Under 20 minutes, persona-guided</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-metric">Policy comprehension across users</div>
+        <div class="ba-before">Low — accessible only to experts</div>
+        <div class="ba-after">High — accessible to patients, advocates, staff, and economists</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-metric">Response time to comment periods</div>
+        <div class="ba-before">Manual delays; often missed windows</div>
+        <div class="ba-after">30% faster end-to-end</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-metric">Feedback quality to regulators</div>
+        <div class="ba-before">Fragmented, vague, hard to cluster</div>
+        <div class="ba-after">Thematic, evidence-based, submission-ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS / IMPACT -->
+<section id="personas">
+  <div class="wrap">
+    <span class="eyebrow">Stakeholder Impact</span>
+    <h2>Different users. Different questions. One underlying architecture.</h2>
+    <p class="dek text">
+      The platform was designed for three primary personas identified through NSF iCorps
+      discovery. Each sees a different view of the same document.
+    </p>
+
+    <div class="personas">
+      <div class="persona">
+        <div class="role">Health Economist</div>
+        <h3>Mapped policy changes to cost burden and regional economic strain.</h3>
+        <p>Surfaces the fiscal implications of proposed policy — what it does to reimbursement, coverage, and regional health budgets over time.</p>
+      </div>
+      <div class="persona">
+        <div class="role">Rural Policy Maker</div>
+        <h3>Consolidated community feedback into actionable policy recommendations.</h3>
+        <p>Aggregates rural-specific input and translates it into submission-ready language for comment portals — so rural voices arrive at CMS as signal, not noise.</p>
+      </div>
+      <div class="persona">
+        <div class="role">Hospital Administrator</div>
+        <h3>Identified funding gaps for rural rollouts.</h3>
+        <p>Isolates implementation implications of policy changes — what it costs hospitals to comply, where the funding gaps sit, and what to ask regulators to adjust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL COMPONENTS -->
+<section id="technical">
+  <div class="wrap">
+    <span class="eyebrow">Technical Architecture</span>
+    <h2>Four components. Built for transparency and control, not just capability.</h2>
+
+    <div class="tech">
+      <div class="tech-item">
+        <div class="code">01 · CUSTOM PROMPT ENGINEERING</div>
+        <h3>Persona-specific Q&amp;A and comment generation.</h3>
+        <p>Prompt templates tuned per persona and per use case. Output formatted for downstream comment-portal submission, not for conversational output.</p>
+      </div>
+      <div class="tech-item">
+        <div class="code">02 · NLP PIPELINES</div>
+        <h3>Document parsing, keyword extraction, semantic clustering.</h3>
+        <p>Pre-processing layer that structures dense regulatory text into retrievable chunks, surfaced to the LLM with source traceability preserved throughout.</p>
+      </div>
+      <div class="tech-item">
+        <div class="code">03 · INTERACTIVE DASHBOARD</div>
+        <h3>Visualizes feedback patterns and coverage gaps.</h3>
+        <p>A regulator-facing view that turns individual submissions into thematic clusters, highlighting where comment volume is concentrated and where it's missing.</p>
+      </div>
+      <div class="tech-item">
+        <div class="code">04 · SECURE SUBMISSION ENGINE</div>
+        <h3>Comment submission with compliance-grade transparency log.</h3>
+        <p>Every submission is auditable. Users see exactly what was generated, what was edited, and what was sent — preserving consent and public record integrity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC INSIGHTS -->
+<section id="insights">
+  <div class="wrap">
+    <span class="eyebrow">Strategic Insights</span>
+    <h2>What I learned building generative AI for public infrastructure.</h2>
+
+    <div class="insights-list">
+      <div class="insight">
+        <h3>"Trust and transparency mattered more than accuracy alone."</h3>
+        <p>
+          In civic AI, a model that is 95% accurate but opaque performs worse than one that is
+          85% accurate and shows its reasoning. We over-invested in data stewardship and user
+          control — which turned out to be the feature that actually drove adoption. Accuracy
+          without provenance is just another black box.
+        </p>
+      </div>
+      <div class="insight">
+        <h3>"Co-creation with users was vital."</h3>
+        <p>
+          Diverse stakeholder input shaped everything from interface language to use case
+          prioritization. Economists, advocates, hospital administrators, and patients used
+          different vocabularies for the same concept — and getting that vocabulary right was
+          the difference between a tool they used and a tool they abandoned.
+        </p>
+      </div>
+      <div class="insight">
+        <h3>"AI is not the product. It's the enabler."</h3>
+        <p>
+          Success hinged on emotional intelligence and systems design, not model outputs. The
+          LLM was one component inside a larger choreography of trust, context, and control.
+          Teams that reverse that ratio — model-first, experience-second — build demos, not
+          products.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="wrap">
+    <span class="eyebrow">Reference</span>
+    <blockquote>
+      "Christine's standout quality is her constant curiosity, which she demonstrated in
+      recent projects leveraging generative AI to drive innovation. Her contributions to
+      projects involving CapsicoHealth's AI-driven analytics products helped demonstrate the
+      value of these tools to stakeholders. Her ability to articulate the business and
+      clinical implications of cutting-edge technologies makes her an invaluable collaborator
+      in aligning AI capabilities with healthcare objectives."
+    </blockquote>
+    <cite>
+      Dr. J. Sairamesh
+      <span>CEO · CapsicoHealth</span>
+    </cite>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Applied AI that earns its place inside systems people already have to trust.</h2>
+    <p>
+      Open to senior strategy and applied AI roles at the intersection of healthcare,
+      civic infrastructure, and public interest technology — particularly where research
+      rigor, behavioral design, and engineering judgment all have to sit in the same person.
+    </p>
+    <a href="mailto:galligancm@gmail.com" class="cta">
+      <span>Start a conversation</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<section class="casenav">
+  <div class="wrap">
+    <a href="novant-health-case-study.html" class="prev">
+      <div class="dir">← Previous case</div>
+      <div class="ctitle">Novant Health — Rural Mental Health Service Design</div>
+    </a>
+    <a href="healthcare-control-center-case-study.html" class="next">
+      <div class="dir">Next case →</div>
+      <div class="ctitle">Healthcare Control Center — Decision Environment Concept</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Christine Galligan · Case Study 05 · CG Advocacy</span>
+    <span>galligancm@gmail.com</span>
+  </div>
+</footer>
+
+<div style="max-width:72rem;margin:0 auto;padding:2rem;border-top:1px solid var(--paper-edge)"><a class="back-home" href="index.html" style="font-size:.85rem;border:0">← All work · Christine Galligan</a></div>
+</body>
+</html>

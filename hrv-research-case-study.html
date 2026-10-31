@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HRV Research — Case Study · Christine Galligan</title>
+<meta name="description" content="A 3.5-year IRB-approved longitudinal study tracking heart rate variability in family caregivers of Alzheimer's patients. Clemson University · Prisma Health System." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+  :root{
+  /* --- Kutuhala locked system ------------------------------- */
+  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
+  --ink-base:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
+  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
+  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
+  --gold:#A8854E; --gold-soft:#C2A878; --gold-wash:#F1E8D8;
+  --stone:#9B948A; --stone-light:#C5BEB1;
+  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
+  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
+  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  /* --- legacy aliases: existing rules resolve through these -- */
+  --bg:var(--paper);
+  --bg-2:var(--paper-raised);
+  --ink:var(--ink-base);
+  --ink-2:var(--ink-soft);
+  --muted:var(--ink-faint);
+  --rule:var(--paper-edge);
+  --accent:var(--clay);
+  --accent-soft:var(--clay-wash);
+  --amber:var(--gold-soft);
+  --amber-soft:var(--gold-wash);
+  --glow:var(--gold-soft);
+  --max:72rem; --text:40rem; --leading:1.6;
+}
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: var(--leading);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  .text { max-width: var(--text); }
+  section { padding: 7rem 0; border-top: 1px solid var(--rule); }
+  section:first-of-type { border-top: none; }
+  @media (max-width: 720px) { section { padding: 4.5rem 0; } .wrap { padding: 0 1.5rem; } }
+
+  .display, h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; margin: 0 0 1.25rem; letter-spacing: -0.025em; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.12; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
+  h3 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.5rem; font-weight: 500; }
+  p { margin: 0 0 1.2rem; color: var(--ink-2); }
+  p.lede { font-size: 1.25rem; line-height: 1.5; color: var(--ink-2); }
+  p.dek  { font-size: 1.0625rem; color: var(--muted); }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    display: inline-block;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 0.75rem;
+    transform: translateY(-2px);
+  }
+
+  /* Nav */
+  .topnav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250, 248, 244, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; padding-bottom: 1rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.0625rem;
+    letter-spacing: -0.01em;
+  }
+  .mark em { font-style: normal; }
+  .topnav nav { display: flex; gap: 1.75rem; font-size: 0.8125rem; color: var(--muted); }
+  .topnav nav a { text-decoration: none; }
+  .topnav nav a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .topnav nav { display: none; } }
+
+  /* Hero */
+  .hero { padding-top: 8rem; padding-bottom: 6rem; border-top: none; }
+  .hero h1 em { font-style: italic; }
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .meta dt {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .meta dd {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  @media (max-width: 720px) { .meta { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Thesis */
+  .thesis {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 5rem 0;
+    border-top: none;
+  }
+  .thesis .wrap { max-width: 56rem; }
+  .thesis h2 { color: var(--bg); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.25; margin: 0; }
+  .thesis .eyebrow { color: rgba(250,248,244,0.6); }
+  .thesis .eyebrow::before { background: rgba(250,248,244,0.6); }
+  .thesis p.sub {
+    margin: 1.5rem 0 0;
+    color: rgba(250,248,244,0.7);
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Pull quote */
+  .pull {
+    margin: 5rem 0 0;
+    padding: 3rem 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pull blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 1.25rem;
+    max-width: 52rem;
+  }
+  .pull cite {
+    font-style: normal;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Outcomes grid (big numbers) */
+  .bignums {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 1000px) { .bignums { grid-template-columns: repeat(3, 1fr); gap: 2.5rem 1.5rem; } }
+  @media (max-width: 560px) { .bignums { grid-template-columns: repeat(2, 1fr); } }
+  .bignum .v {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .bignum .l {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Method process */
+  .method {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.75rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 1100px) { .method { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.5rem; } }
+  @media (max-width: 700px) { .method { grid-template-columns: 1fr; } }
+  .step {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink);
+  }
+  .step .n {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; line-height: 1.25; margin: 0 0 0.75rem; }
+  .step p { font-size: 0.92rem; color: var(--ink-2); margin: 0; line-height: 1.5; }
+
+  /* Findings */
+  .findings {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .finding {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .finding:last-child { border-bottom: 1px solid var(--rule); }
+  .finding .num {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .finding h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; margin: 0 0 0.5rem; }
+  .finding p { margin: 0; font-size: 1.0625rem; color: var(--ink-2); max-width: 42rem; }
+  @media (max-width: 720px) {
+    .finding { grid-template-columns: 1fr; gap: 0.75rem; }
+    .finding .num { font-size: 2rem; }
+  }
+
+  /* Testimonial */
+  .testimonial {
+    background: var(--accent-soft);
+    border-top: none;
+  }
+  .testimonial .wrap { max-width: 60rem; }
+  .testimonial .eyebrow { color: var(--accent); }
+  .testimonial .eyebrow::before { background: var(--accent); }
+  .testimonial blockquote {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0 0 1.5rem;
+    font-style: normal;
+    letter-spacing: -0.01em;
+  }
+  .testimonial cite {
+    font-style: normal;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+  .testimonial cite span { display: block; margin-top: 0.25rem; color: var(--muted); font-weight: 400; letter-spacing: 0.08em; }
+
+  /* Lineage */
+  .lineage .wrap { max-width: 62rem; }
+  .lineage-list {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 820px) { .lineage-list { grid-template-columns: 1fr; } }
+  .lineage-item {
+    padding: 1.75rem;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+  }
+  .lineage-item .year {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .lineage-item h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin: 0 0 0.5rem; line-height: 1.25; }
+  .lineage-item p { font-size: 0.95rem; margin: 0; color: var(--ink-2); }
+
+  /* Reflection */
+  .reflection .wrap { max-width: 52rem; }
+  .reflection blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+  }
+  .reflection p { font-size: 1.0625rem; line-height: 1.6; }
+
+  /* Case nav footer */
+  .casenav {
+    padding: 4rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .casenav .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  @media (max-width: 720px) { .casenav .wrap { grid-template-columns: 1fr; } }
+  .casenav a {
+    text-decoration: none;
+    display: block;
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    transition: border-color 200ms, background 200ms;
+  }
+  .casenav a:hover { border-color: var(--ink); background: rgba(255,255,255,0.5); }
+  .casenav .dir {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .casenav .ctitle {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .casenav a.next { text-align: right; }
+
+  /* Closing CTA */
+  .closing { padding: 7rem 0; }
+  .closing .wrap { max-width: 52rem; }
+  .closing h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 1.25rem; }
+  .closing p { font-size: 1.1rem; color: var(--ink-2); margin-bottom: 2.5rem; max-width: 44rem; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 200ms, color 200ms;
+  }
+  .cta:hover { background: var(--ink); color: var(--bg); }
+  .cta .arrow { transition: transform 200ms; }
+  .cta:hover .arrow { transform: translateX(3px); }
+
+  /* HRV signature divider */
+  .hrv-sig {
+    padding: 3.5rem 0;
+    text-align: center;
+    color: var(--accent);
+    border-top: none;
+  }
+  .hrv-sig svg {
+    width: min(70%, 540px);
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.55;
+  }
+  .hrv-sig svg path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 2.8s ease-out 0.3s forwards;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hrv-sig svg path { stroke-dashoffset: 0; animation: none; }
+  }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section, .hero { animation: rise 600ms ease-out both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+/* --- locked-system corrections ---------------------------------- */
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:400}
+body{font-family:var(--font-sans)}
+a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:title" content="Case 01 · The physiological cost of caregiving — Christine Galligan" />
+<meta property="og:description" content="A 3.5-year IRB-approved longitudinal HRV study in 32 Alzheimer's family caregivers. Seven community centers adopted the respite program. Clemson · Prisma Health." />
+<meta property="og:image" content="/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Case 01 · The physiological cost of caregiving — Christine Galligan" />
+<meta name="twitter:description" content="A 3.5-year IRB-approved longitudinal HRV study in 32 Alzheimer's family caregivers. Seven community centers adopted the respite program. Clemson · Prisma Health." />
+<meta name="twitter:image" content="/og-image.png" />
+
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="mark"><a href="index.html" style="border:0;color:inherit"><em>Christine Galligan</em></a> &nbsp;·&nbsp; <span>Case Study 01</span></div>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#method">Method</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#findings">Findings</a>
+      <a href="#lineage">Lineage</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Case Study · HRV Longitudinal Research</span>
+    <h1>The physiological cost of <em>caregiving</em>.</h1>
+    <p class="lede text">
+      A 3.5-year IRB-approved longitudinal study tracking heart rate variability in 32 family
+      caregivers of Alzheimer's patients — and whether sensory interventions could measurably
+      shift the autonomic cost of care. They could. And seven community centers now use the
+      protocol that came out of it.
+    </p>
+
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Lead Researcher · Principal Investigator</dd></div>
+      <div><dt>Institution</dt><dd>Clemson Center for Success in Aging · Prisma Health</dd></div>
+      <div><dt>Period</dt><dd>2011 — 2015 · 3.5-year longitudinal</dd></div>
+      <div><dt>Cohort</dt><dd>n=32 caregivers · 22+ research assistants trained</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- HRV SIGNATURE DIVIDER -->
+<div class="hrv-sig" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 20 L 150 20 L 168 20 L 176 16 L 184 22 L 192 20 L 220 20 L 228 14 L 234 4 L 240 36 L 246 20 L 260 20 L 280 15 L 295 25 L 305 20 L 360 20 L 380 20 L 388 16 L 396 22 L 404 20 L 430 20 L 438 14 L 444 4 L 450 36 L 456 20 L 470 20 L 488 15 L 502 25 L 512 20 L 600 20"
+      fill="none" stroke="currentColor" stroke-width="1.1"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</div>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="wrap">
+    <span class="eyebrow">Research Question</span>
+    <h2>Can we detect caregiver burnout before it becomes crisis — using the body's own signals as an early warning system?</h2>
+    <p class="sub">IRB-approved longitudinal study · Dr. Cheryl Dye, faculty advisor.</p>
+  </div>
+</section>
+
+<!-- OVERVIEW / ORIGIN -->
+<section id="overview">
+  <div class="wrap text">
+    <span class="eyebrow">Origin</span>
+    <h2>They were disappearing — not dramatically, but quietly.</h2>
+    <p>
+      Each visit, the caregivers looked a little more tired. A little less present. They'd
+      smile and say "I'm fine" — but their heart rate variability told a different story.
+      Their nervous systems were screaming.
+    </p>
+    <p>
+      HRV is a window into the autonomic nervous system — the branch that governs stress
+      response, recovery, and resilience. When it drops and stays low, the body is running
+      on reserve. We watched that happen in real time, in 32 people, across years.
+    </p>
+    <p>
+      The question we started with was narrow: can sensory interventions measurably shift
+      HRV in a caregiving population? The question we ended with was larger:
+      <strong>if environment can move physiology this reliably, why are we building care systems that ignore it entirely?</strong>
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <span class="eyebrow">The Problem</span>
+    <h2>53 million unpaid caregivers. 40–70% depression rates. Almost no early intervention infrastructure.</h2>
+    <div class="text">
+      <p>
+        Family caregivers of people with Alzheimer's are among the most physiologically
+        stressed populations in the country — and among the most overlooked. They don't
+        identify as patients. They don't seek care. They absorb.
+      </p>
+      <p>
+        By the time burnout surfaces — a hospitalization, a breakdown, a collapse — the
+        nervous system has been running on empty for months. The clinical opportunity isn't
+        at the crisis point. It's in the months before, when HRV is declining and stress is
+        accumulating below the threshold of conscious awareness.
+      </p>
+      <p>
+        Existing respite programs help. But they're episodic. What was missing was a way
+        to see the physiological toll accumulating in real time — and intervene before it
+        became irreversible.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="wrap">
+    <span class="eyebrow">Methodology</span>
+    <h2>How we studied it.</h2>
+    <p class="dek text">
+      Five stages, structured to move from physiological baseline to community adoption.
+      IRB-approved protocol. 22+ research assistants trained on biofeedback equipment.
+    </p>
+
+    <div class="method">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Biometric Baseline Mapping</h3>
+        <p>Established individual HRV baselines for 32 participants using wearable biometric sensors. Baselines accounted for age, health status, and caregiving intensity.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Emotional State Mapping</h3>
+        <p>Paired biometric data with structured emotional mapping sessions. Validated affect measures alongside qualitative ethnographic observation.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Sensory Intervention Protocol</h3>
+        <p>Three categories of individually tailored interventions — personalized music, nature imagery, aromatherapy — co-designed with participants to honor preference and cultural context.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Longitudinal Tracking</h3>
+        <p>Tracked HRV response to interventions over 3.5 years. Analyzed patterns at the cohort and individual level. Presented at Clemson's Focus on Creative Inquiry (2014, 2015) and Alzheimer's Advocacy Conference.</p>
+      </div>
+      <div class="step">
+        <div class="n">05</div>
+        <h3>Community Translation</h3>
+        <p>Translated findings into a structured Dementia Caregiver Respite Program combining wearable monitoring, sensory interventions, and community resources — designed for adoption outside the research setting, not just validity inside it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="wrap">
+    <span class="eyebrow">Outcomes</span>
+    <h2>What we found.</h2>
+    <p class="dek text">
+      A measurable autonomic response to sensory intervention — and a program that left the
+      university and kept working.
+    </p>
+
+    <div class="bignums">
+      <div class="bignum">
+        <div class="v">n=32</div>
+        <div class="l">family caregivers, IRB-approved protocol</div>
+      </div>
+      <div class="bignum">
+        <div class="v">3</div>
+        <div class="l">sensory intervention categories, individually tailored</div>
+      </div>
+      <div class="bignum">
+        <div class="v">7</div>
+        <div class="l">community centers adopted the program</div>
+      </div>
+      <div class="bignum">
+        <div class="v">100+</div>
+        <div class="l">families impacted post-study</div>
+      </div>
+      <div class="bignum">
+        <div class="v">3.5 yr</div>
+        <div class="l">longitudinal study duration</div>
+      </div>
+      <div class="bignum">
+        <div class="v">2×</div>
+        <div class="l">conference poster presentations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section id="findings">
+  <div class="wrap">
+    <span class="eyebrow">Findings</span>
+    <h2>Three things the study proved that the field still hasn't acted on.</h2>
+
+    <div class="findings">
+      <div class="finding">
+        <div class="num">01</div>
+        <div>
+          <h3>Environment moves physiology as reliably as medication.</h3>
+          <p>Simple sensory inputs — a familiar song, a nature scene, a particular scent — produced reproducible HRV changes. The body responded to environment the same way it responds to pharmacological intervention.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="num">02</div>
+        <div>
+          <h3>Individual calibration matters more than intervention type.</h3>
+          <p>Generic sensory stimuli produced inconsistent results. Personally meaningful inputs — a song from a specific decade, imagery tied to memory — produced the strongest and most consistent autonomic response. Personalization isn't a nice-to-have; it's the mechanism.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="num">03</div>
+        <div>
+          <h3>The gap between research and adoption is a design problem.</h3>
+          <p>Statistically valid findings don't automatically translate into programs communities use. The respite program was adopted by seven centers only because it was designed for real-world use from the beginning — not retrofitted after the study ended.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="wrap">
+    <span class="eyebrow">Faculty Advisor</span>
+    <blockquote>
+      "Christine's contributions to our projects, particularly her leadership in <em>Effects
+      of Thoughts and Sensory Experiences on Heart Rate Variability of Older Adults</em>,
+      were nothing short of transformative."
+    </blockquote>
+    <cite>
+      Dr. Cheryl Dye
+      <span>Director, Center for Success in Aging · Clemson University</span>
+    </cite>
+  </div>
+</section>
+
+<!-- LINEAGE -->
+<section id="lineage" class="lineage">
+  <div class="wrap">
+    <span class="eyebrow">What This Changed</span>
+    <h2>The conceptual spine of everything that followed.</h2>
+    <p class="dek text">
+      The insight that environment regulates physiology as powerfully as medication became
+      the through-line — from health-system strategy to independent R&amp;D. The question
+      is no longer whether this is true. It's why we keep building systems that ignore it.
+    </p>
+
+    <div class="lineage-list">
+      <div class="lineage-item">
+        <div class="year">2015 — 2019</div>
+        <h3>CVS · Behavioral Health</h3>
+        <p>Translated sensory-regulation principles into behavioral health program design at pharmacy-retail scale.</p>
+      </div>
+      <div class="lineage-item">
+        <div class="year">2019 — 2022</div>
+        <h3>Novant · Patient Experience</h3>
+        <p>Embedded environment-as-intervention thinking into a health-system patient experience framework.</p>
+      </div>
+      <div class="lineage-item">
+        <div class="year">2023 — Present</div>
+        <h3>Somatag · Protocol R&amp;D</h3>
+        <p>HRV-based, screenless intervention engine for high-load nervous systems. The research thesis, built into hardware.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection" class="reflection">
+  <div class="wrap">
+    <span class="eyebrow">Reflection</span>
+    <blockquote>
+      "What stayed with me wasn't the numbers — it was watching someone's whole body soften
+      when they heard a song that mattered."
+    </blockquote>
+    <p>
+      The hardest part of this work wasn't the methodology. It was the 3.5 years of sitting
+      with people while their nervous systems told the truth their words wouldn't. That's
+      what longitudinal research gives you that a six-week pilot never can: the full arc of
+      a person under sustained pressure, and the moments when something small actually helps.
+    </p>
+    <p>
+      The two poster presentations and the community adoption were validating. But the more
+      durable outcome was a question I've carried into every project since:
+      <strong>if we can measure stress this precisely, and intervene this simply, what is our excuse for not doing it at scale?</strong>
+    </p>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Research that left the university and kept working.</h2>
+    <p>
+      Open to research partnerships, health-system pilots, and academic collaboration —
+      particularly where HRV, autonomic neuroscience, and real-world intervention design intersect.
+    </p>
+    <a href="mailto:galligancm@gmail.com" class="cta">
+      <span>Start a conversation</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<section class="casenav">
+  <div class="wrap">
+    <a href="index.html" class="prev">
+      <div class="dir">← All work</div>
+      <div class="ctitle">Portfolio index</div>
+    </a>
+    <a href="cvs-health-case-study.html" class="next">
+      <div class="dir">Next case →</div>
+      <div class="ctitle">CVS Health — Digital Health Behavior Change</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Christine Galligan · Case Study 01 · HRV Longitudinal Research</span>
+    <span>galligancm@gmail.com</span>
+  </div>
+</footer>
+
+<div style="max-width:72rem;margin:0 auto;padding:2rem;border-top:1px solid var(--paper-edge)"><a class="back-home" href="index.html" style="font-size:.85rem;border:0">← All work · Christine Galligan</a></div>
+</body>
+</html>

@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Somatag — Case Study · Christine Galligan</title>
+<meta name="description" content="A wearable intervention that works before you know you need it. Case study on emotion-adaptive interface R&D by Christine Galligan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+  :root{
+  /* --- Kutuhala locked system ------------------------------- */
+  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
+  --ink-base:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
+  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
+  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
+  --gold:#A8854E; --gold-soft:#C2A878; --gold-wash:#F1E8D8;
+  --stone:#9B948A; --stone-light:#C5BEB1;
+  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
+  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
+  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  /* --- legacy aliases: existing rules resolve through these -- */
+  --bg:var(--paper);
+  --bg-2:var(--paper-raised);
+  --ink:var(--ink-base);
+  --ink-2:var(--ink-soft);
+  --muted:var(--ink-faint);
+  --rule:var(--paper-edge);
+  --accent:var(--clay);
+  --accent-soft:var(--clay-wash);
+  --amber:var(--gold-soft);
+  --amber-soft:var(--gold-wash);
+  --glow:var(--gold-soft);
+  --max:72rem; --text:40rem; --leading:1.6;
+}
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: var(--leading);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  .text { max-width: var(--text); }
+  section { padding: 7rem 0; border-top: 1px solid var(--rule); }
+  section:first-of-type { border-top: none; }
+  @media (max-width: 720px) { section { padding: 4.5rem 0; } .wrap { padding: 0 1.5rem; } }
+
+  /* ---------- Typography ---------- */
+  .display, h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; margin: 0 0 1.25rem; letter-spacing: -0.025em; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.12; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
+  h3 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.5rem; font-weight: 500; }
+  p { margin: 0 0 1.2rem; color: var(--ink-2); }
+  p.lede { font-size: 1.25rem; line-height: 1.5; color: var(--ink-2); }
+  p.dek  { font-size: 1.0625rem; color: var(--muted); }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    display: inline-block;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 0.75rem;
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Nav ---------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250, 248, 244, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; padding-bottom: 1rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.0625rem;
+    letter-spacing: -0.01em;
+  }
+  .mark em { font-style: normal; }
+  .topnav nav { display: flex; gap: 1.75rem; font-size: 0.8125rem; color: var(--muted); }
+  .topnav nav a { text-decoration: none; }
+  .topnav nav a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .topnav nav { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 8rem; padding-bottom: 6rem; border-top: none; }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink);
+  }
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .meta dt {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .meta dd {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  @media (max-width: 720px) { .meta { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- Thesis card ---------- */
+  .thesis {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 5rem 0;
+    border-top: none;
+  }
+  .thesis .wrap { max-width: 56rem; }
+  .thesis h2 { color: var(--bg); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.25; margin: 0; }
+  .thesis .eyebrow { color: rgba(250,248,244,0.6); }
+  .thesis .eyebrow::before { background: rgba(250,248,244,0.6); }
+
+  /* ---------- Pain grid ---------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .grid-3 { grid-template-columns: 1fr; } }
+  .item .num {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .item h3 { margin-bottom: 0.75rem; font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; line-height: 1.25; }
+  .item p { font-size: 0.975rem; color: var(--ink-2); margin: 0; }
+
+  /* ---------- Pull quote ---------- */
+  .pull {
+    margin: 5rem 0 0;
+    padding: 3rem 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pull blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 1.25rem;
+    max-width: 48rem;
+  }
+  .pull cite {
+    font-style: normal;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- JTBD layers ---------- */
+  .layers { margin-top: 3rem; }
+  .layer {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .layer:last-child { border-bottom: 1px solid var(--rule); }
+  .layer .tag {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.35rem;
+  }
+  .layer h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 0.5rem;
+  }
+  .layer p { margin: 0; font-size: 1rem; }
+  @media (max-width: 720px) { .layer { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+  /* ---------- Method process ---------- */
+  .method {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 920px) { .method { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .method { grid-template-columns: 1fr; } }
+  .step {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink);
+  }
+  .step .n {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; line-height: 1.25; margin: 0 0 0.75rem; }
+  .step p { font-size: 0.95rem; color: var(--ink-2); margin: 0; }
+
+  /* ---------- Criteria ---------- */
+  .criteria { margin-top: 3rem; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .crit {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .crit:last-child { border-bottom: 1px solid var(--rule); }
+  .crit .num {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .crit h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; line-height: 1.2; margin: 0 0 0.5rem; }
+  .crit p { margin: 0; font-size: 1.0625rem; color: var(--ink-2); max-width: 42rem; }
+  @media (max-width: 720px) {
+    .crit { grid-template-columns: 1fr; gap: 0.75rem; }
+    .crit .num { font-size: 2rem; }
+  }
+
+  /* ---------- Market data ---------- */
+  .market .wrap { max-width: 64rem; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat .v {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .stat .l {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .beachhead {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background: var(--accent-soft);
+    border-radius: 2px;
+  }
+  .beachhead h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin: 0 0 0.75rem; color: var(--ink); }
+  .beachhead p { color: var(--ink-2); margin: 0 0 0.75rem; font-size: 0.975rem; }
+  .beachhead p:last-child { margin-bottom: 0; }
+  .beachhead .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  /* ---------- Current state ---------- */
+  .status-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .status-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .status-grid h3 {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+  .status-grid p { color: var(--ink-2); font-size: 1.0625rem; line-height: 1.55; }
+  .bullet-list { list-style: none; padding: 0; margin: 0; }
+  .bullet-list li {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.975rem;
+    color: var(--ink-2);
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: 0.75rem;
+    align-items: start;
+  }
+  .bullet-list li:first-child { border-top: 1px solid var(--rule); }
+  .bullet-list li::before {
+    content: "";
+    display: block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 0.55rem;
+  }
+
+  /* ---------- Closing ---------- */
+  .closing { padding: 8rem 0 7rem; border-top: 1px solid var(--rule); }
+  .closing .wrap { max-width: 56rem; }
+  .closing h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.1; margin-bottom: 1.5rem; }
+  .closing p { font-size: 1.15rem; color: var(--ink-2); margin-bottom: 2.5rem; max-width: 44rem; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 200ms, color 200ms;
+  }
+  .cta:hover { background: var(--ink); color: var(--bg); }
+  .cta .arrow { transition: transform 200ms; }
+  .cta:hover .arrow { transform: translateX(3px); }
+
+  /* HRV signature divider */
+  .hrv-sig {
+    padding: 3.5rem 0;
+    text-align: center;
+    color: var(--accent);
+    border-top: none;
+  }
+  .hrv-sig svg {
+    width: min(70%, 540px);
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.55;
+  }
+  .hrv-sig svg path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 2.8s ease-out 0.3s forwards;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hrv-sig svg path { stroke-dashoffset: 0; animation: none; }
+  }
+
+  /* Case nav */
+  .casenav {
+    padding: 4rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .casenav .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  @media (max-width: 720px) { .casenav .wrap { grid-template-columns: 1fr; } }
+  .casenav a {
+    text-decoration: none;
+    display: block;
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    transition: border-color 200ms, background 200ms;
+  }
+  .casenav a:hover { border-color: var(--ink); background: rgba(255,255,255,0.5); }
+  .casenav .dir {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .casenav .ctitle {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .casenav a.next { text-align: right; }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+  /* subtle fade-in */
+  @media (prefers-reduced-motion: no-preference) {
+    section, .hero { animation: rise 600ms ease-out both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+/* --- locked-system corrections ---------------------------------- */
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:400}
+body{font-family:var(--font-sans)}
+a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:title" content="Case 03 · Somatag — Emotion-Adaptive Interface R&D — Christine Galligan" />
+<meta property="og:description" content="A screenless, body-worn protocol that detects autonomic dysregulation through HRV and intervenes with gentle haptic cues. Before you know you need it." />
+<meta property="og:image" content="/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Case 03 · Somatag — Emotion-Adaptive Interface R&D — Christine Galligan" />
+<meta name="twitter:description" content="A screenless, body-worn protocol that detects autonomic dysregulation through HRV and intervenes with gentle haptic cues. Before you know you need it." />
+<meta name="twitter:image" content="/og-image.png" />
+
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="mark"><a href="index.html" style="border:0;color:inherit"><em>Christine Galligan</em></a> &nbsp;·&nbsp; <span>Case Study 03</span></div>
+    <nav>
+      <a href="#gap">Gap</a>
+      <a href="#jtbd">Jobs</a>
+      <a href="#method">Method</a>
+      <a href="#criteria">Criteria</a>
+      <a href="#market">Market</a>
+      <a href="#status">Status</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Case Study · Emotion-Adaptive Interface R&amp;D</span>
+    <h1>A stress intervention that works <em>before</em> you know you need it.</h1>
+    <p class="lede text">
+      Somatag is a screenless, body-worn protocol that detects autonomic dysregulation
+      through HRV and intervenes with gentle haptic cues — before conscious awareness,
+      before escalation, before the user is asked to do anything about it.
+    </p>
+
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Founder &amp; Behavioral Systems Designer</dd></div>
+      <div><dt>Venture</dt><dd>Somatag · Independent R&amp;D</dd></div>
+      <div><dt>Period</dt><dd>2023 — Present</dd></div>
+      <div><dt>Status</dt><dd>Active · Algorithm ~50% · Manufacturing secured</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- HRV SIGNATURE DIVIDER -->
+<div class="hrv-sig" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 20 L 150 20 L 168 20 L 176 16 L 184 22 L 192 20 L 220 20 L 228 14 L 234 4 L 240 36 L 246 20 L 260 20 L 280 15 L 295 25 L 305 20 L 360 20 L 380 20 L 388 16 L 396 22 L 404 20 L 430 20 L 438 14 L 444 4 L 450 36 L 456 20 L 470 20 L 488 15 L 502 25 L 512 20 L 600 20"
+      fill="none" stroke="currentColor" stroke-width="1.1"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</div>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="wrap">
+    <span class="eyebrow">Thesis</span>
+    <h2>The market optimized for monitoring. Nobody built for regulation.</h2>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section id="origin">
+  <div class="wrap text">
+    <span class="eyebrow">Origin</span>
+    <h2>A caregiver's question, asked inside a healthcare system.</h2>
+    <p>
+      This work began as a design research question, shaped by years of caregiving for my
+      grandfather through Alzheimer's and years inside healthcare systems at CVS, Philips,
+      and adjacent to clinical workflows. The pattern was consistent across both: the
+      people most affected by chronic stress dysregulation — caregivers, veterans, first
+      responders, women in perimenopause — were being handed apps that created more
+      cognitive load, wearables that generated surveillance anxiety, and dashboards that
+      made them feel worse.
+    </p>
+    <p>
+      Somatag started with a simpler question. What would a stress intervention look like
+      if it worked the way the nervous system actually works — through the body, not around
+      it? Through sensation, not self-reporting? Before escalation, not after?
+    </p>
+  </div>
+</section>
+
+<!-- GAP -->
+<section id="gap">
+  <div class="wrap">
+    <span class="eyebrow">The Gap</span>
+    <h2>Why current tools fail the people who need them most.</h2>
+    <p class="dek text">
+      Three failure modes, named plainly. Every Somatag design decision is a refusal of one of them.
+    </p>
+
+    <div class="grid-3">
+      <div class="item">
+        <div class="num">01</div>
+        <h3>Screen fatigue is the problem they keep adding screens to solve.</h3>
+        <p>Notification-based interventions ask people to engage cognitively with their stress in the moment they are most cognitively overwhelmed. The tool becomes another demand.</p>
+      </div>
+      <div class="item">
+        <div class="num">02</div>
+        <h3>Monitoring without intervention changes the score, not the outcome.</h3>
+        <p>Knowing your HRV is low does not reduce it. A dashboard that shows you your stress level adds information to an already overwhelmed system.</p>
+      </div>
+      <div class="item">
+        <div class="num">03</div>
+        <h3>Medical aesthetics create resistance in non-medical populations.</h3>
+        <p>A wearable that looks like a medical device signals surveillance, stigma, and patient identity. The people most in need are least likely to adopt tools that make them feel like patients.</p>
+      </div>
+    </div>
+
+    <div class="pull text">
+      <blockquote>
+        "I want a tool that respects my emotional rhythms — not one that nags me
+        when I'm already past the breaking point."
+      </blockquote>
+      <cite>Research participant · JTBD interview</cite>
+    </div>
+  </div>
+</section>
+
+<!-- JTBD LAYERS -->
+<section id="jtbd">
+  <div class="wrap">
+    <span class="eyebrow">Jobs to Be Done</span>
+    <h2>Three layers. The design had to serve all three, or it would fail at adoption.</h2>
+    <p class="dek text">
+      Functional, social, emotional — synthesized from qualitative research with high-load
+      nervous systems. Each layer is a design constraint, not a consumer insight.
+    </p>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="tag">Functional</div>
+        <div>
+          <h3>Detect stress earlier than conscious awareness. Deliver an interrupt, not a readout.</h3>
+          <p>The user needs a signal that is earlier and more reliable than self-report. The tool acts before the person has capacity to act.</p>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="tag">Social</div>
+        <div>
+          <h3>Feel like self-care, not like a medical device.</h3>
+          <p>Wearable in public without generating questions. Identity-compatible. Closer to jewelry than to a heart rate monitor. This is not cosmetic — it is the adoption mechanism.</p>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="tag">Emotional</div>
+        <div>
+          <h3>Feel grounded and cared for — not surveilled.</h3>
+          <p>The emotional register of the intervention matters as much as its clinical efficacy. A tool that makes someone feel monitored defeats its own purpose.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="wrap">
+    <span class="eyebrow">Design Research</span>
+    <h2>Signal architecture first. Form factor second.</h2>
+    <p class="dek text">
+      Rather than prototyping and testing usability, this project started at the
+      physiological and behavioral layer — understanding the signal before designing toward it.
+    </p>
+
+    <div class="method">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Physiological Synthesis</h3>
+        <p>Mapped HRV, posture, and stillness detection to predict rumination onset. Established multi-sensor input logic to reduce false positives and identify the threshold between early dysregulation and conscious awareness.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Persona Simulation</h3>
+        <p>Four archetypes with distinct baseline HRV curves — the burned-out caregiver, the hypervigilant veteran, the perimenopausal professional, the recovering addict. Tested intervention timing against each physiological profile.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Foresight Matrix</h3>
+        <p>Mapped the design against calm tech principles, target user needs, and ambient computing futures. Stress-tested against Oura, Sensate, and Emotibit to define where Somatag differentiates and where it integrates.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Prototyping &amp; Partnership</h3>
+        <p>Form factor developed in Figma and 3D jewelry mockups with haptic zones. Manufacturing partnership secured with sensor designer. Investor pitch presented at Boulder Startup Week. Intervention algorithm ~50% complete.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRITERIA -->
+<section id="criteria">
+  <div class="wrap">
+    <span class="eyebrow">Design Criteria</span>
+    <h2>Three non-negotiables. Everything else is tradeable.</h2>
+
+    <div class="criteria">
+      <div class="crit">
+        <div class="num">01</div>
+        <div>
+          <h3>Screenless. Always.</h3>
+          <p>The intervention cannot require looking at anything, opening anything, or deciding anything. It works in the body's language — haptic, subtle, preconscious — not the dashboard's language.</p>
+        </div>
+      </div>
+      <div class="crit">
+        <div class="num">02</div>
+        <div>
+          <h3>Adaptive to the individual, not to population averages.</h3>
+          <p>Generic HRV thresholds produce false positives and erode trust. Baselines adapt to the individual's own physiological range over time. The system learns the person, not the norm.</p>
+        </div>
+      </div>
+      <div class="crit">
+        <div class="num">03</div>
+        <div>
+          <h3>Worn as self-expression, not as medical equipment.</h3>
+          <p>Trust and aesthetics are strategic differentiators. A wearable someone wants to wear invites consent instead of creating resistance. The form factor competes with jewelry, not with heart rate monitors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market" class="market">
+  <div class="wrap">
+    <span class="eyebrow">Market Scale</span>
+    <h2>The populations this serves are massive, under-served, and already driving cost.</h2>
+    <p class="dek text">
+      These are the public health cost drivers where emotional dysregulation shows up as
+      expensive utilization. The business case and the human case are the same case.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v">53–63M</div>
+        <div class="l">unpaid family caregivers in the U.S.</div>
+      </div>
+      <div class="stat">
+        <div class="v">3.8M</div>
+        <div class="l">veterans living with PTSD</div>
+      </div>
+      <div class="stat">
+        <div class="v">1.3M</div>
+        <div class="l">women enter perimenopause annually</div>
+      </div>
+      <div class="stat">
+        <div class="v">$50B+</div>
+        <div class="l">TAM in stress-induced medical costs and lost productivity</div>
+      </div>
+    </div>
+
+    <div class="beachhead">
+      <span class="tag">Pilot Thesis · Perimenopause Beachhead</span>
+      <h3>A defined cohort. A measurable cost curve. A plausible 12-month proof.</h3>
+      <p>
+        Perimenopausal women drive ER visits (cardiac scares), sleep medication use, and
+        mental health utilization. A 15–20% reduction in utilization for a defined cohort
+        projects to <strong>$5–10M in annual savings per 100k covered lives</strong> against
+        a ~$15M investment — plus Medicare Advantage differentiation on member experience.
+      </p>
+      <p>
+        Market tailwinds: Femtech at ~$60B with 16% CAGR. Women are 70%+ of active wearable
+        users. Hims &amp; Hers menopause line, IdentifyHer at CES 2025, LunaFlow AI — the
+        category is already moving. Somatag is the regulation layer beneath it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section id="status">
+  <div class="wrap">
+    <span class="eyebrow">Current State</span>
+    <h2>From a concept to an intervention engine.</h2>
+
+    <div class="status-grid">
+      <div>
+        <h3>Where it is today</h3>
+        <p>
+          Components validated — haptic devices (Sensate) and biosensors (Emotibit). The
+          intervention algorithm is approximately 50% complete. Manufacturing partnership
+          secured. Investor pitch presented at Boulder Startup Week.
+        </p>
+        <p>
+          The pendant is the first node in a larger system — the most intimate point of
+          contact with the regulation protocol. Over time the somatic bundle expands:
+          soundscapes, tactile field kits, adaptive lighting environments. Hardware and
+          software are delivery vehicles. <strong>The protocol is the product.</strong>
+        </p>
+        <p>
+          Long-term positioning: a protocol licensing platform — an intervention engine that
+          can run underneath other wearables and ambient systems, not just its own hardware.
+          The pendant generates the behavioral dataset that gives timing precision;
+          licensing gives scale.
+        </p>
+      </div>
+
+      <div>
+        <h3>Seeking</h3>
+        <ul class="bullet-list">
+          <li>Research partners for clinical validation (n=10–20 feasibility study)</li>
+          <li>NIH Blueprint MedTech alignment</li>
+          <li>Academic collaborators — HRV and autonomic neuroscience</li>
+          <li>Integration partners across femtech, aging-in-place, and Medicare Advantage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Build the intervention layer that should already exist.</h2>
+    <p>
+      Somatag is not a wellness product. It is a regulation protocol with a pendant as its
+      first delivery vehicle — the missing layer between wellness trackers and clinical
+      infrastructure. Built with the people it's for, designed to disappear into a life
+      instead of demanding one.
+    </p>
+    <a href="mailto:galligancm@gmail.com" class="cta">
+      <span>Start a conversation</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<section class="casenav">
+  <div class="wrap">
+    <a href="cvs-health-case-study.html" class="prev">
+      <div class="dir">← Previous case</div>
+      <div class="ctitle">CVS Health — Digital Health Behavior Change</div>
+    </a>
+    <a href="novant-health-case-study.html" class="next">
+      <div class="dir">Next case →</div>
+      <div class="ctitle">Novant Health — Rural Mental Health Service Design</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Christine Galligan · Case Study 03 · Somatag</span>
+    <span>galligancm@gmail.com</span>
+  </div>
+</footer>
+
+<div style="max-width:72rem;margin:0 auto;padding:2rem;border-top:1px solid var(--paper-edge)"><a class="back-home" href="index.html" style="font-size:.85rem;border:0">← All work · Christine Galligan</a></div>
+</body>
+</html>

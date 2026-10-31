@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Christine Galligan — Curious by design</title>
+<meta name="description" content="Health research, photography, product, and writing. Boulder, Colorado. Healthcare innovation is accelerating. Adoption is not." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
+  --ink:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
+  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
+  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
+  --gold:#A8854E; --gold-soft:#C2A878;
+  --stone:#9B948A; --stone-light:#C5BEB1;
+  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
+  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
+  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem;
+  --s6:2rem; --s7:3rem; --s8:4rem; --s9:6rem; --s10:8rem;
+  --measure:62ch; --max:70rem;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s6)}
+.measure{max-width:var(--measure)}
+section{padding:var(--s9) 0;border-top:1px solid var(--paper-edge)}
+@media(max-width:760px){section{padding:var(--s8) 0}.wrap{padding:0 var(--s5)}}
+
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;color:var(--ink)}
+h1{font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 var(--s5)}
+h2{font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.12;letter-spacing:-.01em;margin:0 0 var(--s5)}
+h3{font-size:1.3rem;line-height:1.25;margin:0 0 var(--s2)}
+p{margin:0 0 var(--s4);color:var(--ink-soft)}
+.lede{font-size:1.15rem;line-height:1.55}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold-soft);
+  transition:color 240ms var(--ease),border-color 240ms var(--ease)}
+a:hover{color:var(--clay);border-color:var(--clay)}
+a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:2px}
+.eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 var(--s5)}
+.eyebrow--sage{color:var(--sage-deep)}
+
+header{padding:var(--s5) 0;border-bottom:1px solid var(--paper-edge);position:sticky;top:0;
+  background:rgba(244,240,232,.93);backdrop-filter:blur(8px);z-index:10}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s5);flex-wrap:wrap}
+.name{font-family:var(--font-display);font-size:1.3rem;border:0}
+.place{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-left:var(--s4)}
+nav ul{display:flex;gap:var(--s5);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{font-size:.86rem;border:0;color:var(--ink-soft)}
+nav a:hover{color:var(--clay)}
+
+.hero{border-top:none;padding-top:var(--s8)}
+.rule-line{display:flex;align-items:center;gap:var(--s4);margin-bottom:var(--s7);
+  font-family:var(--font-display);font-size:1.05rem;color:var(--sage-deep)}
+.rule-line::before,.rule-line::after{content:"";height:1px;background:var(--gold-soft);flex:1;max-width:7rem}
+.hero h1{max-width:18ch}
+.hero h1 .turn{color:var(--clay-deep)}
+.actions{display:flex;gap:var(--s6);flex-wrap:wrap;align-items:center;margin-top:var(--s6)}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);border:0;border-radius:2px;
+  padding:var(--s3) var(--s6);font-size:.9rem;font-weight:500;transition:background 240ms var(--ease)}
+.btn:hover{background:#322F2B;color:var(--paper)}
+
+.andco{background:var(--sage-wash)}
+.practices{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s6);margin-top:var(--s7)}
+.practice{border-top:2px solid var(--sage);padding-top:var(--s4)}
+.practice h3{font-size:1.4rem}
+.practice .mode{font-family:var(--font-display);font-size:1rem;color:var(--clay-deep);margin:0 0 var(--s3)}
+.practice p{font-size:.92rem;margin-bottom:var(--s3)}
+.practice .go{font-size:.79rem;font-weight:500;border:0}
+.practice .go::after{content:" →";color:var(--gold)}
+@media(max-width:900px){.practices{grid-template-columns:1fr 1fr;gap:var(--s6)}}
+@media(max-width:560px){.practices{grid-template-columns:1fr}}
+
+.pullquote{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.3;
+  color:var(--ink);max-width:28ch;margin:var(--s7) 0 0;padding-left:var(--s6);
+  border-left:2px solid var(--clay)}
+
+.domains{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6) var(--s7);margin-top:var(--s6)}
+.domains > div{border-top:1px solid var(--paper-edge);padding-top:var(--s4)}
+.domains p{font-size:.93rem;margin-bottom:var(--s3)}
+.obs{font-family:var(--font-display);font-size:1.02rem;line-height:1.4;color:var(--clay-deep);margin-bottom:0}
+@media(max-width:860px){.domains{grid-template-columns:1fr}}
+
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);margin-top:var(--s7);
+  padding-top:var(--s5);border-top:1px solid var(--paper-edge)}
+.methods p{font-size:.92rem;margin-bottom:0;line-height:1.75}
+@media(max-width:760px){.methods{grid-template-columns:1fr;gap:var(--s5)}}
+
+.case{display:grid;grid-template-columns:4.5rem 1fr 9rem;gap:var(--s5);padding:var(--s5) 0;
+  border-bottom:1px solid var(--paper-edge);align-items:start}
+.case:first-of-type{border-top:1px solid var(--paper-edge)}
+.case-no{font-family:var(--font-display);font-size:1.3rem;color:var(--stone)}
+.case p{margin-bottom:var(--s2);max-width:54ch;font-size:.94rem}
+.case-link{font-size:.82rem;font-weight:500;border:0;color:var(--clay-deep)}
+.case-link::after{content:" →";color:var(--gold)}
+.case-note{font-size:.79rem;color:var(--ink-ghost);font-style:italic}
+.meta{font-size:.74rem;color:var(--ink-faint);line-height:1.8}
+@media(max-width:860px){.case{grid-template-columns:1fr;gap:var(--s2)}.meta{display:flex;gap:var(--s5);flex-wrap:wrap}}
+
+.plates{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);margin-top:var(--s7)}
+.plate figure{margin:0}
+.plate img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:1px solid var(--paper-edge)}
+.plate .frame{aspect-ratio:4/5;background:var(--paper-sunk);border:1px solid var(--paper-edge);
+  display:flex;align-items:center;justify-content:center;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-ghost);text-align:center;padding:var(--s4)}
+.plate img{width:100%;height:100%;object-fit:cover;display:block}
+.plate figcaption{font-size:.9rem;color:var(--ink-soft);margin-top:var(--s3);line-height:1.5}
+@media(max-width:860px){.plates{grid-template-columns:1fr;gap:var(--s6)}}
+
+.quotes{columns:2;column-gap:var(--s8);margin-top:var(--s6)}
+@media(max-width:860px){.quotes{columns:1}}
+blockquote{break-inside:avoid;margin:0 0 var(--s6);padding-left:var(--s5);border-left:2px solid var(--sage)}
+blockquote p{font-family:var(--font-display);font-size:1.1rem;line-height:1.45;color:var(--ink);margin-bottom:var(--s2)}
+blockquote cite{font-style:normal;font-size:.71rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+
+.note{background:var(--surface-card);border:1px solid var(--paper-edge);padding:var(--s6);margin-top:var(--s7)}
+.note p:last-child{margin-bottom:0}
+
+footer{border-top:1px solid var(--paper-edge);padding:var(--s7) 0}
+.foot{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;font-size:.79rem;color:var(--ink-faint)}
+.foot a{border:0;color:var(--ink-faint)}
+.foot a:hover{color:var(--clay)}
+.foot-links{display:flex;gap:var(--s5);flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div>
+      <a href="#top" class="name">Christine Galligan</a>
+      <span class="place">Boulder, CO · 2026</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#photography">Photography</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="https://cgalligan.substack.com">Writing ↗</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="rule-line">Curious by design</div>
+    <h1>Healthcare innovation is accelerating.<br><span class="turn">Adoption is not.</span></h1>
+    <p class="lede measure">
+      I translate foresight, behavioral science, and systems thinking into innovations people adopt,
+      clinicians support, and organizations can scale.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#research">See the work</a>
+      <a href="#andco">What I do</a>
+    </div>
+  </div>
+</section>
+
+<section class="andco" id="andco">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--sage">Christine &amp; Co.</p>
+    <h2>Four practices. One habit.</h2>
+    <p class="lede measure">
+      The Co isn't staff — it's the other things I do. They look unrelated until you notice they're
+      the same move: paying attention to what people can actually do when capacity runs out.
+    </p>
+
+    <div class="practices">
+      <div class="practice">
+        <h3>Research</h3>
+        <p class="mode">Observation, structured.</p>
+        <p>IRB-approved longitudinal studies, ethnography, and human-factors work built to hold up
+        under review.</p>
+        <a class="go" href="#research">Six case studies</a>
+      </div>
+      <div class="practice">
+        <h3>Photography</h3>
+        <p class="mode">Observation, visual.</p>
+        <p>The camera I carry into the field, and commissioned work. A photograph settles arguments
+        three meetings couldn't.</p>
+        <a class="go" href="#photography">From the field</a>
+      </div>
+      <div class="practice">
+        <h3>Product</h3>
+        <p class="mode">Observation, made useful.</p>
+        <p>SOMA — patent-pending biosensing. Support that arrives as capacity narrows, without adding
+        a task.</p>
+        <a class="go" href="#product">What it is</a>
+      </div>
+      <div class="practice">
+        <h3>Writing</h3>
+        <p class="mode">Observation, in public.</p>
+        <p>Field Notes — essays on trust, regulation, and adoption, for people building what comes
+        next.</p>
+        <a class="go" href="https://cgalligan.substack.com">Read ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="thesis">
+  <div class="wrap">
+    <p class="eyebrow">The through-line</p>
+    <h2>Designing the layer between body and system.</h2>
+    <div class="measure">
+      <p class="lede">
+        Fourteen years of longitudinal research, health-system strategy, applied AI, and near-future
+        product design.
+      </p>
+      <p>
+        Safety, trust, and motivation are nervous system events — not metrics to optimize, but
+        experiences to design. Most innovation fails because it doesn't account for how people
+        regulate stress or hold onto motivation when they're frightened, unwell, or uncertain. Care
+        that feels like care isn't a luxury. It's the foundation of adoption.
+      </p>
+    </div>
+    <p class="pullquote">The gap between what we can build and what people want to live with isn't
+    technical. It's neurobiological.</p>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <p class="eyebrow">01 · Research</p>
+    <h2>Four questions I keep returning to.</h2>
+
+    <div class="domains">
+      <div>
+        <h3>Emotionally Intelligent Systems</h3>
+        <p>Interfaces that respond to human states and strengthen judgment rather than replace it.
+        How do you personalize without surveillance?</p>
+        <p class="obs">A nurse who gets burned once by a confident system stops trusting the accurate
+        ones too.</p>
+      </div>
+      <div>
+        <h3>Healthcare and Aging Futures</h3>
+        <p>Most people intend to age at home, and payment models are pushing care the same way.</p>
+        <p class="obs">The grab bar goes in after the fall. The house is the last thing anyone
+        designs.</p>
+      </div>
+      <div>
+        <h3>Neurodiversity and Emotional Regulation</h3>
+        <p>Sensory and cognitive difference as a design input from day one, not an accommodation
+        bolted on later.</p>
+        <p class="obs">A system that assumes a steady hand and a quiet room excludes most people on
+        most days.</p>
+      </div>
+      <div>
+        <h3>Adaptive Technologies for Daily Living</h3>
+        <p>Medication, mobility, cognitive scaffolding, and the invisible work that holds a day
+        together.</p>
+        <p class="obs">The pill organizer on the counter is the real interface.</p>
+      </div>
+    </div>
+
+    <div class="methods">
+      <div>
+        <p class="eyebrow" style="margin-bottom:var(--s3)">Methods</p>
+        <p>Ethnographic research · Generative research · Concept testing · Systems mapping ·
+        Scenario planning · Trends mapping · Competitive analysis · Future-state visualization</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:var(--s3)">Competencies</p>
+        <p>Systems strategy · Human-centered design · Qualitative and quantitative research ·
+        Applied AI · Healthcare domain · Leadership</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:var(--s9)">Six case studies.</h2>
+
+    <article class="case">
+      <div class="case-no">01</div>
+      <div>
+        <h3>The physiological cost of caregiving.</h3>
+        <p>A 3.5-year IRB-approved study — <em>Effects of Thoughts and Sensory Experiences on Heart
+        Rate Variability of Older Adults</em> — tracking HRV in 32 family caregivers of Alzheimer's
+        patients. Seven community centers adopted the resulting respite program.</p>
+        <a class="case-link" href="hrv-research-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>2011 — 2015</div><div>Clemson · Prisma Health</div><div>PI · n=32</div></div>
+    </article>
+
+    <article class="case">
+      <div class="case-no">02</div>
+      <div>
+        <h3>Behavior change at seventy-million-member scale.</h3>
+        <p>Twelve digital health pilots across CVS's pharmacy and care-management portfolio. Fifteen
+        percent year-over-year lift in adherence for key chronic conditions.</p>
+        <a class="case-link" href="cvs-health-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>2019 — 2021</div><div>CVS Health · Aetna</div><div>Lead Strategist</div></div>
+    </article>
+
+    <article class="case">
+      <div class="case-no">03</div>
+      <div>
+        <h3>A stress intervention that works before you know you need it.</h3>
+        <p>A screenless, body-worn protocol that reads autonomic dysregulation through HRV and
+        responds with a gentle haptic cue. Two provisional patents filed.</p>
+        <a class="case-link" href="somatag-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>2023 — Present</div><div>SOMA Systems</div><div>Founder</div></div>
+    </article>
+
+    <article class="case">
+      <div class="case-no">04</div>
+      <div>
+        <h3>Rural mental health, redesigned from the inside out.</h3>
+        <p>A Patient Experience Vision Framework across three rural North Carolina hospitals, built
+        through 350+ community interviews. Peer recovery coaches integrated into emergency
+        departments. $180K grant secured.</p>
+        <a class="case-link" href="novant-health-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>2017 — 2018</div><div>Novant Health</div><div>Administrative Fellow</div></div>
+    </article>
+
+    <article class="case">
+      <div class="case-no">05</div>
+      <div>
+        <h3>Making healthcare policy legible — so participation is possible.</h3>
+        <p>An NSF-backed platform translating dense CMS, FDA, and ONC regulatory documents into
+        persona-specific explanations. Comprehension time: 2–3 hours to under 20 minutes.</p>
+        <a class="case-link" href="cg-advocacy-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>2023 — 2024</div><div>NSF I-Corps</div><div>Founder · Product Lead</div></div>
+    </article>
+
+    <article class="case">
+      <div class="case-no">06</div>
+      <div>
+        <h3>The hospital decision environment — unified, adaptive, humane.</h3>
+        <p>A 0→1 concept unifying patient flow, workforce operations, and executive intelligence into
+        one adaptive interface.</p>
+        <a class="case-link" href="healthcare-control-center-case-study.html">Read case study</a>
+      </div>
+      <div class="meta"><div>6-month scope</div><div>0→1 concept</div><div>Lead Strategist</div></div>
+    </article>
+  </div>
+</section>
+
+<section id="photography">
+  <div class="wrap">
+    <p class="eyebrow">02 · Photography</p>
+    <h2>Christine Mary Photography.</h2>
+    <div class="measure">
+      <p class="lede">
+        Commissioned brand and product work — and the camera I carry into the field.
+      </p>
+      <p>
+        Photography is one of the research methods, not a sideline: field observation,
+        ethnography, photography, systems mapping. People describe the version of their life they
+        can narrate. The room shows the version they actually live in.
+      </p>
+    </div>
+
+    <div class="plates">
+      <div class="plate"><figure>
+        <img src="img/dog.jpg" alt="A white dog standing over a pair of patterned Chaco sandals with a Sip Clip can holder on gravel" loading="lazy" width="1205" height="1600">
+        <figcaption>Chaco × Sip Clip. Shot on location — the dog was not in the brief.</figcaption>
+      </figure></div>
+      <div class="plate"><figure>
+        <img src="img/pair.jpg" alt="Two Sip Clip can holders clipped to patterned Chaco sandals against green foliage" loading="lazy" width="1205" height="1600">
+        <figcaption>Product detail, natural light, no studio.</figcaption>
+      </figure></div>
+      <div class="plate"><figure>
+        <img src="img/rock.jpg" alt="Chaco sandals with a clipped Sip Clip can holder resting on a rock, canyon behind" loading="lazy" width="1280" height="1600">
+        <figcaption>Where the product is actually used, rather than where it photographs best.</figcaption>
+      </figure></div>
+    </div>
+
+    <p style="margin-top:var(--s7)" class="measure">
+      Commissions and collaborations — <a href="#contact">get in touch</a>.
+    </p>
+  </div>
+</section>
+
+<section id="product">
+  <div class="wrap">
+    <p class="eyebrow">03 · Product</p>
+    <h2>SOMA.</h2>
+    <div class="measure">
+      <p class="lede">
+        Support should arrive at the moment capacity narrows, without creating another task.
+      </p>
+      <p>
+        A screenless, body-worn protocol that reads autonomic state and responds with a cue rather
+        than an alert. Two provisional patents filed. Active R&amp;D out of Boulder.
+        <a href="https://somatag.com">somatag.com ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="said">
+  <div class="wrap">
+    <p class="eyebrow">What collaborators say</p>
+    <div class="quotes">
+      <blockquote>
+        <p>“Her ability to articulate the business and clinical implications of cutting-edge
+        technologies makes her an invaluable collaborator in aligning AI capabilities with healthcare
+        objectives.”</p>
+        <cite>CEO, AI healthtech startup</cite>
+      </blockquote>
+      <blockquote>
+        <p>“She is not one to shy away from complexity; rather, she approaches challenges with
+        tenacity and a genuine excitement to uncover new possibilities.”</p>
+        <cite>Department Director</cite>
+      </blockquote>
+      <blockquote>
+        <p>“Christine's contributions to our projects, particularly her leadership in <em>Effects of
+        Thoughts and Sensory Experiences on Heart Rate Variability of Older Adults</em>, were nothing
+        short of transformative.”</p>
+        <cite>Academic Professor</cite>
+      </blockquote>
+      <blockquote>
+        <p>“One of Christine's standout qualities is her ability to marry technical acumen with a deep
+        empathy for end-users.”</p>
+        <cite>Senior Manager</cite>
+      </blockquote>
+      <blockquote>
+        <p>“A thoughtful listener and a persuasive communicator, capable of building consensus and
+        inspiring others to think beyond conventional boundaries.”</p>
+        <cite>Fortune 500 VP</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">About &amp; contact</p>
+    <h2>The short version.</h2>
+    <div class="measure">
+      <p>
+        I design systems that remember the humanity healthcare keeps forgetting. Across Clemson's
+        Center for Success in Aging, CVS Health, Philips, Novant Health, and now SOMA Systems, two
+        theses have held: environment regulates physiology as powerfully as medication, and
+        participation is impossible when the system is illegible. Most of what we've built ignores both.
+      </p>
+      <p>
+        Research and field papers go out under <strong>Kutuhala</strong> — Sanskrit, roughly, for the
+        desire to understand. I also run <strong>Hacky Snacky</strong>, a monthly edge-computing meetup
+        in Boulder, and I'm forming <strong>Umwelten Institute</strong>.
+      </p>
+      <p>
+        Open to roles, research partnerships, clinical fellowships, and academic collaborations.
+        Photography commissions, speaking, and short notes all welcome.
+      </p>
+      <p><a href="mailto:galligancm@gmail.com">galligancm@gmail.com →</a></p>
+    </div>
+
+    <p class="pullquote" style="margin-top:var(--s7)">Turning complex and confusing into simple,
+    understandable, and desirable.</p>
+
+    <div class="note measure">
+      <p class="eyebrow eyebrow--sage" style="margin-bottom:var(--s3)">Stay close to the signals</p>
+      <p>One email a month on designing health and AI systems people actually adopt. Calm, precise,
+      zero hype. <a href="https://cgalligan.substack.com">Subscribe ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Christine Galligan · Boulder, Colorado</div>
+    <div class="foot-links">
+      <a href="https://somatag.com">Somatag</a>
+      <a href="https://cgalligan.substack.com">Field Notes ↗</a>
+      <a href="mailto:galligancm@gmail.com">galligancm@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

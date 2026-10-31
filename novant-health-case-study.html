@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Novant Health — Case Study · Christine Galligan</title>
+<meta name="description" content="Rural mental health service design across three North Carolina hospitals. $180K grant secured, peer recovery coach integration, co-designed with the communities it serves." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+  :root{
+  /* --- Kutuhala locked system ------------------------------- */
+  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
+  --ink-base:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
+  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
+  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
+  --gold:#A8854E; --gold-soft:#C2A878; --gold-wash:#F1E8D8;
+  --stone:#9B948A; --stone-light:#C5BEB1;
+  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
+  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
+  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  /* --- legacy aliases: existing rules resolve through these -- */
+  --bg:var(--paper);
+  --bg-2:var(--paper-raised);
+  --ink:var(--ink-base);
+  --ink-2:var(--ink-soft);
+  --muted:var(--ink-faint);
+  --rule:var(--paper-edge);
+  --accent:var(--clay);
+  --accent-soft:var(--clay-wash);
+  --amber:var(--gold-soft);
+  --amber-soft:var(--gold-wash);
+  --glow:var(--gold-soft);
+  --max:72rem; --text:40rem; --leading:1.6;
+}
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  .text { max-width: var(--text); }
+  section { padding: 7rem 0; border-top: 1px solid var(--rule); }
+  section:first-of-type { border-top: none; }
+  @media (max-width: 720px) { section { padding: 4.5rem 0; } .wrap { padding: 0 1.5rem; } }
+
+  .display, h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; margin: 0 0 1.25rem; letter-spacing: -0.025em; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.12; margin: 0 0 1.5rem; letter-spacing: -0.02em; }
+  h3 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.5rem; font-weight: 500; }
+  p { margin: 0 0 1.2rem; color: var(--ink-2); }
+  p.lede { font-size: 1.25rem; line-height: 1.5; color: var(--ink-2); }
+  p.dek  { font-size: 1.0625rem; color: var(--muted); }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    display: inline-block;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 0.75rem;
+    transform: translateY(-2px);
+  }
+
+  /* Nav */
+  .topnav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250, 248, 244, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; padding-bottom: 1rem;
+  }
+  .mark { font-family: var(--font-display); font-style: italic; font-size: 1.0625rem; letter-spacing: -0.01em; }
+  .mark em { font-style: normal; }
+  .topnav nav { display: flex; gap: 1.75rem; font-size: 0.8125rem; color: var(--muted); }
+  .topnav nav a { text-decoration: none; }
+  .topnav nav a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .topnav nav { display: none; } }
+
+  /* Hero — with warm amber ambient (dawn hospital mood) */
+  .hero {
+    padding-top: 8rem; padding-bottom: 6rem;
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 55% 40% at 80% 25%, rgba(217, 160, 110, 0.20), transparent 65%),
+      radial-gradient(ellipse 45% 35% at 15% 75%, rgba(154, 75, 46, 0.06), transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 960px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-viz { order: 2; max-width: 400px; justify-self: center; }
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  /* Three-hospital architectural motif */
+  .hero-viz {
+    width: 100%;
+    max-width: 480px;
+    justify-self: end;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-viz svg { width: 100%; height: 100%; display: block; }
+
+  @keyframes soft-pulse {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1; }
+  }
+  @keyframes guide-fade {
+    0%, 100% { opacity: 0.25; }
+    50%      { opacity: 0.55; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hosp-node, .guide-light { animation: none !important; }
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .meta dt {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem;
+  }
+  .meta dd { margin: 0; font-size: 0.95rem; color: var(--ink); font-weight: 500; }
+  @media (max-width: 720px) { .meta { grid-template-columns: repeat(2, 1fr); } }
+
+  /* HRV signature divider */
+  .hrv-sig {
+    padding: 3.5rem 0;
+    text-align: center;
+    color: var(--accent);
+    border-top: none;
+  }
+  .hrv-sig svg {
+    width: min(70%, 540px);
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.55;
+  }
+  .hrv-sig svg path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 2.8s ease-out 0.3s forwards;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hrv-sig svg path { stroke-dashoffset: 0; animation: none; }
+  }
+
+  /* Thesis */
+  .thesis { background: var(--ink); color: var(--bg); padding: 5rem 0; border-top: none; }
+  .thesis .wrap { max-width: 56rem; }
+  .thesis h2 { color: var(--bg); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.25; margin: 0; }
+  .thesis .eyebrow { color: rgba(250,248,244,0.6); }
+  .thesis .eyebrow::before { background: rgba(250,248,244,0.6); }
+  .thesis p.sub {
+    margin: 1.5rem 0 0;
+    color: rgba(250,248,244,0.7);
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Barriers grid */
+  .barriers {
+    margin-top: 0;
+  }
+  .barrier {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .barrier:last-child { border-bottom: 1px solid var(--rule); }
+  .barrier .num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .barrier h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; line-height: 1.25; margin: 0 0 0.5rem; }
+  .barrier p { margin: 0; font-size: 1rem; color: var(--ink-2); max-width: 42rem; }
+  @media (max-width: 720px) {
+    .barrier { grid-template-columns: 1fr; gap: 0.5rem; }
+    .barrier .num { font-size: 1.6rem; }
+  }
+
+  /* Built — interventions grid */
+  .built-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 820px) { .built-grid { grid-template-columns: 1fr; } }
+  .built-item {
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+  }
+  .built-item .tag {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .built-item h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin: 0 0 0.75rem; line-height: 1.25; }
+  .built-item p { font-size: 0.95rem; margin: 0; color: var(--ink-2); }
+
+  /* Outcomes */
+  .bignums {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 820px) { .bignums { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.5rem; } }
+  .bignum .v {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .bignum .l { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+
+  .outcomes-narrative {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 4rem;
+  }
+  .onarr {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .onarr:last-child { border-bottom: 1px solid var(--rule); }
+  .onarr .num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .onarr h3 { font-family: var(--font-display); font-size: 1.45rem; font-weight: 400; line-height: 1.2; margin: 0 0 0.5rem; }
+  .onarr p { margin: 0; font-size: 1.0625rem; color: var(--ink-2); max-width: 42rem; }
+  @media (max-width: 720px) {
+    .onarr { grid-template-columns: 1fr; gap: 0.75rem; }
+    .onarr .num { font-size: 2rem; }
+  }
+
+  /* Featured pull quote — warm amber background */
+  .featurequote {
+    background: linear-gradient(135deg, var(--amber-soft) 0%, #F1E2D0 100%);
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .featurequote::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 40% at 85% 20%, rgba(217,160,110,0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .featurequote .wrap { max-width: 60rem; position: relative; }
+  .featurequote .eyebrow { color: var(--accent); }
+  .featurequote .eyebrow::before { background: var(--accent); }
+  .featurequote blockquote {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0 0 2rem;
+    letter-spacing: -0.015em;
+    font-style: normal;
+  }
+  .featurequote p { font-size: 1.05rem; line-height: 1.6; color: var(--ink-2); }
+  .featurequote p strong { color: var(--ink); font-weight: 500; }
+
+  /* Closing CTA */
+  .closing { padding: 7rem 0; }
+  .closing .wrap { max-width: 52rem; }
+  .closing h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 1.25rem; }
+  .closing p { font-size: 1.1rem; color: var(--ink-2); margin-bottom: 2.5rem; max-width: 44rem; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 200ms, color 200ms;
+  }
+  .cta:hover { background: var(--ink); color: var(--bg); }
+  .cta .arrow { transition: transform 200ms; }
+  .cta:hover .arrow { transform: translateX(3px); }
+
+  /* Case nav */
+  .casenav { padding: 4rem 0; border-top: 1px solid var(--rule); }
+  .casenav .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 720px) { .casenav .wrap { grid-template-columns: 1fr; } }
+  .casenav a {
+    text-decoration: none;
+    display: block;
+    padding: 2rem;
+    border: 1px solid var(--rule);
+    transition: border-color 200ms, background 200ms;
+  }
+  .casenav a:hover { border-color: var(--ink); background: rgba(255,255,255,0.5); }
+  .casenav .dir {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .casenav .ctitle {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .casenav a.next { text-align: right; }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section, .hero { animation: rise 700ms ease-out both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+/* --- locked-system corrections ---------------------------------- */
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:400}
+body{font-family:var(--font-sans)}
+a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:title" content="Case 04 · Rural mental health, redesigned — Christine Galligan" />
+<meta property="og:description" content="Patient Experience Vision Framework across three rural NC hospitals. $180K grant secured. Peer recovery coach integration in emergency departments." />
+<meta property="og:image" content="/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Case 04 · Rural mental health, redesigned — Christine Galligan" />
+<meta name="twitter:description" content="Patient Experience Vision Framework across three rural NC hospitals. $180K grant secured. Peer recovery coach integration in emergency departments." />
+<meta name="twitter:image" content="/og-image.png" />
+
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="mark"><a href="index.html" style="border:0;color:inherit"><em>Christine Galligan</em></a> &nbsp;·&nbsp; <span>Case Study 04</span></div>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#barriers">Barriers</a>
+      <a href="#built">Built</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Case Study · Service Design · Rural Health Equity</span>
+      <h1>Rural mental health, redesigned <em>from the inside out</em>.</h1>
+      <p class="lede">
+        A Patient Experience Vision Framework for three rural North Carolina hospitals,
+        built through 350+ community interviews and co-design sessions with the clinicians,
+        coaches, and patients who would actually use it. Peer recovery coach integration
+        in emergency departments. $180K grant secured. A model designed to survive inside
+        a system that couldn't afford to fail again.
+      </p>
+    </div>
+
+    <!-- Three-hospital architectural motif -->
+    <div class="hero-viz" aria-hidden="true">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hospglow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"  stop-color="#C2A878" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#C2A878" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="hospnode" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"  stop-color="#C2A878" stop-opacity="1" />
+            <stop offset="100%" stop-color="#A66F55" stop-opacity="0.6" />
+          </radialGradient>
+          <filter id="hosp-glow">
+            <feGaussianBlur stdDeviation="5" result="b"/>
+            <feMerge>
+              <feMergeNode in="b"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- connecting path between 3 hospitals -->
+        <path d="M 110 180 Q 240 80 370 180 Q 300 330 170 330 Q 130 260 110 180"
+              fill="none" stroke="#A66F55" stroke-width="0.8" stroke-opacity="0.35"
+              stroke-dasharray="4 6" />
+
+        <!-- floor guide light dots along the path -->
+        <g opacity="0.55">
+          <circle class="guide-light" cx="140" cy="130" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 0s;" />
+          <circle class="guide-light" cx="200" cy="100" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 0.5s;" />
+          <circle class="guide-light" cx="275" cy="100" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 1s;" />
+          <circle class="guide-light" cx="340" cy="135" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 1.5s;" />
+          <circle class="guide-light" cx="355" cy="235" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 2s;" />
+          <circle class="guide-light" cx="305" cy="310" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 2.5s;" />
+          <circle class="guide-light" cx="215" cy="335" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 3s;" />
+          <circle class="guide-light" cx="145" cy="290" r="2" fill="#C2A878" style="animation: guide-fade 4s ease-in-out infinite 3.5s;" />
+        </g>
+
+        <!-- three hospital nodes — amber glow -->
+        <g filter="url(#hosp-glow)">
+          <circle cx="110" cy="180" r="52" fill="url(#hospglow)" />
+          <circle cx="370" cy="180" r="52" fill="url(#hospglow)" />
+          <circle cx="240" cy="340" r="52" fill="url(#hospglow)" />
+
+          <circle class="hosp-node" cx="110" cy="180" r="11" fill="url(#hospnode)" style="transform-origin: 110px 180px; animation: soft-pulse 5s ease-in-out infinite 0s;" />
+          <circle class="hosp-node" cx="370" cy="180" r="11" fill="url(#hospnode)" style="transform-origin: 370px 180px; animation: soft-pulse 5s ease-in-out infinite 1.7s;" />
+          <circle class="hosp-node" cx="240" cy="340" r="11" fill="url(#hospnode)" style="transform-origin: 240px 340px; animation: soft-pulse 5s ease-in-out infinite 3.4s;" />
+        </g>
+
+        <!-- hospital labels -->
+        <g font-family="Hanken Grotesk, Arial, sans-serif" font-size="10" letter-spacing="1.5" fill="#847D70" text-anchor="middle">
+          <text x="110" y="155" style="text-transform: uppercase;">HOSPITAL 01</text>
+          <text x="370" y="155" style="text-transform: uppercase;">HOSPITAL 02</text>
+          <text x="240" y="372" style="text-transform: uppercase;">HOSPITAL 03</text>
+        </g>
+
+        <!-- central label -->
+        <text x="240" y="215" font-family="Antic Didone, Georgia, serif" font-size="13" fill="#252321" text-anchor="middle" font-style="italic">one framework</text>
+        <text x="240" y="235" font-family="Antic Didone, Georgia, serif" font-size="13" fill="#252321" text-anchor="middle" font-style="italic">three communities</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Lead Service Designer</dd></div>
+      <div><dt>Client</dt><dd>Novant Health</dd></div>
+      <div><dt>Period</dt><dd>2023</dd></div>
+      <div><dt>Scope</dt><dd>3 rural NC hospitals · ED integration</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- HRV SIGNATURE DIVIDER -->
+<div class="hrv-sig" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 20 L 150 20 L 168 20 L 176 16 L 184 22 L 192 20 L 220 20 L 228 14 L 234 4 L 240 36 L 246 20 L 260 20 L 280 15 L 295 25 L 305 20 L 360 20 L 380 20 L 388 16 L 396 22 L 404 20 L 430 20 L 438 14 L 444 4 L 450 36 L 456 20 L 470 20 L 488 15 L 502 25 L 512 20 L 600 20"
+      fill="none" stroke="currentColor" stroke-width="1.1"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</div>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="wrap">
+    <span class="eyebrow">The Opening Question</span>
+    <h2>When rural hospitals lack the staffing, infrastructure, and funding to address mental health crisis care — what does it take to build something that actually holds?</h2>
+    <p class="sub">Three rural EDs. One framework. 350+ interviews. A $180K grant for the piece nobody had yet funded.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap text">
+    <span class="eyebrow">The Problem</span>
+    <h2>Rural emergency departments are the de facto mental health system. They weren't designed to be.</h2>
+    <p>
+      Across Novant Health's rural North Carolina hospital network, the same pattern was
+      repeating: patients in mental health crisis arriving in emergency departments where
+      staff were not trained for that care, where follow-up pathways didn't exist, and where
+      the same patients returned week after week with nowhere else to go.
+    </p>
+    <p>
+      The staffing shortages were real. So was the funding gap. So was the stigma — among
+      patients, among staff, and in the communities these hospitals served. The fragmentation
+      wasn't a single failure; it was a system that had grown up around everything except
+      the person in crisis.
+    </p>
+    <p>
+      The ask was to build a Patient Experience Vision Framework — a way of seeing the
+      problem whole, and a set of designed interventions that could be implemented with
+      the resources actually available, not the resources a better-funded system might have.
+    </p>
+  </div>
+</section>
+
+<!-- BARRIERS -->
+<section id="barriers">
+  <div class="wrap">
+    <span class="eyebrow">What the Research Surfaced</span>
+    <h2>Five barriers. Each one real. None of them solvable in isolation.</h2>
+    <p class="dek text">
+      Synthesized from 350+ interviews across clinicians, administrators, peer recovery
+      coaches, social workers, patients, and community members in all three hospital catchments.
+    </p>
+
+    <div class="barriers">
+      <div class="barrier">
+        <div class="num">01</div>
+        <div>
+          <h3>Staffing shortages in rural areas with no pipeline to fill them.</h3>
+          <p>Rural hospitals couldn't hire mental health specialists they couldn't attract or afford. Emergency physicians were absorbing psychiatric care with no training and no support.</p>
+        </div>
+      </div>
+      <div class="barrier">
+        <div class="num">02</div>
+        <div>
+          <h3>No funding mechanism for peer support roles in emergency settings.</h3>
+          <p>Peer recovery coaches — people with lived experience of mental health crisis — exist and are effective. But they're not billable in emergency departments under standard reimbursement structures.</p>
+        </div>
+      </div>
+      <div class="barrier">
+        <div class="num">03</div>
+        <div>
+          <h3>Fragmented patient experience across care settings with no warm handoff.</h3>
+          <p>Patients in crisis were discharged with a list of phone numbers and no follow-up. The moment of discharge — the most vulnerable transition point — had no designed support.</p>
+        </div>
+      </div>
+      <div class="barrier">
+        <div class="num">04</div>
+        <div>
+          <h3>Stigma operating at every level — patient, staff, and community.</h3>
+          <p>Patients were reluctant to self-identify. Staff were uncomfortable. Communities didn't talk about it. The silence compounded the crisis.</p>
+        </div>
+      </div>
+      <div class="barrier">
+        <div class="num">05</div>
+        <div>
+          <h3>Limited tech integration for post-discharge follow-up.</h3>
+          <p>Even when referrals were made, there was no system to know whether patients reached those resources — or to intervene when they didn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT -->
+<section id="built">
+  <div class="wrap">
+    <span class="eyebrow">What We Built</span>
+    <h2>Co-designed with the people who would use it — not for them.</h2>
+    <p class="dek text">
+      The framework wasn't designed in an office and handed to the hospitals. It was built
+      through facilitated co-design sessions with clinicians, administrators, peer recovery
+      coaches, social workers, and patients — each with a different view of where the system
+      broke down.
+    </p>
+
+    <div class="built-grid">
+      <div class="built-item">
+        <div class="tag">01 · Framework</div>
+        <h3>Patient Experience Vision Framework</h3>
+        <p>A cross-hospital framework mapping the full arc of mental health crisis care — from first contact through discharge and follow-up. Identified the highest-leverage intervention points and designed protocols that could be implemented within existing resource constraints.</p>
+      </div>
+      <div class="built-item">
+        <div class="tag">02 · Peer Integration</div>
+        <h3>Peer Recovery Coach Model</h3>
+        <p>Designed the role, workflow, and integration model for embedding peer recovery coaches directly in emergency departments. People with lived experience of mental health crisis providing immediate, credible support at the moment of highest vulnerability.</p>
+      </div>
+      <div class="built-item">
+        <div class="tag">03 · Facilitation</div>
+        <h3>Multi-Site Co-Design Sessions</h3>
+        <p>Led participatory design across all three hospital sites with ED physicians, nurses, social workers, peer coaches, administrators, and patient advocates. Synthesized competing priorities into a shared framework everyone could act from.</p>
+      </div>
+      <div class="built-item">
+        <div class="tag">04 · Funding</div>
+        <h3>Grant Strategy &amp; Writing</h3>
+        <p>Developed the funding strategy and grant narrative for behavioral health recovery program expansion. Secured $180K in grant funding to support peer recovery coach roles and program infrastructure — creating the reimbursement pathway that made the model sustainable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="wrap">
+    <span class="eyebrow">Outcomes</span>
+    <h2>What changed.</h2>
+    <p class="dek text">
+      Measurable improvements in operations and experience. More importantly: a model that
+      held together after the engagement ended.
+    </p>
+
+    <div class="bignums">
+      <div class="bignum">
+        <div class="v">$180K</div>
+        <div class="l">grant funding secured for peer recovery integration</div>
+      </div>
+      <div class="bignum">
+        <div class="v">3</div>
+        <div class="l">rural hospitals covered by the framework</div>
+      </div>
+      <div class="bignum">
+        <div class="v">350+</div>
+        <div class="l">qualitative interviews across community settings</div>
+      </div>
+      <div class="bignum">
+        <div class="v">↓ / ↑</div>
+        <div class="l">ED readmissions decreased · Press Ganey scores improved</div>
+      </div>
+    </div>
+
+    <div class="outcomes-narrative">
+      <div class="onarr">
+        <div class="num">01</div>
+        <div>
+          <h3>Seamless handoff to peer support at discharge.</h3>
+          <p>Patients in crisis were no longer discharged to a phone number. The peer recovery coach model created a human connection at the transition point — the moment the system had previously left people most exposed.</p>
+        </div>
+      </div>
+      <div class="onarr">
+        <div class="num">02</div>
+        <div>
+          <h3>Staff feel supported — not just patients.</h3>
+          <p>Emergency department staff reported feeling less alone in managing mental health crises. The framework gave them a protocol and a colleague, not just a referral list.</p>
+        </div>
+      </div>
+      <div class="onarr">
+        <div class="num">03</div>
+        <div>
+          <h3>A replicable model for rural behavioral health integration.</h3>
+          <p>The funding strategy and co-design framework can be adapted for other rural hospital systems facing the same constraints. The grant narrative demonstrated that peer recovery integration in emergency settings is both clinically and financially viable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED REFLECTION / PULL QUOTE -->
+<section id="reflection" class="featurequote">
+  <div class="wrap">
+    <span class="eyebrow">Reflection</span>
+    <blockquote>
+      "The most important design decision wasn't structural — it was who was in the room
+      when we built it."
+    </blockquote>
+    <p>
+      Rural health design fails when it's done <em>to</em> communities rather than <em>with</em>
+      them. The peer recovery coaches who ended up in those emergency departments had been
+      in crisis themselves. They understood the experience in a way no framework could replicate —
+      and their presence changed the dynamic not just for patients, but for clinical staff
+      who had been quietly overwhelmed for years.
+    </p>
+    <p>
+      <strong>The $180K matters. The framework matters.</strong> But the lasting thing is
+      that a group of people who had never been in the same room together — clinicians,
+      administrators, coaches, patients — built something together they all felt ownership
+      over. That's harder to fund and harder to measure than a readmission rate. It's also
+      the only reason it held.
+    </p>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Service design that survives inside a system that couldn't afford to fail again.</h2>
+    <p>
+      Open to service design engagements and advisory work at the intersection of health
+      equity, rural systems, behavioral health integration, and participatory design —
+      particularly where the hardest part of the work is making sure the right people are
+      in the room when the decisions get made.
+    </p>
+    <a href="mailto:galligancm@gmail.com" class="cta">
+      <span>Start a conversation</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- CASE NAV -->
+<section class="casenav">
+  <div class="wrap">
+    <a href="somatag-case-study.html" class="prev">
+      <div class="dir">← Previous case</div>
+      <div class="ctitle">Somatag — Emotion-Adaptive Interface R&amp;D</div>
+    </a>
+    <a href="cg-advocacy-case-study.html" class="next">
+      <div class="dir">Next case →</div>
+      <div class="ctitle">CG Advocacy — AI for Civic Infrastructure</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Christine Galligan · Case Study 04 · Novant Health</span>
+    <span>galligancm@gmail.com</span>
+  </div>
+</footer>
+
+<div style="max-width:72rem;margin:0 auto;padding:2rem;border-top:1px solid var(--paper-edge)"><a class="back-home" href="index.html" style="font-size:.85rem;border:0">← All work · Christine Galligan</a></div>
+</body>
+</html>
