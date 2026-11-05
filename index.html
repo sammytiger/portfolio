@@ -104,6 +104,14 @@ nav a:hover{color:var(--clay)}
 .meta{font-size:.74rem;color:var(--ink-faint);line-height:1.8}
 @media(max-width:860px){.case{grid-template-columns:1fr;gap:var(--s2)}.meta{display:flex;gap:var(--s5);flex-wrap:wrap}}
 
+.earlier{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--paper-edge)}
+.earlier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s7)}
+.earlier h3{font-size:1.15rem;margin-bottom:var(--s1)}
+.earlier .when{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:var(--s3)}
+.earlier p:last-child{font-size:.92rem;margin-bottom:0}
+@media(max-width:860px){.earlier-grid{grid-template-columns:1fr;gap:var(--s6)}}
+
 .plates{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);margin-top:var(--s7)}
 .plate figure{margin:0}
 .plate img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:1px solid var(--paper-edge)}
@@ -344,6 +352,33 @@ footer{border-top:1px solid var(--paper-edge);padding:var(--s7) 0}
       </div>
       <div class="meta"><div>6-month scope</div><div>0→1 concept</div><div>Lead Strategist</div></div>
     </article>
+
+    <div class="earlier">
+      <p class="eyebrow" style="margin-bottom:var(--s4)">Earlier consulting · life sciences</p>
+      <div class="earlier-grid">
+        <div>
+          <h3>GSK</h3>
+          <p class="when">2022 · Qualitative research</p>
+          <p>Consumer and prescriber research across a pain-relief portfolio — Advil, Panadol,
+          Voltaren, Excedrin. Three audiences, three positioning statements, and a read on what
+          physicians and pharmacists needed to know as opioid prescribing tightened.</p>
+        </div>
+        <div>
+          <h3>Codexis</h3>
+          <p class="when">2021 · Product strategy</p>
+          <p>A three-to-five-year roadmap for engineered enzymes across genomics, diagnostics, and
+          mRNA manufacturing. Market sizing, segmentation, and a model the team could use to decide
+          what to build and what to buy.</p>
+        </div>
+        <div>
+          <h3>ALPCO</h3>
+          <p class="when">2021 · Beachhead identification</p>
+          <p>Sizing three markets — academia, hospitals, reference laboratories — for advanced stool
+          diagnostics. The harder problem was perception: reframing a category customers read as
+          fringe. The useful half of the answer was where <em>not</em> to go.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
