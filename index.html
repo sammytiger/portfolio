@@ -134,6 +134,21 @@
     .ph:hover img{transform:scale(1.03)}
     @media (max-width:900px){.studio-row{grid-template-columns:repeat(4,78vw);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.studio-row::-webkit-scrollbar{display:none}.ph{scroll-snap-align:start;height:min(110vw,520px)}}
     .d-photo{display:block;width:100%;height:clamp(200px,32vh,300px);object-fit:cover;margin:0 0 24px;background:var(--oat)}
+    .practices{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+    .practices a{display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 22px;background:var(--paper);transition:background .4s ease}
+    .practices a:hover{background:var(--oat)}
+    .practices b{font-weight:400;font-size:1.3rem;letter-spacing:-.02em;line-height:1.2}
+    .practices span:not(.lbl):not(.arr){color:var(--ink-soft)}
+    .practices em{font-style:normal;margin-top:auto;align-self:flex-start}
+    .qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid var(--rule);padding-top:28px}
+    .qs h3{font-size:1.25rem;font-weight:500;letter-spacing:-.015em;line-height:1.25;margin:10px 0 8px}
+    .qs p{margin:0;color:var(--ink-soft)}
+    .meth{margin-top:36px;border-top:1px solid var(--rule)}
+    .meth p{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:12px;margin:0;padding:14px 0;border-bottom:1px solid var(--rule)}
+    .meth .lbl{padding-top:3px}
+    .photo-row{grid-template-columns:1.2fr 1fr 1fr}
+    @media (max-width:900px){.photo-row{grid-template-columns:repeat(3,78vw)}}
+    @media (max-width:560px){.meth p{grid-template-columns:1fr;gap:4px}}
     [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
     [data-reveal].in{opacity:1;transform:none}
 
@@ -162,7 +177,7 @@
     <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(14px,2.6vw,32px)">
       <button type="button" class="navbtn lbl ul ul-in" style="color:var(--ink)" onClick="{{ openExplore }}" aria-haspopup="dialog">Explore</button>
       <button type="button" class="navbtn lbl ul ul-in" style="color:var(--ink)" onClick="{{ openSpeak }}" aria-haspopup="dialog">Speak</button>
-      <a class="navbtn lbl ul ul-in" style="color:var(--ink)" href="https://substack.com/@cgalligan" target="_blank" rel="noopener">Field Notes</a>
+      <a class="navbtn lbl ul ul-in" style="color:var(--ink)" href="#andco">Practices</a>
       <a class="navbtn lbl ul ul-in hide-sm" style="color:var(--ink)" href="#about">About</a>
     </nav>
   </div>
@@ -264,7 +279,7 @@
           <div class="dock-moors">
             <button type="button" class="btn" onClick="{{ openExplore }}" aria-haspopup="dialog">Commission an exploration</button>
             <button type="button" class="btn btn-ghost" onClick="{{ openSpeak }}" aria-haspopup="dialog">Invite me to speak</button>
-            <a class="ul" href="https://substack.com/@cgalligan" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:4px">Follow the series on Field Notes ↗</a>
+            <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:4px">Follow the series on Field Notes ↗</a>
           </div>
         </div>
         <div class="dock-lantern" aria-hidden="true"></div>
@@ -327,6 +342,65 @@
   </div>
 </section>
 
+<section id="andco" aria-labelledby="andco-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="max-width:60ch">
+      <p class="lbl" style="margin:0">Christine &amp; Co.</p>
+      <h2 id="andco-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 16px">Four practices. One habit.</h2>
+      <p style="margin:0;color:var(--ink-soft)">The Co. isn't staff — it's the other things I do. They look unrelated until you notice they're the same move: paying attention to what people can actually do when capacity runs out.</p>
+    </div>
+    <ul class="practices" data-reveal="true">
+      <li><a href="#questions"><span class="lbl">01 · Research</span><b>Observation, structured.</b><span>IRB-approved longitudinal studies, ethnography, and human-factors work built to hold up under review.</span><em class="ul">Four open questions <span class="arr" aria-hidden="true">↓</span></em></a></li>
+      <li><a href="#photography"><span class="lbl">02 · Photography</span><b>Observation, visual.</b><span>The camera I carry into the field, and commissioned work. A photograph settles arguments three meetings couldn't.</span><em class="ul">From the field <span class="arr" aria-hidden="true">↓</span></em></a></li>
+      <li><a href="https://somatag.com" target="_blank" rel="noopener"><span class="lbl">03 · Product</span><b>Observation, made useful.</b><span>SOMA — patent-pending biosensing. Support that arrives as capacity narrows, without adding a task.</span><em class="ul">somatag.com <span class="arr" aria-hidden="true">↗</span></em></a></li>
+      <li><a href="https://cgalligan.substack.com" target="_blank" rel="noopener"><span class="lbl">04 · Writing</span><b>Observation, in public.</b><span>Field Notes — essays on trust, regulation, and adoption, for people building what comes next.</span><em class="ul">Read Field Notes <span class="arr" aria-hidden="true">↗</span></em></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="questions" aria-labelledby="questions-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:32px">
+      <div>
+        <p class="lbl" style="margin:0">Research</p>
+        <h2 id="questions-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0;max-width:18ch">Four questions I keep returning to.</h2>
+      </div>
+      <p style="margin:0;max-width:42ch;color:var(--ink-soft)">The gap between what we can build and what people want to live with isn't technical. It's neurobiological.</p>
+    </div>
+    <ol class="qs" data-reveal="true">
+      <li><span class="lbl">01</span><h3>Emotionally intelligent systems</h3><p>Interfaces that respond to human states and strengthen judgment rather than replace it. How do you personalize without surveillance? A nurse who gets burned once by a confident system stops trusting the accurate ones too.</p></li>
+      <li><span class="lbl">02</span><h3>Healthcare and aging futures</h3><p>Most people intend to age at home, and payment models are pushing care the same way. The grab bar goes in after the fall. The house is the last thing anyone designs.</p></li>
+      <li><span class="lbl">03</span><h3>Neurodiversity and emotional regulation</h3><p>Sensory and cognitive difference as a design input from day one, not an accommodation bolted on later. A system that assumes a steady hand and a quiet room excludes most people on most days.</p></li>
+      <li><span class="lbl">04</span><h3>Adaptive technologies for daily living</h3><p>Medication, mobility, cognitive scaffolding, and the invisible work that holds a day together. The pill organizer on the counter is the real interface.</p></li>
+    </ol>
+    <div class="meth" data-reveal="true">
+      <p><span class="lbl">Methods</span>Ethnographic research · Generative research · Concept testing · Systems mapping · Scenario planning · Trends mapping · Competitive analysis · Future-state visualization</p>
+      <p><span class="lbl">Competencies</span>Systems strategy · Human-centered design · Qualitative and quantitative research · Applied AI · Healthcare domain · Leadership</p>
+    </div>
+  </div>
+</section>
+
+<section id="photography" aria-labelledby="photo-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div>
+        <p class="lbl" style="margin:0">Photography</p>
+        <h2 id="photo-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0">Christine Mary Photography.</h2>
+      </div>
+      <p style="margin:0;max-width:44ch;color:var(--ink-soft)">Photography is one of the research methods, not a sideline. People describe the version of their life they can narrate. The room shows the version they actually live in.</p>
+    </div>
+  </div>
+  <div class="studio-row photo-row" data-reveal="true">
+    <figure class="ph"><img src="/img/photography/dog.jpg" alt="A dog beside a pair of Chaco sandals with Sip Clips, shot on location" loading="lazy"></figure>
+    <figure class="ph"><img src="/img/photography/pair.jpg" alt="Product detail of sandals in natural light" loading="lazy"></figure>
+    <figure class="ph"><img src="/img/photography/rock.jpg" alt="Sandals on a rock outdoors, where the product is actually used" loading="lazy"></figure>
+  </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px">
+    <p class="lbl" style="margin:0">Chaco × Sip Clip — shot on location. The dog was not in the brief.</p>
+    <a class="ul" href="mailto:galligancm@gmail.com?subject=Photography%20commission">Commissions and collaborations <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
 <section id="reading" aria-labelledby="reading-title" style="padding:clamp(72px,12vh,140px) 0 0">
   <div class="wrap">
     <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:36px">
@@ -335,7 +409,7 @@
         <h2 id="reading-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0">Take something home.</h2>
         <p style="margin:16px 0 0;max-width:46ch;color:var(--ink-soft)">Free field tools and frameworks from the studio. Use them, share them, and tell me what you change.</p>
       </div>
-      <a class="ul" href="https://substack.com/@cgalligan" target="_blank" rel="noopener">More in Field Notes ↗</a>
+      <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener">More in Field Notes ↗</a>
     </div>
     <ul class="shelf" data-reveal="true">
       <li class="book" style="--tone:#EDE4D6"><p class="lbl" style="margin:0">Field tool · 1 page</p><h3>Room Setup Worksheet</h3><p>Redesign one room around fluctuating capacity. A room can hold cues, reduce choices, and protect return.</p><a class="ul" href="/reading/room-setup-worksheet.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a></li>
@@ -354,8 +428,9 @@
     <div data-reveal="true">
       <p class="lbl" style="margin:0">Your guide</p>
       <h2 id="about-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 22px">Christine Galligan, MHA</h2>
-      <p style="margin:0 0 16px;max-width:50ch;color:var(--ink-soft)">Researcher, designer, and inventor based in Boulder. I run <a class="ul" href="https://kutuhalastudio.com" target="_blank" rel="noopener" style="color:var(--ink)">Kutuhala Studio</a> — research-led design for people in transition — and SOMA Systems, and I host Hacky Snacky, a monthly meetup for builders.</p>
-      <p style="margin:0 0 28px;max-width:50ch;color:var(--ink-soft)"><em>Futures Worth Belonging To</em> is the studio's series. It lives in Field Notes today; Season 1 of the podcast is in production.</p>
+      <p style="margin:0 0 16px;max-width:52ch;color:var(--ink-soft)">I design systems that remember the humanity healthcare keeps forgetting. Across Clemson's Center for Success in Aging, CVS Health, Philips, Novant Health, and now SOMA Systems, two theses have held: environment regulates physiology as powerfully as medication, and participation is impossible when the system is illegible.</p>
+      <p style="margin:0 0 16px;max-width:52ch;color:var(--ink-soft)">Research and field papers go out under <a class="ul" href="https://kutuhalastudio.com" target="_blank" rel="noopener" style="color:var(--ink)">Kutuhala Studio</a> — Sanskrit, roughly, for the desire to understand. I also run Hacky Snacky, a monthly edge-computing meetup in Boulder, and I'm forming the Umwelten Institute.</p>
+      <p style="margin:0 0 28px;max-width:52ch;color:var(--ink-soft)"><em>Futures Worth Belonging To</em> is the studio's series. It lives in Field Notes today; Season 1 of the podcast is in production. Photography commissions, speaking, and short notes all welcome.</p>
       <p class="lbl" style="margin:0 0 10px">Fifteen years with</p>
       <p style="margin:0;font-size:1.0625rem;line-height:1.6">Clemson · Prisma Health · Novant Health · Philips · CVS Health · The Linus Group · NSF I-Corps · GSK · Codexis · ALPCO</p>
     </div>
@@ -368,13 +443,18 @@
           <li><span class="lbl">2020–21</span><span>CIRCAA Scholar — Creating Interprofessional Readiness for Complex and Aging Adults, Virginia Geriatric Education Center</span></li>
           <li><span class="lbl">2013–15</span><span>Calhoun Honors College research grant for caregiver HRV work at Greenville Health System; presented at Clemson's Focus on Creative Inquiry forum</span></li>
           <li><span class="lbl">2017–18</span><span>ACHE administrative fellow, Novant Health — $180K grant for ER peer recovery coaches</span></li>
+          <li><span class="lbl">2022</span><span>GSK — consumer and prescriber research across a pain-relief portfolio (Advil, Panadol, Voltaren, Excedrin): three audiences, three positioning statements</span></li>
+          <li><span class="lbl">2021</span><span>Codexis — a three-to-five-year roadmap for engineered enzymes across genomics, diagnostics, and mRNA manufacturing</span></li>
+          <li><span class="lbl">2021</span><span>ALPCO — beachhead sizing for advanced stool diagnostics, and reframing a category customers read as fringe</span></li>
           <li><span class="lbl">Training</span><span>MIT CSAIL HCI &amp; UX · IDEO design thinking · CITI human subjects research</span></li>
         </ul>
       </div>
       <div>
         <p class="lbl" style="margin:0 0 14px">What collaborators say</p>
         <blockquote class="q">"Christine was a thought partner from ideation to execution — instrumental, especially because of her expertise in research methods."<cite class="lbl">Digital health founder</cite></blockquote>
-        <blockquote class="q">"Her ability to articulate the business and clinical implications of cutting-edge technologies makes her an invaluable collaborator."<cite class="lbl">Research collaborator</cite></blockquote>
+        <blockquote class="q">"Her ability to articulate the business and clinical implications of cutting-edge technologies makes her an invaluable collaborator in aligning AI capabilities with healthcare objectives."<cite class="lbl">CEO, AI healthtech startup</cite></blockquote>
+        <blockquote class="q">"A thoughtful listener and a persuasive communicator, capable of building consensus and inspiring others to think beyond conventional boundaries."<cite class="lbl">Fortune 500 VP</cite></blockquote>
+        <blockquote class="q">"She is not one to shy away from complexity; rather, she approaches challenges with tenacity and a genuine excitement to uncover new possibilities."<cite class="lbl">Department director</cite></blockquote>
       </div>
     </div>
   </div>
@@ -384,6 +464,7 @@
 <footer style="background:var(--soil);color:var(--paper);padding:clamp(56px,10vh,100px) 0 calc(32px + env(safe-area-inset-bottom))">
   <div class="wrap">
     <p style="font-size:clamp(1.9rem,5vw,4rem);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin:0 0 32px;max-width:16ch">Evidence and emotion, in equal measure.</p>
+    <p style="margin:-12px 0 28px;max-width:46ch;color:#D8CFC2">Stay close to the signals: one email a month on designing health and AI systems people actually adopt. Calm, precise, zero hype. <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener" style="color:var(--paper)">Subscribe ↗</a></p>
     <div class="cta" style="margin-bottom:48px">
       <button type="button" class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)" onClick="{{ openExplore }}" aria-haspopup="dialog">Commission an exploration</button>
       <button type="button" class="btn btn-ghost" style="color:var(--paper);border-color:var(--paper)" onClick="{{ openSpeak }}" aria-haspopup="dialog">Invite me to speak</button>
@@ -391,7 +472,7 @@
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 28px;border-top:1px solid rgba(244,240,232,.2);padding-top:20px">
       <a class="ul" href="mailto:galligancm@gmail.com" style="overflow-wrap:anywhere;min-height:44px">galligancm@gmail.com</a>
       <div style="display:flex;gap:24px;flex-wrap:wrap">
-        <a class="navbtn lbl ul ul-in" style="color:#D8D0C2" href="https://substack.com/@cgalligan" target="_blank" rel="noopener">Field Notes ↗</a>
+        <a class="navbtn lbl ul ul-in" style="color:#D8D0C2" href="https://cgalligan.substack.com" target="_blank" rel="noopener">Field Notes ↗</a>
         <a class="navbtn lbl ul ul-in" style="color:#D8D0C2" href="https://kutuhalastudio.com" target="_blank" rel="noopener">Kutuhala Studio ↗</a>
       </div>
       <span class="lbl" style="color:#D8CFC2">© 2026 Christine Galligan · Portraits by Kim Brundage Photography</span>
@@ -442,7 +523,7 @@
       <p class="lbl" style="margin:0 0 32px;line-height:1.8">Keynote · Panel · Podcast guest · Workshop · Guest lecture</p>
       <div class="cta">
         <a class="btn" href="mailto:galligancm@gmail.com?subject=Speaking%20invitation">Send an invitation</a>
-        <a class="btn btn-ghost" href="https://substack.com/@cgalligan" target="_blank" rel="noopener">Read Field Notes ↗</a>
+        <a class="btn btn-ghost" href="https://cgalligan.substack.com" target="_blank" rel="noopener">Read Field Notes ↗</a>
       </div>
       <button type="button" class="d-next" onClick="{{ openExplore }}"><span><span class="lbl" style="display:block">Next</span><span style="font-size:1.4rem;letter-spacing:-.02em">Commission an exploration</span></span><span class="arr" aria-hidden="true">→</span></button>
     </div>
