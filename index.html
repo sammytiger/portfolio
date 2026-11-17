@@ -1,519 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Christine Galligan — Curious by design</title>
-<meta name="description" content="Health research, photography, product, and writing. Boulder, Colorado. Healthcare innovation is accelerating. Adoption is not." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#F4F0E8; --paper-raised:#EFEADF; --paper-sunk:#E7E0D2; --paper-edge:#DED6C5;
-  --ink:#252321; --ink-soft:#57524A; --ink-faint:#847D70; --ink-ghost:#ABA496;
-  --sage:#7A7B5E; --sage-deep:#5E5F47; --sage-wash:#E3E1D4;
-  --clay:#A66F55; --clay-deep:#8A5A43; --clay-wash:#EFE2D7;
-  --gold:#A8854E; --gold-soft:#C2A878;
-  --stone:#9B948A; --stone-light:#C5BEB1;
-  --surface-card:#FBF8F2; --focus-ring:#5E5F47;
-  --font-display:"Antic Didone","Times New Roman",Georgia,serif;
-  --font-sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
-  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem;
-  --s6:2rem; --s7:3rem; --s8:4rem; --s9:6rem; --s10:8rem;
-  --measure:62ch; --max:70rem;
-  --ease:cubic-bezier(.22,.61,.36,1);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);
-  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s6)}
-.measure{max-width:var(--measure)}
-section{padding:var(--s9) 0;border-top:1px solid var(--paper-edge)}
-@media(max-width:760px){section{padding:var(--s8) 0}.wrap{padding:0 var(--s5)}}
-
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;color:var(--ink)}
-h1{font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 var(--s5)}
-h2{font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.12;letter-spacing:-.01em;margin:0 0 var(--s5)}
-h3{font-size:1.3rem;line-height:1.25;margin:0 0 var(--s2)}
-p{margin:0 0 var(--s4);color:var(--ink-soft)}
-.lede{font-size:1.15rem;line-height:1.55}
-a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold-soft);
-  transition:color 240ms var(--ease),border-color 240ms var(--ease)}
-a:hover{color:var(--clay);border-color:var(--clay)}
-a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:2px}
-.eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-faint);margin:0 0 var(--s5)}
-.eyebrow--sage{color:var(--sage-deep)}
-
-header{padding:var(--s5) 0;border-bottom:1px solid var(--paper-edge);position:sticky;top:0;
-  background:rgba(244,240,232,.93);backdrop-filter:blur(8px);z-index:10}
-.bar{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s5);flex-wrap:wrap}
-.name{font-family:var(--font-display);font-size:1.3rem;border:0}
-.place{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-left:var(--s4)}
-nav ul{display:flex;gap:var(--s5);list-style:none;margin:0;padding:0;flex-wrap:wrap}
-nav a{font-size:.86rem;border:0;color:var(--ink-soft)}
-nav a:hover{color:var(--clay)}
-
-.hero{border-top:none;padding-top:var(--s8)}
-.rule-line{display:flex;align-items:center;gap:var(--s4);margin-bottom:var(--s7);
-  font-family:var(--font-display);font-size:1.05rem;color:var(--sage-deep)}
-.rule-line::before,.rule-line::after{content:"";height:1px;background:var(--gold-soft);flex:1;max-width:7rem}
-.hero h1{max-width:18ch}
-.hero h1 .turn{color:var(--clay-deep)}
-.actions{display:flex;gap:var(--s6);flex-wrap:wrap;align-items:center;margin-top:var(--s6)}
-.btn{display:inline-block;background:var(--ink);color:var(--paper);border:0;border-radius:2px;
-  padding:var(--s3) var(--s6);font-size:.9rem;font-weight:500;transition:background 240ms var(--ease)}
-.btn:hover{background:#322F2B;color:var(--paper)}
-
-.andco{background:var(--sage-wash)}
-.practices{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s6);margin-top:var(--s7)}
-.practice{border-top:2px solid var(--sage);padding-top:var(--s4)}
-.practice h3{font-size:1.4rem}
-.practice .mode{font-family:var(--font-display);font-size:1rem;color:var(--clay-deep);margin:0 0 var(--s3)}
-.practice p{font-size:.92rem;margin-bottom:var(--s3)}
-.practice .go{font-size:.79rem;font-weight:500;border:0}
-.practice .go::after{content:" →";color:var(--gold)}
-@media(max-width:900px){.practices{grid-template-columns:1fr 1fr;gap:var(--s6)}}
-@media(max-width:560px){.practices{grid-template-columns:1fr}}
-
-.pullquote{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.3;
-  color:var(--ink);max-width:28ch;margin:var(--s7) 0 0;padding-left:var(--s6);
-  border-left:2px solid var(--clay)}
-
-.domains{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6) var(--s7);margin-top:var(--s6)}
-.domains > div{border-top:1px solid var(--paper-edge);padding-top:var(--s4)}
-.domains p{font-size:.93rem;margin-bottom:var(--s3)}
-.obs{font-family:var(--font-display);font-size:1.02rem;line-height:1.4;color:var(--clay-deep);margin-bottom:0}
-@media(max-width:860px){.domains{grid-template-columns:1fr}}
-
-.methods{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);margin-top:var(--s7);
-  padding-top:var(--s5);border-top:1px solid var(--paper-edge)}
-.methods p{font-size:.92rem;margin-bottom:0;line-height:1.75}
-@media(max-width:760px){.methods{grid-template-columns:1fr;gap:var(--s5)}}
-
-.case{display:grid;grid-template-columns:4.5rem 1fr 9rem;gap:var(--s5);padding:var(--s5) 0;
-  border-bottom:1px solid var(--paper-edge);align-items:start}
-.case:first-of-type{border-top:1px solid var(--paper-edge)}
-.case-no{font-family:var(--font-display);font-size:1.3rem;color:var(--stone)}
-.case p{margin-bottom:var(--s2);max-width:54ch;font-size:.94rem}
-.case-link{font-size:.82rem;font-weight:500;border:0;color:var(--clay-deep)}
-.case-link::after{content:" →";color:var(--gold)}
-.case-note{font-size:.79rem;color:var(--ink-ghost);font-style:italic}
-.meta{font-size:.74rem;color:var(--ink-faint);line-height:1.8}
-@media(max-width:860px){.case{grid-template-columns:1fr;gap:var(--s2)}.meta{display:flex;gap:var(--s5);flex-wrap:wrap}}
-
-.earlier{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--paper-edge)}
-.earlier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s7)}
-.earlier h3{font-size:1.15rem;margin-bottom:var(--s1)}
-.earlier .when{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-faint);margin-bottom:var(--s3)}
-.earlier p:last-child{font-size:.92rem;margin-bottom:0}
-@media(max-width:860px){.earlier-grid{grid-template-columns:1fr;gap:var(--s6)}}
-
-.plates{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);margin-top:var(--s7)}
-.plate figure{margin:0}
-.plate img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border:1px solid var(--paper-edge)}
-.plate .frame{aspect-ratio:4/5;background:var(--paper-sunk);border:1px solid var(--paper-edge);
-  display:flex;align-items:center;justify-content:center;font-size:.7rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-ghost);text-align:center;padding:var(--s4)}
-.plate img{width:100%;height:100%;object-fit:cover;display:block}
-.plate figcaption{font-size:.9rem;color:var(--ink-soft);margin-top:var(--s3);line-height:1.5}
-@media(max-width:860px){.plates{grid-template-columns:1fr;gap:var(--s6)}}
-
-.quotes{columns:2;column-gap:var(--s8);margin-top:var(--s6)}
-@media(max-width:860px){.quotes{columns:1}}
-blockquote{break-inside:avoid;margin:0 0 var(--s6);padding-left:var(--s5);border-left:2px solid var(--sage)}
-blockquote p{font-family:var(--font-display);font-size:1.1rem;line-height:1.45;color:var(--ink);margin-bottom:var(--s2)}
-blockquote cite{font-style:normal;font-size:.71rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
-
-.note{background:var(--surface-card);border:1px solid var(--paper-edge);padding:var(--s6);margin-top:var(--s7)}
-.note p:last-child{margin-bottom:0}
-
-footer{border-top:1px solid var(--paper-edge);padding:var(--s7) 0}
-.foot{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;font-size:.79rem;color:var(--ink-faint)}
-.foot a{border:0;color:var(--ink-faint)}
-.foot a:hover{color:var(--clay)}
-.foot-links{display:flex;gap:var(--s5);flex-wrap:wrap}
-</style>
+<meta charset="utf-8">
+<title>Futures Worth Belonging To — Christine Galligan</title>
+<meta name="description" content="Futures Worth Belonging To — a floating exhibition of research-led design by Christine Galligan and Kutuhala Studio. Evidence and emotion, in equal measure.">
+<meta property="og:title" content="Futures Worth Belonging To — Christine Galligan">
+<meta property="og:description" content="Futures Worth Belonging To — a floating exhibition of research-led design by Christine Galligan and Kutuhala Studio. Evidence and emotion, in equal measure.">
+<meta property="og:image" content="/img/gingham-laugh.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
 </head>
 <body>
+<x-dc>
 
-<header>
-  <div class="wrap bar">
-    <div>
-      <a href="#top" class="name">Christine Galligan</a>
-      <span class="place">Boulder, CO · 2026</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#photography">Photography</a></li>
-        <li><a href="#product">Product</a></li>
-        <li><a href="https://cgalligan.substack.com">Writing ↗</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="/_ds/somatag-design-system-26c624bf-910f-458b-b199-011631f2c2db/tokens/colors.css">
+  
+  <title>Futures Worth Belonging To — Christine Galligan</title>
+  <meta name="description" content="Futures Worth Belonging To: eight pavilions on the gap between what we build and what people need. Research-led design by Christine Galligan and Kutuhala Studio.">
+  <style>
+    :root{
+      --font:"TT Norms Pro","TT Norms",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+      --gut:clamp(16px,4vw,48px);--rule:#DCD1C1;--soil:#2E241E;--glow:#E8C88E;
+      --paper:#F5F0E8;--paper-raised:#EFE8DC;--ink:#2B2420;--ink-soft:#5B4D42;--ink-faint:#7A6A5C;--clay:#9A6A4B;--clay-deep:#7A4E36;--walnut:#6B4A35;--oat:#E7DCCB;--euc:#8E9A85;--brass:#B08D57;--ease:cubic-bezier(.2,.8,.2,1)
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit}
+    h1,h2,h3{font-family:var(--font);font-weight:400;letter-spacing:-.03em}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+    .skip{position:absolute;left:12px;top:-60px;z-index:100;padding:12px 18px;background:var(--ink);color:var(--paper)}
+    .skip:focus{top:12px}
+    .wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+    .lbl{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+    .ul{display:inline-flex;align-items:center;gap:8px;padding-bottom:2px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .5s var(--ease)}
+    .ul:hover{background-size:0 1px;background-position:100% 100%}
+    .ul-in{background-size:0 1px}
+    .ul-in:hover{background-size:100% 1px;background-position:0 100%}
+    .arr{display:inline-block;transition:transform .5s var(--ease)}
+    a:hover .arr,button:hover .arr{transform:translateX(5px)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:13px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+    .btn:hover{background:transparent;color:var(--ink)}
+    .btn-ghost{background:transparent;color:var(--ink)}
+    .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+    .navbtn{display:inline-flex;align-items:center;min-height:44px;padding:0 2px;background:none;border:0;cursor:pointer;color:var(--ink)}
+
+    /* the canal */
+    .voyage{position:relative;height:760vh}
+    .v-stage{position:sticky;top:var(--hh,64px);height:calc(100vh - var(--hh,64px));height:calc(100svh - var(--hh,64px));overflow:hidden;background:linear-gradient(#EADFCF,#F5EEE4)}
+    .v-sun{position:absolute;width:clamp(56px,7vw,100px);aspect-ratio:1;border-radius:50%;background:#E9C98F;box-shadow:0 0 80px 30px rgba(233,201,143,.4);transform:translate(-50%,-50%);left:84%;top:30%;z-index:0}
+    .v-stars{position:absolute;inset:0 0 40% 0;opacity:0;background-image:radial-gradient(1.5px 1.5px at 12% 20%,#F4F0E8 50%,transparent 51%),radial-gradient(1px 1px at 28% 8%,#F4F0E8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 47% 26%,#F4F0E8 50%,transparent 51%),radial-gradient(1px 1px at 63% 12%,#F4F0E8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 81% 22%,#F4F0E8 50%,transparent 51%),radial-gradient(1px 1px at 92% 6%,#F4F0E8 50%,transparent 51%),radial-gradient(1px 1px at 5% 34%,#F4F0E8 50%,transparent 51%),radial-gradient(1px 1px at 72% 36%,#F4F0E8 50%,transparent 51%)}
+    .v-clouds{position:absolute;inset:0;will-change:transform}
+    .v-clouds i{position:absolute;height:34px;border-radius:999px;background:rgba(251,248,242,.65);filter:blur(6px)}
+    .v-skyline{position:absolute;left:0;bottom:34%;will-change:transform}
+    .v-water{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(#A9B5AA,#76857C);overflow:hidden}
+    .v-wave{position:absolute;inset:0;background-repeat:repeat}
+    .v-wave-a{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='34'%3E%3Cpath d='M0 17 Q20 9 40 17 T80 17' fill='none' stroke='%23F4F0E8' stroke-opacity='.5' stroke-width='1.3'/%3E%3C/svg%3E");background-size:160px 34px}
+    .v-wave-b{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='52'%3E%3Cpath d='M120 26 Q150 16 180 26 T240 26' fill='none' stroke='%23252321' stroke-opacity='.1' stroke-width='1.5'/%3E%3C/svg%3E");background-size:240px 52px}
+    .v-shade{position:absolute;inset:0;background:#1d1713;opacity:0}
+    .v-world{position:absolute;inset:0;will-change:transform}
+    .pav{position:absolute;bottom:34%;left:0;width:clamp(180px,20vw,250px);transform:translateX(-50%)}
+    .pav-building{position:relative;display:block;height:clamp(130px,24vh,250px);background:var(--hue);border-radius:2px 2px 0 0;box-shadow:inset 0 -24px 30px rgba(37,35,33,.08);-webkit-box-reflect:below 0 linear-gradient(transparent 50%,rgba(255,255,255,.2))}
+    .roof-dome{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:46%;aspect-ratio:2/1;border-radius:999px 999px 0 0;background:var(--hue);filter:brightness(.88)}
+    .roof-dome::after{content:'';position:absolute;left:50%;bottom:96%;width:3px;height:16px;background:#A8854E;transform:translateX(-50%)}
+    .roof-gable{position:absolute;bottom:100%;left:-4%;width:108%;height:34px;background:var(--hue);filter:brightness(.9);clip-path:polygon(0 100%,50% 0,100% 100%)}
+    .roof-tower{position:absolute;bottom:0;right:-28px;width:30px;height:150%;background:var(--hue);filter:brightness(.85);clip-path:polygon(0 12%,50% 0,100% 12%,100% 100%,0 100%)}
+    .pav-windows{position:absolute;top:16%;left:0;right:0;display:flex;justify-content:center;gap:9%}
+    .pav-windows i{display:block;width:14%;aspect-ratio:1/2.1;border-radius:999px 999px 2px 2px;background:rgba(37,35,33,.3);transition:background .6s ease,box-shadow .6s ease}
+    .pav-door{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:24%;height:30%;border-radius:999px 999px 0 0;background:rgba(37,35,33,.48)}
+    .pav-poles{position:absolute;bottom:-44px;left:-16px;display:flex;gap:9px}
+    .pav-poles i{display:block;width:6px;height:92px;border-radius:3px 3px 0 0;background:repeating-linear-gradient(#F5F0E8 0 11px,#7A4E36 11px 22px)}
+    .pav-card{position:absolute;left:50%;bottom:calc(100% + 40px);transform:translateX(-50%) translateY(8px);transform-origin:50% 100%;width:clamp(250px,26vw,320px);display:flex;flex-direction:column;gap:8px;padding:20px 20px 18px;background:#FBF8F2;border:1px solid var(--rule);box-shadow:0 18px 40px rgba(31,29,26,.10);opacity:.42;transition:opacity .5s ease,transform .6s var(--ease),border-color .5s ease}
+    .pav-title{font-size:clamp(1.2rem,1.7vw,1.5rem);line-height:1.15;margin:0;color:var(--ink)}
+    .pav-line{margin:0;font-size:.95rem;color:var(--ink-soft)}
+    .pav-ev{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:6px;padding-top:12px;border-top:1px solid var(--rule);font-size:.9rem}
+    .pav.is-active .pav-card{opacity:1;transform:translateX(-50%);border-color:var(--ink)}
+    .pav.is-active .pav-windows i{background:var(--glow);box-shadow:0 0 18px var(--glow)}
+    .pav-dock{width:clamp(220px,24vw,300px)}
+    .dock-card{width:clamp(280px,32vw,400px);bottom:calc(100% + 22px)}
+    .dock-moors{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+    .dock-planks{height:14px;background:repeating-linear-gradient(90deg,#7A5640 0 28px,#5E412F 28px 30px)}
+    .dock-lantern{position:absolute;right:12%;bottom:14px;width:12px;height:12px;border-radius:50%;background:var(--glow);box-shadow:0 0 24px 8px var(--glow)}
+    .v-boat{position:absolute;left:18%;bottom:calc(34% - 38px);width:clamp(140px,16vw,220px);aspect-ratio:230/100;transform-origin:50% 70%;z-index:4;transition:transform .2s ease-out}
+    .v-bob{width:100%;height:100%;animation:bob 3.2s ease-in-out infinite}
+    @keyframes bob{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(5px) rotate(.8deg)}}
+    .v-intro{position:absolute;left:var(--gut);right:var(--gut);top:clamp(28px,7vh,72px);z-index:5;max-width:720px;transition:opacity .2s linear}
+    .v-controls{position:absolute;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:8px;padding:6px;background:rgba(251,248,242,.94);border:1px solid var(--rule);border-radius:999px}
+    .v-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:#FBF8F2;color:var(--ink);font-size:1.2rem;line-height:1;cursor:pointer}
+    .v-arrow:hover{border-color:var(--ink)}
+    #v-label{min-width:15ch;text-align:center;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+
+    /* drawer */
+    .scrim{position:fixed;inset:0;background:rgba(31,29,26,.4);opacity:0;pointer-events:none;transition:opacity .6s ease;z-index:60}
+    .scrim.is-open{opacity:1;pointer-events:auto}
+    .drawer{position:fixed;top:0;right:0;height:100%;height:100dvh;width:min(600px,100%);background:var(--paper);z-index:61;overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);visibility:hidden;transition:transform .8s var(--ease),visibility 0s linear .8s;box-shadow:-30px 0 60px rgba(31,29,26,.12)}
+    .drawer.is-open{transform:none;visibility:visible;transition:transform .8s var(--ease),visibility 0s}
+    .d-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:8px var(--gut);background:var(--paper);border-bottom:1px solid var(--rule)}
+    .d-body{padding:32px var(--gut) max(48px,env(safe-area-inset-bottom))}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    .drawer.is-open .d-body > *{animation:rise .9s var(--ease) both}
+    .drawer.is-open .d-body > *:nth-child(2){animation-delay:.07s}
+    .drawer.is-open .d-body > *:nth-child(3){animation-delay:.14s}
+    .drawer.is-open .d-body > *:nth-child(n+4){animation-delay:.21s}
+    .d-title{font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.06;margin:14px 0 20px;max-width:16ch}
+    .d-list{list-style:none;margin:0 0 32px;padding:0;border-top:1px solid var(--rule)}
+    .d-list li{display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--rule)}
+    .d-list .n{font-size:.85rem;font-weight:500;color:var(--clay-deep);padding-top:3px}
+    .d-list h3{font-size:1.1rem;font-weight:500;letter-spacing:-.01em;line-height:1.3;margin:0 0 4px}
+    .d-list p{margin:0;color:var(--ink-soft)}
+    .cta{display:flex;flex-wrap:wrap;gap:12px}
+    .d-next{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:72px;margin-top:48px;padding:18px 0;border:0;border-top:1px solid var(--rule);background:none;cursor:pointer;text-align:left}
+
+    .shelf{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+    .book{display:flex;flex-direction:column;gap:10px;padding:28px 24px 24px;background:var(--tone);min-height:300px;transition:background-color .4s}
+    .book h3{font-size:1.35rem;line-height:1.15;margin:8px 0 0}
+    .book p{margin:0;color:var(--ink)}
+    .book .ul{margin-top:auto;align-self:flex-start}
+    .book:hover{background:#FBF8F2}
+    .log{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(32px,6vw,96px);border-top:1px solid var(--rule);padding-top:32px}
+    .log-list{list-style:none;margin:0;padding:0}
+    .log-list li{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+    .log-list li .lbl{padding-top:3px}
+    .q{margin:0 0 20px;padding:0 0 20px;border-bottom:1px solid var(--rule);font-size:1.125rem;line-height:1.5}
+    .q cite{display:block;margin-top:10px;font-style:normal}
+    .studio-row{display:grid;grid-template-columns:1.5fr 1fr 1.5fr 1fr;gap:clamp(8px,1vw,14px);padding:0 var(--gut);max-width:1320px;margin:0 auto}
+    .ph{margin:0;overflow:hidden;background:var(--oat);height:clamp(300px,34vw,560px)}
+    .ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+    .ph:hover img{transform:scale(1.03)}
+    @media (max-width:900px){.studio-row{grid-template-columns:repeat(4,78vw);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.studio-row::-webkit-scrollbar{display:none}.ph{scroll-snap-align:start;height:min(110vw,520px)}}
+    .d-photo{display:block;width:100%;height:clamp(200px,32vh,300px);object-fit:cover;margin:0 0 24px;background:var(--oat)}
+    .practices{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+    .practices a{display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 22px;background:var(--paper);transition:background .4s ease}
+    .practices a:hover{background:var(--oat)}
+    .practices b{font-weight:400;font-size:1.3rem;letter-spacing:-.02em;line-height:1.2}
+    .practices span:not(.lbl):not(.arr){color:var(--ink-soft)}
+    .practices em{font-style:normal;margin-top:auto;align-self:flex-start}
+    .qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid var(--rule);padding-top:28px}
+    .qs h3{font-size:1.25rem;font-weight:500;letter-spacing:-.015em;line-height:1.25;margin:10px 0 8px}
+    .qs p{margin:0;color:var(--ink-soft)}
+    .meth{margin-top:36px;border-top:1px solid var(--rule)}
+    .meth p{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:12px;margin:0;padding:14px 0;border-bottom:1px solid var(--rule)}
+    .meth .lbl{padding-top:3px}
+    .photo-row{grid-template-columns:1.2fr 1fr 1fr}
+    @media (max-width:900px){.photo-row{grid-template-columns:repeat(3,78vw)}}
+    @media (max-width:560px){.meth p{grid-template-columns:1fr;gap:4px}}
+    [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+    [data-reveal].in{opacity:1;transform:none}
+
+    @media (max-width:760px){
+      body{font-size:1.0625rem}
+      .hide-sm{display:none !important}
+      .voyage{height:620vh}
+      .v-intro{top:24px}
+      .pav-building{height:17vh}
+      .pav-card{bottom:calc(100% + 44px);width:min(84vw,320px);padding:16px}
+      .dock-card{width:min(90vw,380px)}
+      .v-boat{left:4%}
+      .cta .btn{flex:1 1 100%}
+    }
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}html{scroll-behavior:auto}[data-reveal]{opacity:1;transform:none}}
+  </style>
+</helmet>
+
+<div id="top">
+<a class="skip" href="#about">Skip the canal</a>
+
+<div id="page">
+<header style="position:sticky;top:0;z-index:40;background:rgba(244,240,232,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;min-height:64px">
+    <a href="#top" style="font-size:1.02rem;font-weight:500;letter-spacing:-.01em;min-height:44px;display:inline-flex;align-items:center">Christine Galligan</a>
+    <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(14px,2.6vw,32px)">
+      <button type="button" class="navbtn lbl ul ul-in" style="color:var(--ink)" onClick="{{ openExplore }}" aria-haspopup="dialog">Explore</button>
+      <button type="button" class="navbtn lbl ul ul-in" style="color:var(--ink)" onClick="{{ openSpeak }}" aria-haspopup="dialog">Speak</button>
+      <a class="navbtn lbl ul ul-in" style="color:var(--ink)" href="#andco">Practices</a>
+      <a class="navbtn lbl ul ul-in hide-sm" style="color:var(--ink)" href="#about">About</a>
     </nav>
   </div>
 </header>
 
-<section class="hero" id="top">
-  <div class="wrap">
-    <div class="rule-line">Curious by design</div>
-    <h1>Healthcare innovation is accelerating.<br><span class="turn">Adoption is not.</span></h1>
-    <p class="lede measure">
-      I translate foresight, behavioral science, and systems thinking into innovations people adopt,
-      clinicians support, and organizations can scale.
-    </p>
-    <div class="actions">
-      <a class="btn" href="#research">See the work</a>
-      <a href="#andco">What I do</a>
-    </div>
-  </div>
-</section>
-
-<section class="andco" id="andco">
-  <div class="wrap">
-    <p class="eyebrow eyebrow--sage">Christine &amp; Co.</p>
-    <h2>Four practices. One habit.</h2>
-    <p class="lede measure">
-      The Co isn't staff — it's the other things I do. They look unrelated until you notice they're
-      the same move: paying attention to what people can actually do when capacity runs out.
-    </p>
-
-    <div class="practices">
-      <div class="practice">
-        <h3>Research</h3>
-        <p class="mode">Observation, structured.</p>
-        <p>IRB-approved longitudinal studies, ethnography, and human-factors work built to hold up
-        under review.</p>
-        <a class="go" href="#research">Six case studies</a>
-      </div>
-      <div class="practice">
-        <h3>Photography</h3>
-        <p class="mode">Observation, visual.</p>
-        <p>The camera I carry into the field, and commissioned work. A photograph settles arguments
-        three meetings couldn't.</p>
-        <a class="go" href="#photography">From the field</a>
-      </div>
-      <div class="practice">
-        <h3>Product</h3>
-        <p class="mode">Observation, made useful.</p>
-        <p>SOMA — patent-pending biosensing. Support that arrives as capacity narrows, without adding
-        a task.</p>
-        <a class="go" href="#product">What it is</a>
-      </div>
-      <div class="practice">
-        <h3>Writing</h3>
-        <p class="mode">Observation, in public.</p>
-        <p>Field Notes — essays on trust, regulation, and adoption, for people building what comes
-        next.</p>
-        <a class="go" href="https://cgalligan.substack.com">Read ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="thesis">
-  <div class="wrap">
-    <p class="eyebrow">The through-line</p>
-    <h2>Designing the layer between body and system.</h2>
-    <div class="measure">
-      <p class="lede">
-        Fourteen years of longitudinal research, health-system strategy, applied AI, and near-future
-        product design.
-      </p>
-      <p>
-        Safety, trust, and motivation are nervous system events — not metrics to optimize, but
-        experiences to design. Most innovation fails because it doesn't account for how people
-        regulate stress or hold onto motivation when they're frightened, unwell, or uncertain. Care
-        that feels like care isn't a luxury. It's the foundation of adoption.
-      </p>
-    </div>
-    <p class="pullquote">The gap between what we can build and what people want to live with isn't
-    technical. It's neurobiological.</p>
-  </div>
-</section>
-
-<section id="research">
-  <div class="wrap">
-    <p class="eyebrow">01 · Research</p>
-    <h2>Four questions I keep returning to.</h2>
-
-    <div class="domains">
-      <div>
-        <h3>Emotionally Intelligent Systems</h3>
-        <p>Interfaces that respond to human states and strengthen judgment rather than replace it.
-        How do you personalize without surveillance?</p>
-        <p class="obs">A nurse who gets burned once by a confident system stops trusting the accurate
-        ones too.</p>
-      </div>
-      <div>
-        <h3>Healthcare and Aging Futures</h3>
-        <p>Most people intend to age at home, and payment models are pushing care the same way.</p>
-        <p class="obs">The grab bar goes in after the fall. The house is the last thing anyone
-        designs.</p>
-      </div>
-      <div>
-        <h3>Neurodiversity and Emotional Regulation</h3>
-        <p>Sensory and cognitive difference as a design input from day one, not an accommodation
-        bolted on later.</p>
-        <p class="obs">A system that assumes a steady hand and a quiet room excludes most people on
-        most days.</p>
-      </div>
-      <div>
-        <h3>Adaptive Technologies for Daily Living</h3>
-        <p>Medication, mobility, cognitive scaffolding, and the invisible work that holds a day
-        together.</p>
-        <p class="obs">The pill organizer on the counter is the real interface.</p>
-      </div>
-    </div>
-
-    <div class="methods">
-      <div>
-        <p class="eyebrow" style="margin-bottom:var(--s3)">Methods</p>
-        <p>Ethnographic research · Generative research · Concept testing · Systems mapping ·
-        Scenario planning · Trends mapping · Competitive analysis · Future-state visualization</p>
-      </div>
-      <div>
-        <p class="eyebrow" style="margin-bottom:var(--s3)">Competencies</p>
-        <p>Systems strategy · Human-centered design · Qualitative and quantitative research ·
-        Applied AI · Healthcare domain · Leadership</p>
-      </div>
-    </div>
-
-    <h2 style="margin-top:var(--s9)">Six case studies.</h2>
-
-    <article class="case">
-      <div class="case-no">01</div>
-      <div>
-        <h3>The physiological cost of caregiving.</h3>
-        <p>A 3.5-year IRB-approved study — <em>Effects of Thoughts and Sensory Experiences on Heart
-        Rate Variability of Older Adults</em> — tracking HRV in 32 family caregivers of Alzheimer's
-        patients. Seven community centers adopted the resulting respite program.</p>
-        <a class="case-link" href="hrv-research-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>2011 — 2015</div><div>Clemson · Prisma Health</div><div>PI · n=32</div></div>
-    </article>
-
-    <article class="case">
-      <div class="case-no">02</div>
-      <div>
-        <h3>Behavior change at seventy-million-member scale.</h3>
-        <p>Twelve digital health pilots across CVS's pharmacy and care-management portfolio. Fifteen
-        percent year-over-year lift in adherence for key chronic conditions.</p>
-        <a class="case-link" href="cvs-health-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>2019 — 2021</div><div>CVS Health · Aetna</div><div>Lead Strategist</div></div>
-    </article>
-
-    <article class="case">
-      <div class="case-no">03</div>
-      <div>
-        <h3>A stress intervention that works before you know you need it.</h3>
-        <p>A screenless, body-worn protocol that reads autonomic dysregulation through HRV and
-        responds with a gentle haptic cue. Two provisional patents filed.</p>
-        <a class="case-link" href="somatag-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>2023 — Present</div><div>SOMA Systems</div><div>Founder</div></div>
-    </article>
-
-    <article class="case">
-      <div class="case-no">04</div>
-      <div>
-        <h3>Rural mental health, redesigned from the inside out.</h3>
-        <p>A Patient Experience Vision Framework across three rural North Carolina hospitals, built
-        through 350+ community interviews. Peer recovery coaches integrated into emergency
-        departments. $180K grant secured.</p>
-        <a class="case-link" href="novant-health-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>2017 — 2018</div><div>Novant Health</div><div>Administrative Fellow</div></div>
-    </article>
-
-    <article class="case">
-      <div class="case-no">05</div>
-      <div>
-        <h3>Making healthcare policy legible — so participation is possible.</h3>
-        <p>An NSF-backed platform translating dense CMS, FDA, and ONC regulatory documents into
-        persona-specific explanations. Comprehension time: 2–3 hours to under 20 minutes.</p>
-        <a class="case-link" href="cg-advocacy-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>2023 — 2024</div><div>NSF I-Corps</div><div>Founder · Product Lead</div></div>
-    </article>
-
-    <article class="case">
-      <div class="case-no">06</div>
-      <div>
-        <h3>The hospital decision environment — unified, adaptive, humane.</h3>
-        <p>A 0→1 concept unifying patient flow, workforce operations, and executive intelligence into
-        one adaptive interface.</p>
-        <a class="case-link" href="healthcare-control-center-case-study.html">Read case study</a>
-      </div>
-      <div class="meta"><div>6-month scope</div><div>0→1 concept</div><div>Lead Strategist</div></div>
-    </article>
-
-    <div class="earlier">
-      <p class="eyebrow" style="margin-bottom:var(--s4)">Earlier consulting · life sciences</p>
-      <div class="earlier-grid">
-        <div>
-          <h3>GSK</h3>
-          <p class="when">2022 · Qualitative research</p>
-          <p>Consumer and prescriber research across a pain-relief portfolio — Advil, Panadol,
-          Voltaren, Excedrin. Three audiences, three positioning statements, and a read on what
-          physicians and pharmacists needed to know as opioid prescribing tightened.</p>
+<main>
+<section id="voyage" class="voyage" aria-labelledby="hero-title">
+  <div id="v-stage" class="v-stage">
+    <div id="v-sun" class="v-sun" aria-hidden="true"></div>
+    <div id="v-stars" class="v-stars" aria-hidden="true"></div>
+    <div id="v-clouds" class="v-clouds" aria-hidden="true"><i style="left:8%;top:12%;width:220px"></i><i style="left:40%;top:7%;width:300px"></i><i style="left:72%;top:16%;width:180px"></i><i style="left:112%;top:9%;width:260px"></i><i style="left:150%;top:14%;width:200px"></i><i style="left:190%;top:6%;width:280px"></i></div>
+    <svg id="v-skyline" class="v-skyline" viewBox="0 0 4800 180" width="4800" height="180" aria-hidden="true"><path d="M0 180V115H69V180ZM79 180V134H197V180ZM202 180V119H224A39 39 0 0 1 302 119H324V180ZM260 80V64H266V80ZM324 180V136H427V180ZM430 180V137H534V180ZM547 180V105H566A33 33 0 0 1 632 105H651V180ZM596 72V56H602V72ZM661 180V107H678A30 30 0 0 1 737 107H754V180ZM704 77V61H710V77ZM763 180V138H841V180ZM849 180V104L888 80L927 104V180ZM929 180V116H952A40 40 0 0 1 1032 116H1055V180ZM989 76V60H995V76ZM1063 180V124L1098 100L1134 124V180ZM1143 180V114H1161A33 33 0 0 1 1227 114H1245V180ZM1191 81V65H1197V81ZM1246 180V107H1263A30 30 0 0 1 1323 107H1340V180ZM1290 77V61H1296V77ZM1340 180V108H1362A39 39 0 0 1 1439 108H1461V180ZM1398 69V53H1404V69ZM1467 180V31L1478 1L1489 31V180ZM1531 180V125H1619V180ZM1631 180V135H1712V180ZM1721 180V119H1834V180ZM1845 180V133H1904V180ZM1912 180V131H2005V180ZM2019 180V98H2074V180ZM2075 180V24L2086 -6L2097 24V180ZM2122 180V22L2133 -8L2144 22V180ZM2178 180V56L2189 26L2200 56V180ZM2216 180V137H2274V180ZM2285 180V24L2296 -6L2307 24V180ZM2335 180V38L2346 8L2357 38V180ZM2374 180V109H2438V180ZM2438 180V132H2524V180ZM2535 180V109H2635V180ZM2636 180V105H2737V180ZM2741 180V95L2784 71L2828 95V180ZM2832 180V38L2843 8L2854 38V180ZM2879 180V131H2951V180ZM2954 180V110H2970A29 29 0 0 1 3028 110H3044V180ZM2996 81V65H3002V81ZM3057 180V116H3076A34 34 0 0 1 3144 116H3163V180ZM3107 82V66H3113V82ZM3163 180V117H3281V180ZM3290 180V109H3308A31 31 0 0 1 3370 109H3388V180ZM3336 78V62H3342V78ZM3397 180V124H3422A44 44 0 0 1 3509 124H3534V180ZM3462 80V64H3468V80ZM3541 180V95L3596 71L3650 95V180ZM3656 180V134H3756V180ZM3763 180V119H3780A30 30 0 0 1 3839 119H3856V180ZM3806 89V73H3812V89ZM3857 180V120L3901 96L3945 120V180ZM3946 180V134H4002V180ZM4002 180V122H4024A40 40 0 0 1 4104 122H4126V180ZM4061 82V66H4067V82ZM4131 180V119H4148A30 30 0 0 1 4208 119H4225V180ZM4175 89V73H4181V89ZM4234 180V118H4316V180ZM4325 180V133H4390V180ZM4403 180V110H4512V180ZM4519 180V134H4587V180ZM4598 180V110H4681V180ZM4694 180V27L4705 -3L4716 27V180ZM4729 180V107L4776 83L4822 107V180Z" fill="#CDBFAE" fill-opacity=".55"/></svg>
+    <div class="v-water" aria-hidden="true"><div id="v-wave-a" class="v-wave v-wave-a"></div><div id="v-wave-b" class="v-wave v-wave-b"></div><div id="v-shade" class="v-shade"></div></div>
+    <div id="v-world" class="v-world">
+      <div class="pav" data-stop="0" data-name="The Doctor's Dilemma, Reimagined" style="--hue:#E3D3BC">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 01</p>
+          <h2 class="pav-title">The Doctor's Dilemma, Reimagined</h2>
+          <p class="pav-line">When AI inherits the vanity trap — and why humility beats genius in the field.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/ai-policy-platform">An NSF-backed AI policy platform <span class="arr" aria-hidden="true">→</span></a></div>
         </div>
-        <div>
-          <h3>Codexis</h3>
-          <p class="when">2021 · Product strategy</p>
-          <p>A three-to-five-year roadmap for engineered enzymes across genomics, diagnostics, and
-          mRNA manufacturing. Market sizing, segmentation, and a model the team could use to decide
-          what to build and what to buy.</p>
+        <div class="pav-building" aria-hidden="true"><span class="roof-dome"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="1" data-name="The Sensorial Hospital" style="--hue:#B88B6A">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 02</p>
+          <h2 class="pav-title">The Sensorial Hospital</h2>
+          <p class="pav-line">What if rooms could participate in healing, not just contain it?</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/healthcare-control-center">The hospital decision environment <span class="arr" aria-hidden="true">→</span></a><a class="ul" href="/novant-health-rural">Novant Health · three rural hospitals <span class="arr" aria-hidden="true">→</span></a></div>
         </div>
-        <div>
-          <h3>ALPCO</h3>
-          <p class="when">2021 · Beachhead identification</p>
-          <p>Sizing three markets — academia, hospitals, reference laboratories — for advanced stool
-          diagnostics. The harder problem was perception: reframing a category customers read as
-          fringe. The useful half of the answer was where <em>not</em> to go.</p>
+        <div class="pav-building" aria-hidden="true"><span class="roof-gable"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="2" data-name="Biointimacy: The Skin as Sensor" style="--hue:#AEB5A0">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 03</p>
+          <h2 class="pav-title">Biointimacy: The Skin as Sensor</h2>
+          <p class="pav-line">The line between helpful presence and invasive monitoring.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/somatag">Somatag · patent-pending, screen-free <span class="arr" aria-hidden="true">→</span></a></div>
         </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-tower"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="3" data-name="Biometrics as Ritual" style="--hue:#D8CDBE">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 04</p>
+          <h2 class="pav-title">Biometrics as Ritual</h2>
+          <p class="pav-line">From data to ceremony — when tracking becomes meaning-making.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/caregiving-hrv-study">3.5-year HRV study · n=32 · Clemson + Prisma Health <span class="arr" aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-gable"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="4" data-name="CX Meets Clinical Reality" style="--hue:#D9BD92">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 05</p>
+          <h2 class="pav-title">CX Meets Clinical Reality</h2>
+          <p class="pav-line">When feeling good isn't the same as getting better.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/cvs-health-scale">CVS Health · 12 pilots, 70M+ members <span class="arr" aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-dome"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="5" data-name="The AI Mirror" style="--hue:#9C7A5F">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 06</p>
+          <h2 class="pav-title">The AI Mirror</h2>
+          <p class="pav-line">Evidence, empathy, and the problem of unearned confidence.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/reading/designing-systems-that-feel.pdf" download>Designing Systems That Feel (free PDF) <span class="arr" aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-tower"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="6" data-name="The Built Environment as Nervous System" style="--hue:#C9CDB8">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 07</p>
+          <h2 class="pav-title">The Built Environment as Nervous System</h2>
+          <p class="pav-line">Architecture that breathes with us.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="/reading/room-setup-worksheet.pdf" download>Room Setup Worksheet (free PDF) <span class="arr" aria-hidden="true">↓</span></a><a class="ul" href="/reading/executive-function-field-map.pdf" download>Executive Function Field Map (free PDF) <span class="arr" aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-gable"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav" data-stop="7" data-name="Fusion Skills & the Gentle Technologist" style="--hue:#C7A585">
+        <div class="pav-card">
+          <p class="lbl" style="margin:0">Pavilion 08</p>
+          <h2 class="pav-title">Fusion Skills & the Gentle Technologist</h2>
+          <p class="pav-line">What it means to know how to touch AI.</p>
+          <div class="pav-ev"><span class="lbl">Evidence</span><a class="ul" href="#about">Hacky Snacky · a monthly builders' meetup <span class="arr" aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="pav-building" aria-hidden="true"><span class="roof-dome"></span><span class="pav-windows"><i></i><i></i><i></i></span><span class="pav-door"></span></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="pav pav-dock" data-stop="8" data-name="The dock">
+        <div class="pav-card dock-card">
+          <p class="lbl" style="margin:0">The dock</p>
+          <h2 class="pav-title" style="max-width:18ch">Every pavilion started as a question someone brought me. What's yours?</h2>
+          <div class="dock-moors">
+            <button type="button" class="btn" onClick="{{ openExplore }}" aria-haspopup="dialog">Commission an exploration</button>
+            <button type="button" class="btn btn-ghost" onClick="{{ openSpeak }}" aria-haspopup="dialog">Invite me to speak</button>
+            <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:4px">Follow the series on Field Notes ↗</a>
+          </div>
+        </div>
+        <div class="dock-lantern" aria-hidden="true"></div>
+        <div class="dock-planks" aria-hidden="true"></div>
+        <div class="pav-poles" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div id="v-boat" class="v-boat" aria-hidden="true"><div class="v-bob"><svg viewBox="0 0 230 100" width="100%" height="100%" aria-hidden="true">
+          <line x1="40" y1="34" x2="78" y2="96" stroke="#252321" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M8 62 C34 86 174 90 216 56 L219 61 C180 98 28 96 4 66 Z" fill="#252321"/>
+          <path d="M210 58 L216 36 L223 38 L218 60 Z" fill="#252321"/>
+          <path d="M213 42 h8 M212 47 h8 M211 52 h8" stroke="#F4F0E8" stroke-width="1.2"/>
+          <rect x="30" y="30" width="14" height="10" fill="#F4F0E8"/><rect x="30" y="33" width="14" height="2.5" fill="#252321"/><rect x="30" y="38" width="14" height="2" fill="#252321"/>
+          <rect x="31" y="40" width="12" height="26" rx="2" fill="#252321"/>
+          <circle cx="37" cy="24" r="5.5" fill="#A66F55"/>
+          <ellipse cx="37" cy="19" rx="9" ry="2.2" fill="#A8854E"/><rect x="32" y="15" width="10" height="4" rx="1" fill="#A8854E"/>
+          <path d="M112 74 q0 -20 12 -22 q12 2 12 22 z" fill="#57524A"/>
+          <circle cx="124" cy="45" r="6.5" fill="#A66F55"/>
+          <line x1="156" y1="74" x2="156" y2="28" stroke="#252321" stroke-width="1.6"/>
+          <path d="M157 29 L176 35 L157 41 Z" fill="#A66F55"/>
+        </svg></div></div>
+
+    <div id="v-intro" class="v-intro">
+      <p class="lbl" style="margin:0">Kutuhala Studio presents</p>
+      <h1 id="hero-title" style="font-size:clamp(2.6rem,7vw,6rem);line-height:.98;letter-spacing:-.045em;margin:16px 0 0;max-width:10ch">Futures Worth Belonging To</h1>
+      <div style="display:flex;gap:16px;align-items:center;margin:20px 0 0;max-width:46ch">
+        <img src="/img/camera-laugh.jpg" alt="Christine Galligan laughing behind a camera" width="64" height="64" style="flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:52% 18%;border:2px solid var(--paper)">
+        <p style="margin:0;font-size:1.0625rem;color:var(--ink-soft)">Eight pavilions on the gap between what we build and what people need. A floating exhibition by Christine Galligan.</p>
+      </div>
+      <p class="lbl" style="margin:14px 0 0;color:var(--clay-deep)">Evidence and emotion, in equal measure</p>
+      <div class="cta" style="margin-top:24px">
+        <button type="button" class="btn" onClick="{{ sail }}">Set sail <span class="arr" aria-hidden="true">→</span></button>
+        <button type="button" class="btn btn-ghost" onClick="{{ toDock }}">Skip to the dock</button>
+      </div>
+    </div>
+
+    <div class="v-controls">
+      <button type="button" class="v-arrow" aria-label="Previous pavilion" onClick="{{ prevStop }}">‹</button>
+      <span id="v-label" class="lbl" aria-live="polite">Scroll to sail</span>
+      <button type="button" class="v-arrow" aria-label="Next pavilion" onClick="{{ nextStop }}">›</button>
+    </div>
+  </div>
+</section>
+
+<section id="studio" aria-labelledby="studio-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div>
+        <p class="lbl" style="margin:0">The studio</p>
+        <h2 id="studio-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0;max-width:18ch">Where the questions get handled.</h2>
+      </div>
+      <p style="margin:0;max-width:40ch;color:var(--ink-soft)">Swatches, ceramics, field notes, and a camera within reach. Research works better when you can touch it.</p>
+    </div>
+  </div>
+  <div class="studio-row" data-reveal="true">
+    <figure class="ph ph-wide"><img src="/img/studio-reading.jpg" alt="Christine reading a field notebook at a walnut worktable" loading="lazy" style="object-position:40% 40%"></figure>
+    <figure class="ph ph-tall"><img src="/img/swatches-bw.jpg" alt="Hands sorting fabric swatches behind eucalyptus, in black and white" loading="lazy"></figure>
+    <figure class="ph ph-wide"><img src="/img/vase.jpg" alt="Christine holding up a white clay vase in front of open shelves" loading="lazy" style="object-position:62% 40%"></figure>
+    <figure class="ph ph-tall"><img src="/img/linen-laugh.jpg" alt="Christine laughing as she unrolls a linen runner across the table" loading="lazy" style="object-position:50% 30%"></figure>
+  </div>
+</section>
+
+<section id="andco" aria-labelledby="andco-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="max-width:60ch">
+      <p class="lbl" style="margin:0">Christine &amp; Co.</p>
+      <h2 id="andco-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 16px">Four practices. One habit.</h2>
+      <p style="margin:0;color:var(--ink-soft)">The Co. isn't staff — it's the other things I do. They look unrelated until you notice they're the same move: paying attention to what people can actually do when capacity runs out.</p>
+    </div>
+    <ul class="practices" data-reveal="true">
+      <li><a href="#questions"><span class="lbl">01 · Research</span><b>Observation, structured.</b><span>IRB-approved longitudinal studies, ethnography, and human-factors work built to hold up under review.</span><em class="ul">Four open questions <span class="arr" aria-hidden="true">↓</span></em></a></li>
+      <li><a href="#photography"><span class="lbl">02 · Photography</span><b>Observation, visual.</b><span>The camera I carry into the field, and commissioned work. A photograph settles arguments three meetings couldn't.</span><em class="ul">From the field <span class="arr" aria-hidden="true">↓</span></em></a></li>
+      <li><a href="https://somatag.com" target="_blank" rel="noopener"><span class="lbl">03 · Product</span><b>Observation, made useful.</b><span>SOMA — patent-pending biosensing. Support that arrives as capacity narrows, without adding a task.</span><em class="ul">somatag.com <span class="arr" aria-hidden="true">↗</span></em></a></li>
+      <li><a href="https://cgalligan.substack.com" target="_blank" rel="noopener"><span class="lbl">04 · Writing</span><b>Observation, in public.</b><span>Field Notes — essays on trust, regulation, and adoption, for people building what comes next.</span><em class="ul">Read Field Notes <span class="arr" aria-hidden="true">↗</span></em></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="questions" aria-labelledby="questions-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:32px">
+      <div>
+        <p class="lbl" style="margin:0">Research</p>
+        <h2 id="questions-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0;max-width:18ch">Four questions I keep returning to.</h2>
+      </div>
+      <p style="margin:0;max-width:42ch;color:var(--ink-soft)">The gap between what we can build and what people want to live with isn't technical. It's neurobiological.</p>
+    </div>
+    <ol class="qs" data-reveal="true">
+      <li><span class="lbl">01</span><h3>Emotionally intelligent systems</h3><p>Interfaces that respond to human states and strengthen judgment rather than replace it. How do you personalize without surveillance? A nurse who gets burned once by a confident system stops trusting the accurate ones too.</p></li>
+      <li><span class="lbl">02</span><h3>Healthcare and aging futures</h3><p>Most people intend to age at home, and payment models are pushing care the same way. The grab bar goes in after the fall. The house is the last thing anyone designs.</p></li>
+      <li><span class="lbl">03</span><h3>Neurodiversity and emotional regulation</h3><p>Sensory and cognitive difference as a design input from day one, not an accommodation bolted on later. A system that assumes a steady hand and a quiet room excludes most people on most days.</p></li>
+      <li><span class="lbl">04</span><h3>Adaptive technologies for daily living</h3><p>Medication, mobility, cognitive scaffolding, and the invisible work that holds a day together. The pill organizer on the counter is the real interface.</p></li>
+    </ol>
+    <div class="meth" data-reveal="true">
+      <p><span class="lbl">Methods</span>Ethnographic research · Generative research · Concept testing · Systems mapping · Scenario planning · Trends mapping · Competitive analysis · Future-state visualization</p>
+      <p><span class="lbl">Competencies</span>Systems strategy · Human-centered design · Qualitative and quantitative research · Applied AI · Healthcare domain · Leadership</p>
+    </div>
+  </div>
+</section>
+
+<section id="photography" aria-labelledby="photo-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div>
+        <p class="lbl" style="margin:0">Photography</p>
+        <h2 id="photo-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0">Christine Mary Photography.</h2>
+      </div>
+      <p style="margin:0;max-width:44ch;color:var(--ink-soft)">Photography is one of the research methods, not a sideline. People describe the version of their life they can narrate. The room shows the version they actually live in.</p>
+    </div>
+  </div>
+  <div class="studio-row photo-row" data-reveal="true">
+    <figure class="ph"><img src="/img/photography/dog.jpg" alt="A dog beside a pair of Chaco sandals with Sip Clips, shot on location" loading="lazy"></figure>
+    <figure class="ph"><img src="/img/photography/pair.jpg" alt="Product detail of sandals in natural light" loading="lazy"></figure>
+    <figure class="ph"><img src="/img/photography/rock.jpg" alt="Sandals on a rock outdoors, where the product is actually used" loading="lazy"></figure>
+  </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px">
+    <p class="lbl" style="margin:0">Chaco × Sip Clip — shot on location. The dog was not in the brief.</p>
+    <a class="ul" href="mailto:galligancm@gmail.com?subject=Photography%20commission">Commissions and collaborations <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section id="reading" aria-labelledby="reading-title" style="padding:clamp(72px,12vh,140px) 0 0">
+  <div class="wrap">
+    <div data-reveal="true" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:36px">
+      <div>
+        <p class="lbl" style="margin:0">The Reading Room</p>
+        <h2 id="reading-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 0">Take something home.</h2>
+        <p style="margin:16px 0 0;max-width:46ch;color:var(--ink-soft)">Free field tools and frameworks from the studio. Use them, share them, and tell me what you change.</p>
+      </div>
+      <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener">More in Field Notes ↗</a>
+    </div>
+    <ul class="shelf" data-reveal="true">
+      <li class="book" style="--tone:#EDE4D6"><p class="lbl" style="margin:0">Field tool · 1 page</p><h3>Room Setup Worksheet</h3><p>Redesign one room around fluctuating capacity. A room can hold cues, reduce choices, and protect return.</p><a class="ul" href="/reading/room-setup-worksheet.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a></li>
+      <li class="book" style="--tone:#E2E2D3"><p class="lbl" style="margin:0">Field tool · 4 pages</p><h3>Executive Function Field Map</h3><p>Twelve hidden demands behind ordinary routines — and where the room can carry part of the weight.</p><a class="ul" href="/reading/executive-function-field-map.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a></li>
+      <li class="book" style="--tone:#E3D2BC"><p class="lbl" style="margin:0">Field paper · 17 pages</p><h3>Designing Systems That Feel</h3><p>A strategic futures approach to emotionally intelligent AI in complex care, with six principles for tender technology.</p><a class="ul" href="/reading/designing-systems-that-feel.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a></li>
+      <li class="book" style="--tone:#D5D9C9"><p class="lbl" style="margin:0">Framework · 27 pages</p><h3>The Resonance Framework</h3><p>A storytelling tool for innovators building trust, not hype — functional, social, and emotional messaging.</p><a class="ul" href="/reading/resonance-framework.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="about" aria-labelledby="about-title" style="padding:clamp(72px,12vh,140px) 0">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,6vw,96px);align-items:center">
+    <div data-reveal="true" style="background:var(--oat)">
+      <img src="/img/gingham-table.jpg" alt="Christine Galligan smiling, leaning on a table spread with swatches and a frame" style="display:block;width:100%;height:clamp(360px,46vw,600px);object-fit:cover;object-position:30% 35%">
+    </div>
+    <div data-reveal="true">
+      <p class="lbl" style="margin:0">Your guide</p>
+      <h2 id="about-title" style="font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.06;margin:14px 0 22px">Christine Galligan, MHA</h2>
+      <p style="margin:0 0 16px;max-width:52ch;color:var(--ink-soft)">I design systems that remember the humanity healthcare keeps forgetting. Across Clemson's Center for Success in Aging, CVS Health, Philips, Novant Health, and now SOMA Systems, two theses have held: environment regulates physiology as powerfully as medication, and participation is impossible when the system is illegible.</p>
+      <p style="margin:0 0 16px;max-width:52ch;color:var(--ink-soft)">Research and field papers go out under <a class="ul" href="https://kutuhalastudio.com" target="_blank" rel="noopener" style="color:var(--ink)">Kutuhala Studio</a> — Sanskrit, roughly, for the desire to understand. I also run Hacky Snacky, a monthly edge-computing meetup in Boulder, and I'm forming the Umwelten Institute.</p>
+      <p style="margin:0 0 28px;max-width:52ch;color:var(--ink-soft)"><em>Futures Worth Belonging To</em> is the studio's series. It lives in Field Notes today; Season 1 of the podcast is in production. Photography commissions, speaking, and short notes all welcome.</p>
+      <p class="lbl" style="margin:0 0 10px">Fifteen years with</p>
+      <p style="margin:0;font-size:1.0625rem;line-height:1.6">Clemson · Prisma Health · Novant Health · Philips · CVS Health · The Linus Group · NSF I-Corps · GSK · Codexis · ALPCO</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:clamp(56px,9vh,96px)">
+    <div class="log" data-reveal="true">
+      <div>
+        <p class="lbl" style="margin:0 0 14px">From the logbook</p>
+        <ul class="log-list">
+          <li><span class="lbl">2020–21</span><span>CIRCAA Scholar — Creating Interprofessional Readiness for Complex and Aging Adults, Virginia Geriatric Education Center</span></li>
+          <li><span class="lbl">2013–15</span><span>Calhoun Honors College research grant for caregiver HRV work at Greenville Health System; presented at Clemson's Focus on Creative Inquiry forum</span></li>
+          <li><span class="lbl">2017–18</span><span>ACHE administrative fellow, Novant Health — $180K grant for ER peer recovery coaches</span></li>
+          <li><span class="lbl">2022</span><span>GSK — consumer and prescriber research across a pain-relief portfolio (Advil, Panadol, Voltaren, Excedrin): three audiences, three positioning statements</span></li>
+          <li><span class="lbl">2021</span><span>Codexis — a three-to-five-year roadmap for engineered enzymes across genomics, diagnostics, and mRNA manufacturing</span></li>
+          <li><span class="lbl">2021</span><span>ALPCO — beachhead sizing for advanced stool diagnostics, and reframing a category customers read as fringe</span></li>
+          <li><span class="lbl">Training</span><span>MIT CSAIL HCI &amp; UX · IDEO design thinking · CITI human subjects research</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="lbl" style="margin:0 0 14px">What collaborators say</p>
+        <blockquote class="q">"Christine was a thought partner from ideation to execution — instrumental, especially because of her expertise in research methods."<cite class="lbl">Digital health founder</cite></blockquote>
+        <blockquote class="q">"Her ability to articulate the business and clinical implications of cutting-edge technologies makes her an invaluable collaborator in aligning AI capabilities with healthcare objectives."<cite class="lbl">CEO, AI healthtech startup</cite></blockquote>
+        <blockquote class="q">"A thoughtful listener and a persuasive communicator, capable of building consensus and inspiring others to think beyond conventional boundaries."<cite class="lbl">Fortune 500 VP</cite></blockquote>
+        <blockquote class="q">"She is not one to shy away from complexity; rather, she approaches challenges with tenacity and a genuine excitement to uncover new possibilities."<cite class="lbl">Department director</cite></blockquote>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<section id="photography">
+<footer style="background:var(--soil);color:var(--paper);padding:clamp(56px,10vh,100px) 0 calc(32px + env(safe-area-inset-bottom))">
   <div class="wrap">
-    <p class="eyebrow">02 · Photography</p>
-    <h2>Christine Mary Photography.</h2>
-    <div class="measure">
-      <p class="lede">
-        Commissioned brand and product work — and the camera I carry into the field.
-      </p>
-      <p>
-        Photography is one of the research methods, not a sideline: field observation,
-        ethnography, photography, systems mapping. People describe the version of their life they
-        can narrate. The room shows the version they actually live in.
-      </p>
+    <p style="font-size:clamp(1.9rem,5vw,4rem);font-weight:300;letter-spacing:-.04em;line-height:1.05;margin:0 0 32px;max-width:16ch">Evidence and emotion, in equal measure.</p>
+    <p style="margin:-12px 0 28px;max-width:46ch;color:#D8CFC2">Stay close to the signals: one email a month on designing health and AI systems people actually adopt. Calm, precise, zero hype. <a class="ul" href="https://cgalligan.substack.com" target="_blank" rel="noopener" style="color:var(--paper)">Subscribe ↗</a></p>
+    <div class="cta" style="margin-bottom:48px">
+      <button type="button" class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)" onClick="{{ openExplore }}" aria-haspopup="dialog">Commission an exploration</button>
+      <button type="button" class="btn btn-ghost" style="color:var(--paper);border-color:var(--paper)" onClick="{{ openSpeak }}" aria-haspopup="dialog">Invite me to speak</button>
     </div>
-
-    <div class="plates">
-      <div class="plate"><figure>
-        <img src="img/dog.jpg" alt="A white dog standing over a pair of patterned Chaco sandals with a Sip Clip can holder on gravel" loading="lazy" width="1205" height="1600">
-        <figcaption>Chaco × Sip Clip. Shot on location — the dog was not in the brief.</figcaption>
-      </figure></div>
-      <div class="plate"><figure>
-        <img src="img/pair.jpg" alt="Two Sip Clip can holders clipped to patterned Chaco sandals against green foliage" loading="lazy" width="1205" height="1600">
-        <figcaption>Product detail, natural light, no studio.</figcaption>
-      </figure></div>
-      <div class="plate"><figure>
-        <img src="img/rock.jpg" alt="Chaco sandals with a clipped Sip Clip can holder resting on a rock, canyon behind" loading="lazy" width="1280" height="1600">
-        <figcaption>Where the product is actually used, rather than where it photographs best.</figcaption>
-      </figure></div>
-    </div>
-
-    <p style="margin-top:var(--s7)" class="measure">
-      Commissions and collaborations — <a href="#contact">get in touch</a>.
-    </p>
-  </div>
-</section>
-
-<section id="product">
-  <div class="wrap">
-    <p class="eyebrow">03 · Product</p>
-    <h2>SOMA.</h2>
-    <div class="measure">
-      <p class="lede">
-        Support should arrive at the moment capacity narrows, without creating another task.
-      </p>
-      <p>
-        A screenless, body-worn protocol that reads autonomic state and responds with a cue rather
-        than an alert. Two provisional patents filed. Active R&amp;D out of Boulder.
-        <a href="https://somatag.com">somatag.com ↗</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="said">
-  <div class="wrap">
-    <p class="eyebrow">What collaborators say</p>
-    <div class="quotes">
-      <blockquote>
-        <p>“Her ability to articulate the business and clinical implications of cutting-edge
-        technologies makes her an invaluable collaborator in aligning AI capabilities with healthcare
-        objectives.”</p>
-        <cite>CEO, AI healthtech startup</cite>
-      </blockquote>
-      <blockquote>
-        <p>“She is not one to shy away from complexity; rather, she approaches challenges with
-        tenacity and a genuine excitement to uncover new possibilities.”</p>
-        <cite>Department Director</cite>
-      </blockquote>
-      <blockquote>
-        <p>“Christine's contributions to our projects, particularly her leadership in <em>Effects of
-        Thoughts and Sensory Experiences on Heart Rate Variability of Older Adults</em>, were nothing
-        short of transformative.”</p>
-        <cite>Academic Professor</cite>
-      </blockquote>
-      <blockquote>
-        <p>“One of Christine's standout qualities is her ability to marry technical acumen with a deep
-        empathy for end-users.”</p>
-        <cite>Senior Manager</cite>
-      </blockquote>
-      <blockquote>
-        <p>“A thoughtful listener and a persuasive communicator, capable of building consensus and
-        inspiring others to think beyond conventional boundaries.”</p>
-        <cite>Fortune 500 VP</cite>
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <p class="eyebrow">About &amp; contact</p>
-    <h2>The short version.</h2>
-    <div class="measure">
-      <p>
-        I design systems that remember the humanity healthcare keeps forgetting. Across Clemson's
-        Center for Success in Aging, CVS Health, Philips, Novant Health, and now SOMA Systems, two
-        theses have held: environment regulates physiology as powerfully as medication, and
-        participation is impossible when the system is illegible. Most of what we've built ignores both.
-      </p>
-      <p>
-        Research and field papers go out under <strong>Kutuhala</strong> — Sanskrit, roughly, for the
-        desire to understand. I also run <strong>Hacky Snacky</strong>, a monthly edge-computing meetup
-        in Boulder, and I'm forming <strong>Umwelten Institute</strong>.
-      </p>
-      <p>
-        Open to roles, research partnerships, clinical fellowships, and academic collaborations.
-        Photography commissions, speaking, and short notes all welcome.
-      </p>
-      <p><a href="mailto:galligancm@gmail.com">galligancm@gmail.com →</a></p>
-    </div>
-
-    <p class="pullquote" style="margin-top:var(--s7)">Turning complex and confusing into simple,
-    understandable, and desirable.</p>
-
-    <div class="note measure">
-      <p class="eyebrow eyebrow--sage" style="margin-bottom:var(--s3)">Stay close to the signals</p>
-      <p>One email a month on designing health and AI systems people actually adopt. Calm, precise,
-      zero hype. <a href="https://cgalligan.substack.com">Subscribe ↗</a></p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap foot">
-    <div>© 2026 Christine Galligan · Boulder, Colorado</div>
-    <div class="foot-links">
-      <a href="https://somatag.com">Somatag</a>
-      <a href="https://cgalligan.substack.com">Field Notes ↗</a>
-      <a href="mailto:galligancm@gmail.com">galligancm@gmail.com</a>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 28px;border-top:1px solid rgba(244,240,232,.2);padding-top:20px">
+      <a class="ul" href="mailto:galligancm@gmail.com" style="overflow-wrap:anywhere;min-height:44px">galligancm@gmail.com</a>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <a class="navbtn lbl ul ul-in" style="color:#D8D0C2" href="https://cgalligan.substack.com" target="_blank" rel="noopener">Field Notes ↗</a>
+        <a class="navbtn lbl ul ul-in" style="color:#D8D0C2" href="https://kutuhalastudio.com" target="_blank" rel="noopener">Kutuhala Studio ↗</a>
+      </div>
+      <span class="lbl" style="color:#D8CFC2">© 2026 Christine Galligan · Portraits by Kim Brundage Photography</span>
     </div>
   </div>
 </footer>
+</div>
 
+<div class="{{ scrimClass }}" onClick="{{ close }}" aria-hidden="true"></div>
+<aside id="drawer" class="{{ drawerClass }}" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="{{ drawerHidden }}">
+  <div class="d-top">
+    <span class="lbl">Futures Worth Belonging To</span>
+    <button type="button" id="drawer-close" class="navbtn lbl" style="gap:8px;padding:0 6px" onClick="{{ close }}">Close <span aria-hidden="true">✕</span></button>
+  </div>
+
+  <sc-if value="{{ isExplore }}" hint-placeholder-val="{{ false }}">
+    <div class="d-body">
+      <img class="d-photo" src="/img/at-work-bw.jpg" alt="Christine working through materials at a table, in black and white" style="object-position:35% 45%">
+      <p class="lbl" style="margin:0">Commission an exploration</p>
+      <h2 id="drawer-title" class="d-title">Bring a fuzzy question. Leave with something you can test.</h2>
+      <p style="margin:0 0 32px;color:var(--ink-soft)">For healthcare teams, founders, and research groups with an idea that doesn't fit a normal project yet. Two to six weeks through Kutuhala Studio, scoped to your question — and you own everything it produces.</p>
+      <ul class="d-list">
+        <li><span class="n" aria-hidden="true">01</span><div><h3>Discover · week 1</h3><p>Listen to people until they contradict your assumptions. Pin down the question worth answering.</p></div></li>
+        <li><span class="n" aria-hidden="true">02</span><div><h3>Design · weeks 2–4</h3><p>Friction mapping, jobs-to-be-done, and quick experiments — with AI as a tool for clarity, not a replacement for care.</p></div></li>
+        <li><span class="n" aria-hidden="true">03</span><div><h3>Deploy · weeks 4–6</h3><p>A working or narrative prototype — fast enough to learn, slow enough to stay honest.</p></div></li>
+      </ul>
+      <p class="lbl" style="margin:0 0 32px;line-height:1.8">You leave with · an evidence brief · concept directions · a prototype · what to test next</p>
+      <div class="cta">
+        <a class="btn" href="mailto:galligancm@gmail.com?subject=Discovery%20call%20%E2%80%94%20exploration">Book a discovery call</a>
+        <a class="btn btn-ghost" href="/care-transition-sprint">See a 14-week example</a>
+      </div>
+      <button type="button" class="d-next" onClick="{{ openSpeak }}"><span><span class="lbl" style="display:block">Next</span><span style="font-size:1.4rem;letter-spacing:-.02em">Invite me to speak</span></span><span class="arr" aria-hidden="true">→</span></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSpeak }}" hint-placeholder-val="{{ false }}">
+    <div class="d-body">
+      <img class="d-photo" src="/img/laugh-magazine-bw.jpg" alt="Christine laughing while paging through a magazine, in black and white" style="object-position:50% 28%">
+      <p class="lbl" style="margin:0">Invite me to speak</p>
+      <h2 id="drawer-title" class="d-title">Talks for rooms deciding what to build next.</h2>
+      <p style="margin:0 0 32px;color:var(--ink-soft)">Drawn from the pavilions and fifteen years of field research — told so clinicians, engineers, and executives can follow together.</p>
+      <ul class="d-list">
+        <li><span class="n" aria-hidden="true">01</span><div><h3>Friction isn't a UX problem. It's a trust problem.</h3><p>Every point of friction is where the official story and the lived one diverge — the most honest data a system produces.</p></div></li>
+        <li><span class="n" aria-hidden="true">02</span><div><h3>The Doctor's Dilemma, Reimagined</h3><p>Why AI that admits uncertainty earns more trust than AI that performs genius.</p></div></li>
+        <li><span class="n" aria-hidden="true">03</span><div><h3>Caregivers are the missing vital sign</h3><p>After discharge, the hardest month of care goes to someone the system can't see.</p></div></li>
+        <li><span class="n" aria-hidden="true">04</span><div><h3>The Built Environment as Nervous System</h3><p>Rooms, objects, and homes that help people keep functioning when capacity shifts.</p></div></li>
+      </ul>
+      <p class="lbl" style="margin:0 0 32px;line-height:1.8">Keynote · Panel · Podcast guest · Workshop · Guest lecture</p>
+      <div class="cta">
+        <a class="btn" href="mailto:galligancm@gmail.com?subject=Speaking%20invitation">Send an invitation</a>
+        <a class="btn btn-ghost" href="https://cgalligan.substack.com" target="_blank" rel="noopener">Read Field Notes ↗</a>
+      </div>
+      <button type="button" class="d-next" onClick="{{ openExplore }}"><span><span class="lbl" style="display:block">Next</span><span style="font-size:1.4rem;letter-spacing:-.02em">Commission an exploration</span></span><span class="arr" aria-hidden="true">→</span></button>
+    </div>
+  </sc-if>
+</aside>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: false, current: 'explore' };
+    this.v = { p: 0, span: 1, s: 0, C: [0] };
+  }
+  openPath(key) {
+    if (!this.state.open) this._returnFocus = document.activeElement;
+    const d = document.getElementById('drawer');
+    if (d) d.scrollTop = 0;
+    this.setState({ open: true, current: key });
+  }
+  closeDrawer() { this.setState({ open: false }); }
+  reduce() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  goStop(idx) {
+    const N = this.v.C.length - 1;
+    if (N < 1) return;
+    const t = Math.max(0, Math.min(N, idx + 1)) / N;
+    window.scrollBy({ top: (t - this.v.p) * this.v.span, behavior: this.reduce() ? 'auto' : 'smooth' });
+  }
+  componentDidMount() {
+    const doc = document;
+    const reduce = this.reduce();
+    const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+    this._off = [];
+    const on = (t, ev, fn, o) => { t.addEventListener(ev, fn, o); this._off.push(() => t.removeEventListener(ev, fn, o)); };
+
+    on(doc, 'keydown', (e) => {
+      if (this.state.open) {
+        if (e.key === 'Escape') { this.closeDrawer(); return; }
+        if (e.key !== 'Tab') return;
+        const d = doc.getElementById('drawer');
+        const f = d ? Array.from(d.querySelectorAll('a[href],button:not([disabled])')).filter((el) => el.offsetParent !== null) : [];
+        if (!f.length) return;
+        if (e.shiftKey && doc.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && doc.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+        return;
+      }
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const voy = doc.getElementById('voyage');
+      if (!voy) return;
+      const r = voy.getBoundingClientRect();
+      if (r.top > 200 || r.bottom < (window.innerHeight || 0) - 1) return;
+      e.preventDefault();
+      this.goStop(Math.round(this.v.s) - 1 + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+
+    const els = doc.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) els.forEach((el) => el.classList.add('in'));
+    else {
+      this._obs = new IntersectionObserver((en) => en.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('in'); this._obs.unobserve(x.target); } }), { threshold: 0.15 });
+      els.forEach((el) => this._obs.observe(el));
+    }
+
+    const head = doc.querySelector('header');
+    const setHH = () => { if (head) doc.documentElement.style.setProperty('--hh', head.offsetHeight + 'px'); };
+    setHH(); on(window, 'resize', setHH);
+    const voy = doc.getElementById('voyage');
+    const stage = doc.getElementById('v-stage');
+    const world = doc.getElementById('v-world');
+    const stops = Array.from(doc.querySelectorAll('[data-stop]'));
+    const boat = doc.getElementById('v-boat');
+    const sky = doc.getElementById('v-skyline');
+    const clouds = doc.getElementById('v-clouds');
+    const waveA = doc.getElementById('v-wave-a');
+    const waveB = doc.getElementById('v-wave-b');
+    const shade = doc.getElementById('v-shade');
+    const sun = doc.getElementById('v-sun');
+    const stars = doc.getElementById('v-stars');
+    const intro = doc.getElementById('v-intro');
+    const label = doc.getElementById('v-label');
+    stops.forEach((el, k) => on(el, 'focusin', () => { if (Math.round(this.v.s) - 1 !== k) this.goStop(k); }));
+
+    const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+    const mix = (a, b, t) => { const A = hex(a), B = hex(b); return 'rgb(' + A.map((x, i) => Math.round(x + (B[i] - x) * t)).join(',') + ')'; };
+    const keys = [[0, '#EADFCF', '#F5EEE4'], [0.45, '#E2E3D8', '#F3EEE5'], [0.72, '#E3C2A2', '#EFDCC6'], [1, '#231D19', '#5A4334']];
+    const skyAt = (p) => {
+      for (let k = 0; k < keys.length - 1; k++) {
+        const A = keys[k], B = keys[k + 1];
+        if (p <= B[0]) { const t = (p - A[0]) / (B[0] - A[0]); return [mix(A[1], B[1], t), mix(A[2], B[2], t)]; }
+      }
+      return [keys[3][1], keys[3][2]];
+    };
+    let vW = 0, vH = 0, lastC = 0, vel = 0, active = -2;
+    const layout = (w) => {
+      vW = w;
+      const spacing = Math.max(w * 0.6, 340);
+      const start = w + 240;
+      const focus = w * (w < 760 ? 0.5 : 0.6);
+      stops.forEach((el, k) => { el.style.left = (start + k * spacing) + 'px'; });
+      this.v.C = [0].concat(stops.map((_, k) => start + k * spacing - focus));
+    };
+    const frame = (now) => {
+      const H = window.innerHeight || doc.documentElement.clientHeight;
+      if (voy && stage && world) {
+        const r = voy.getBoundingClientRect();
+        const hh = head ? head.offsetHeight : 0;
+        this.v.span = Math.max(1, r.height - stage.clientHeight);
+        this.v.p = clamp((hh - r.top) / this.v.span);
+        const w = stage.clientWidth;
+        if (w !== vW) layout(w);
+        const C = this.v.C, N = C.length - 1;
+        const s = this.v.s = this.v.p * N;
+        const i = Math.min(N - 1, Math.floor(s)), f = s - i, sm = f * f * (3 - 2 * f);
+        const c = C[i] + (C[i + 1] - C[i]) * sm;
+        world.style.transform = 'translateX(' + (-c) + 'px)';
+        vel = vel * 0.8 + (c - lastC) * 0.2; lastC = c;
+        const p = this.v.p, t = (now || 0) / 1000;
+        if (boat) boat.style.transform = 'rotate(' + Math.max(-5, Math.min(5, -vel * 0.1)) + 'deg)';
+        if (sky) sky.style.transform = 'translateX(' + (-c * 0.3) + 'px)';
+        if (clouds) clouds.style.opacity = 1 - clamp((p - 0.7) / 0.18);
+        if (clouds) clouds.style.transform = 'translateX(' + ((-c * 0.12 - (reduce ? 0 : t * 6)) % 2400) + 'px)';
+        if (waveA) waveA.style.backgroundPosition = (-c - (reduce ? 0 : t * 24)) + 'px 0';
+        if (waveB) waveB.style.backgroundPosition = (-c * 0.7 + (reduce ? 0 : t * 12)) + 'px 8px';
+        const sk = skyAt(p);
+        stage.style.background = 'linear-gradient(' + sk[0] + ',' + sk[1] + ')';
+        stage.style.setProperty('--glow', p > 0.78 ? '#B9E4B2' : '#E9C98F');
+        if (shade) shade.style.opacity = clamp((p - 0.6) / 0.4) * 0.5;
+        if (stars) stars.style.opacity = clamp((p - 0.8) / 0.18);
+        if (sun) {
+          sun.style.left = (84 - 70 * p) + '%';
+          sun.style.top = ((w < 760 ? 10 : 30) - Math.sin(Math.PI * p) * (w < 760 ? 4 : 18) + clamp((p - 0.8) / 0.2) * 8) + '%';
+          sun.style.background = p > 0.86 ? '#F4F0E8' : '#E9C98F';
+        }
+        if (intro) {
+          const io = 1 - clamp(s / 0.5);
+          intro.style.opacity = io;
+          intro.style.transform = 'translateY(' + ((1 - io) * -30) + 'px)';
+          intro.style.visibility = io < 0.02 ? 'hidden' : 'visible';
+        }
+        const ai = Math.round(s) - 1;
+        if (ai !== active) {
+          active = ai;
+          stops.forEach((el, k) => el.classList.toggle('is-active', k === ai));
+          if (label) {
+            if (ai < 0) label.textContent = 'Scroll to sail';
+            else if (ai >= stops.length - 1) label.textContent = 'The dock';
+            else label.textContent = 'Pavilion ' + String(ai + 1).padStart(2, '0') + ' / 08';
+          }
+        }
+      }
+      this._raf = requestAnimationFrame(frame);
+    };
+    this._raf = requestAnimationFrame(frame);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const page = document.getElementById('page');
+    if (!prevState || prevState.open === this.state.open) {
+      if (this.state.open && prevState && prevState.current !== this.state.current) {
+        const d = document.getElementById('drawer'); if (d) d.scrollTop = 0;
+        const c = document.getElementById('drawer-close'); if (c) c.focus();
+      }
+      return;
+    }
+    if (this.state.open) {
+      document.body.style.overflow = 'hidden';
+      if (page) page.setAttribute('inert', '');
+      setTimeout(() => { const c = document.getElementById('drawer-close'); if (c) c.focus(); }, 60);
+    } else {
+      document.body.style.overflow = '';
+      if (page) page.removeAttribute('inert');
+      if (this._returnFocus && this._returnFocus.focus) this._returnFocus.focus();
+    }
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    document.body.style.overflow = '';
+    const page = document.getElementById('page');
+    if (page) page.removeAttribute('inert');
+    if (this._obs) this._obs.disconnect();
+    (this._off || []).forEach((f) => f());
+  }
+  renderVals() {
+    const open = this.state.open, cur = this.state.current;
+    return {
+      openExplore: () => this.openPath('explore'),
+      openSpeak: () => this.openPath('speak'),
+      close: () => this.closeDrawer(),
+      sail: () => this.goStop(0),
+      toDock: () => this.goStop(8),
+      prevStop: () => this.goStop(Math.round(this.v.s) - 2),
+      nextStop: () => this.goStop(Math.round(this.v.s)),
+      isExplore: cur === 'explore',
+      isSpeak: cur === 'speak',
+      drawerClass: open ? 'drawer is-open' : 'drawer',
+      scrimClass: open ? 'scrim is-open' : 'scrim',
+      drawerHidden: open ? 'false' : 'true'
+    };
+  }
+}
+</script>
 </body>
 </html>

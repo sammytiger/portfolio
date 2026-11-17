@@ -1,0 +1,10 @@
+/* ============================================================
+   FONTS
+   Antic Didone — display serif (Headline 1 & 2). Real, on Google Fonts.
+   Hanken Grotesk — SUBSTITUTE for the commercial "TT Norms" used in the
+   brand spec (Headline 3, paragraph, nav/buttons, caption). A warm
+   geometric-humanist grotesque, the nearest free match. Swap in the
+   licensed TT Norms .woff2 files here when available.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');

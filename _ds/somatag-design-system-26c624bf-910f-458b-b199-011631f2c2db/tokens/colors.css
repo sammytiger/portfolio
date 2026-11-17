@@ -1,0 +1,68 @@
+/* ============================================================
+   COLOR
+   A warm, archival earth palette — paper, ink, sage, clay, gold.
+   Drawn from field-notebook photography: linen, ceramic, pressed
+   botanicals, brushed gold pendant, olive shade.
+   ============================================================ */
+
+:root {
+  /* --- Base: paper & ink ------------------------------------ */
+  --paper:            #F4F0E8;  /* primary background — warm bone */
+  --paper-raised:     #EFEADF;  /* faintly lifted surface */
+  --paper-sunk:       #E7E0D2;  /* recessed wells, hovered rows */
+  --paper-edge:       #DED6C5;  /* hairline borders on paper */
+
+  --ink:              #252321;  /* primary text — near-black umber */
+  --ink-soft:         #57524A;  /* secondary text */
+  --ink-faint:        #847D70;  /* captions, metadata */
+  --ink-ghost:        #ABA496;  /* disabled, placeholder */
+
+  /* --- Accents --------------------------------------------- */
+  --sage:             #7A7B5E;  /* accent line, quiet olive */
+  --sage-deep:        #5E5F47;  /* pressed / strong sage */
+  --sage-wash:        #E3E1D4;  /* sage tint surface */
+
+  --clay:             #A66F55;  /* link hover, warm terracotta */
+  --clay-deep:        #8A5A43;  /* pressed clay */
+  --clay-wash:        #EFE2D7;  /* clay tint surface */
+
+  --gold:             #A8854E;  /* pendant brass / metallic accent */
+  --gold-soft:        #C2A878;  /* lighter gold for fine rules */
+
+  /* --- Stone neutrals (imagery greys, dividers) ------------- */
+  --stone:            #9B948A;
+  --stone-light:      #C5BEB1;
+
+  /* --- Signal (used sparingly — the product detects "cues") - */
+  --signal:           #7A7B5E;  /* steady / grounded = sage */
+  --signal-rising:    #A66F55;  /* activation rising = clay */
+  --signal-high:      #8A5A43;  /* peak / overwhelm = deep clay */
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in components
+     ============================================================ */
+  --bg-page:          var(--paper);
+  --bg-raised:        var(--paper-raised);
+  --bg-sunk:          var(--paper-sunk);
+  --surface-card:     #FBF8F2;
+  --surface-inverse:  var(--ink);
+
+  --text-primary:     var(--ink);
+  --text-secondary:   var(--ink-soft);
+  --text-caption:     var(--ink-faint);
+  --text-disabled:    var(--ink-ghost);
+  --text-inverse:     var(--paper);
+  --text-link:        var(--ink);
+  --text-link-hover:  var(--clay);
+
+  --border-hairline:  var(--paper-edge);
+  --border-strong:    var(--ink);
+  --rule-accent:      var(--sage);
+
+  --btn-fill:         var(--ink);
+  --btn-fill-text:    var(--paper);
+  --btn-fill-hover:   #322F2B;
+  --btn-fill-press:   #1A1816;
+
+  --focus-ring:       var(--sage-deep);
+}
